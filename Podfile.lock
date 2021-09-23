@@ -1,0 +1,22 @@
+PODS:
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - ChameleonFramework/Swift
+  - SnapKit
+
+SPEC REPOS:
+  trunk:
+    - ChameleonFramework
+    - SnapKit
+
+SPEC CHECKSUMS:
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: 01f4f43cb00486c932bb71f1fa8c21a46dc0f278
+
+COCOAPODS: 1.10.0

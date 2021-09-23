@@ -3,29 +3,65 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5188FAE32251BE2731FC2AB1 /* Pods_Metronome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC87757CCB16255A87F646 /* Pods_Metronome.framework */; };
+		CE23952126FCD011009983CD /* UiAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23952026FCD011009983CD /* UiAlertController.swift */; };
 		CE78828126FB4E04007EBA95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78828026FB4E04007EBA95 /* AppDelegate.swift */; };
 		CE78828326FB4E04007EBA95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78828226FB4E04007EBA95 /* SceneDelegate.swift */; };
-		CE78828526FB4E04007EBA95 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78828426FB4E04007EBA95 /* ViewController.swift */; };
-		CE78828826FB4E04007EBA95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE78828626FB4E04007EBA95 /* Main.storyboard */; };
 		CE78828B26FB4E04007EBA95 /* Metronome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE78828926FB4E04007EBA95 /* Metronome.xcdatamodeld */; };
 		CE78828D26FB4E07007EBA95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE78828C26FB4E07007EBA95 /* Assets.xcassets */; };
 		CE78829026FB4E07007EBA95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE78828E26FB4E07007EBA95 /* LaunchScreen.storyboard */; };
+		CE78829926FB4EBC007EBA95 /* MainStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78829826FB4EBC007EBA95 /* MainStart.swift */; };
+		CE78829D26FB4EE0007EBA95 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78829B26FB4EE0007EBA95 /* MainViewController.swift */; };
+		CE78829E26FB4EE0007EBA95 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE78829C26FB4EE0007EBA95 /* MainViewController.xib */; };
+		CEE40E1826FC84A500102AA6 /* UiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E1726FC84A500102AA6 /* UiButton.swift */; };
+		CEE40E2626FC9A5500102AA6 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40E1A26FC9A5500102AA6 /* Roboto-BlackItalic.ttf */; };
+		CEE40E2726FC9A5500102AA6 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40E1B26FC9A5500102AA6 /* Roboto-Black.ttf */; };
+		CEE40E2826FC9A5500102AA6 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40E1C26FC9A5500102AA6 /* Roboto-Bold.ttf */; };
+		CEE40E2926FC9A5500102AA6 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40E1D26FC9A5500102AA6 /* Roboto-MediumItalic.ttf */; };
+		CEE40E2A26FC9A5500102AA6 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40E1E26FC9A5500102AA6 /* Roboto-Regular.ttf */; };
+		CEE40E2B26FC9A5500102AA6 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40E1F26FC9A5500102AA6 /* Roboto-Light.ttf */; };
+		CEE40E2C26FC9A5500102AA6 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40E2026FC9A5500102AA6 /* Roboto-Thin.ttf */; };
+		CEE40E2D26FC9A5500102AA6 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40E2126FC9A5500102AA6 /* Roboto-Italic.ttf */; };
+		CEE40E2E26FC9A5500102AA6 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40E2226FC9A5500102AA6 /* Roboto-BoldItalic.ttf */; };
+		CEE40E2F26FC9A5500102AA6 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40E2326FC9A5500102AA6 /* Roboto-LightItalic.ttf */; };
+		CEE40E3026FC9A5500102AA6 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40E2426FC9A5500102AA6 /* Roboto-ThinItalic.ttf */; };
+		CEE40E3126FC9A5500102AA6 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40E2526FC9A5500102AA6 /* Roboto-Medium.ttf */; };
+		CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00BC87757CCB16255A87F646 /* Pods_Metronome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metronome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DC1163AD90AA7BD2F6F060D /* Pods-Metronome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.release.xcconfig"; path = "Target Support Files/Pods-Metronome/Pods-Metronome.release.xcconfig"; sourceTree = "<group>"; };
+		CE23952026FCD011009983CD /* UiAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiAlertController.swift; sourceTree = "<group>"; };
 		CE78827D26FB4E04007EBA95 /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE78828026FB4E04007EBA95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE78828226FB4E04007EBA95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE78828426FB4E04007EBA95 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CE78828726FB4E04007EBA95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE78828A26FB4E04007EBA95 /* Metronome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Metronome.xcdatamodel; sourceTree = "<group>"; };
 		CE78828C26FB4E07007EBA95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE78828F26FB4E07007EBA95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE78829126FB4E07007EBA95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE78829826FB4EBC007EBA95 /* MainStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStart.swift; sourceTree = "<group>"; };
+		CE78829B26FB4EE0007EBA95 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CE78829C26FB4EE0007EBA95 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		CEE40E1726FC84A500102AA6 /* UiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiButton.swift; sourceTree = "<group>"; };
+		CEE40E1A26FC9A5500102AA6 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-BlackItalic.ttf"; path = "Metronome/Resouces/roboto/Roboto-BlackItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		CEE40E1B26FC9A5500102AA6 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "Metronome/Resouces/roboto/Roboto-Black.ttf"; sourceTree = SOURCE_ROOT; };
+		CEE40E1C26FC9A5500102AA6 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "Metronome/Resouces/roboto/Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
+		CEE40E1D26FC9A5500102AA6 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-MediumItalic.ttf"; path = "Metronome/Resouces/roboto/Roboto-MediumItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		CEE40E1E26FC9A5500102AA6 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "Metronome/Resouces/roboto/Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		CEE40E1F26FC9A5500102AA6 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Light.ttf"; path = "Metronome/Resouces/roboto/Roboto-Light.ttf"; sourceTree = SOURCE_ROOT; };
+		CEE40E2026FC9A5500102AA6 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "Metronome/Resouces/roboto/Roboto-Thin.ttf"; sourceTree = SOURCE_ROOT; };
+		CEE40E2126FC9A5500102AA6 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "Metronome/Resouces/roboto/Roboto-Italic.ttf"; sourceTree = SOURCE_ROOT; };
+		CEE40E2226FC9A5500102AA6 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-BoldItalic.ttf"; path = "Metronome/Resouces/roboto/Roboto-BoldItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		CEE40E2326FC9A5500102AA6 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-LightItalic.ttf"; path = "Metronome/Resouces/roboto/Roboto-LightItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		CEE40E2426FC9A5500102AA6 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-ThinItalic.ttf"; path = "Metronome/Resouces/roboto/Roboto-ThinItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		CEE40E2526FC9A5500102AA6 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "Metronome/Resouces/roboto/Roboto-Medium.ttf"; sourceTree = SOURCE_ROOT; };
+		CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiSlider.swift; sourceTree = "<group>"; };
+		EEF382B7028422D11BC25F14 /* Pods-Metronome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.debug.xcconfig"; path = "Target Support Files/Pods-Metronome/Pods-Metronome.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +69,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5188FAE32251BE2731FC2AB1 /* Pods_Metronome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		80CE548EEA475F33F2F39201 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00BC87757CCB16255A87F646 /* Pods_Metronome.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE78827426FB4E04007EBA95 = {
 			isa = PBXGroup;
 			children = (
 				CE78827F26FB4E04007EBA95 /* Metronome */,
 				CE78827E26FB4E04007EBA95 /* Products */,
+				DCD406CAFE2D20362EA26674 /* Pods */,
+				80CE548EEA475F33F2F39201 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +105,73 @@
 		CE78827F26FB4E04007EBA95 /* Metronome */ = {
 			isa = PBXGroup;
 			children = (
-				CE78828026FB4E04007EBA95 /* AppDelegate.swift */,
-				CE78828226FB4E04007EBA95 /* SceneDelegate.swift */,
-				CE78828426FB4E04007EBA95 /* ViewController.swift */,
-				CE78828626FB4E04007EBA95 /* Main.storyboard */,
-				CE78828C26FB4E07007EBA95 /* Assets.xcassets */,
-				CE78828E26FB4E07007EBA95 /* LaunchScreen.storyboard */,
+				CE78829A26FB4EC9007EBA95 /* Controllers */,
+				CE78829726FB4EAF007EBA95 /* Resouces */,
 				CE78829126FB4E07007EBA95 /* Info.plist */,
 				CE78828926FB4E04007EBA95 /* Metronome.xcdatamodeld */,
 			);
 			path = Metronome;
+			sourceTree = "<group>";
+		};
+		CE78829726FB4EAF007EBA95 /* Resouces */ = {
+			isa = PBXGroup;
+			children = (
+				CEE40E1926FC9A4400102AA6 /* Fonts */,
+				CEE40E1626FC849600102AA6 /* Extensions */,
+				CE78829826FB4EBC007EBA95 /* MainStart.swift */,
+				CE78828C26FB4E07007EBA95 /* Assets.xcassets */,
+				CE78828E26FB4E07007EBA95 /* LaunchScreen.storyboard */,
+				CE78828026FB4E04007EBA95 /* AppDelegate.swift */,
+				CE78828226FB4E04007EBA95 /* SceneDelegate.swift */,
+			);
+			path = Resouces;
+			sourceTree = "<group>";
+		};
+		CE78829A26FB4EC9007EBA95 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE78829B26FB4EE0007EBA95 /* MainViewController.swift */,
+				CE78829C26FB4EE0007EBA95 /* MainViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CEE40E1626FC849600102AA6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE23952026FCD011009983CD /* UiAlertController.swift */,
+				CEE40E1726FC84A500102AA6 /* UiButton.swift */,
+				CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CEE40E1926FC9A4400102AA6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CEE40E1B26FC9A5500102AA6 /* Roboto-Black.ttf */,
+				CEE40E1A26FC9A5500102AA6 /* Roboto-BlackItalic.ttf */,
+				CEE40E1C26FC9A5500102AA6 /* Roboto-Bold.ttf */,
+				CEE40E2226FC9A5500102AA6 /* Roboto-BoldItalic.ttf */,
+				CEE40E2126FC9A5500102AA6 /* Roboto-Italic.ttf */,
+				CEE40E1F26FC9A5500102AA6 /* Roboto-Light.ttf */,
+				CEE40E2326FC9A5500102AA6 /* Roboto-LightItalic.ttf */,
+				CEE40E2526FC9A5500102AA6 /* Roboto-Medium.ttf */,
+				CEE40E1D26FC9A5500102AA6 /* Roboto-MediumItalic.ttf */,
+				CEE40E1E26FC9A5500102AA6 /* Roboto-Regular.ttf */,
+				CEE40E2026FC9A5500102AA6 /* Roboto-Thin.ttf */,
+				CEE40E2426FC9A5500102AA6 /* Roboto-ThinItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		DCD406CAFE2D20362EA26674 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EEF382B7028422D11BC25F14 /* Pods-Metronome.debug.xcconfig */,
+				6DC1163AD90AA7BD2F6F060D /* Pods-Metronome.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +181,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE78829426FB4E07007EBA95 /* Build configuration list for PBXNativeTarget "Metronome" */;
 			buildPhases = (
+				7EF0F7E774A248DF7FE3C40A /* [CP] Check Pods Manifest.lock */,
 				CE78827926FB4E04007EBA95 /* Sources */,
 				CE78827A26FB4E04007EBA95 /* Frameworks */,
 				CE78827B26FB4E04007EBA95 /* Resources */,
+				0D67336EECDEAF37341CF8A8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,12 +234,66 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE78829026FB4E07007EBA95 /* LaunchScreen.storyboard in Resources */,
+				CE78829E26FB4EE0007EBA95 /* MainViewController.xib in Resources */,
+				CEE40E2A26FC9A5500102AA6 /* Roboto-Regular.ttf in Resources */,
+				CEE40E2826FC9A5500102AA6 /* Roboto-Bold.ttf in Resources */,
+				CEE40E2F26FC9A5500102AA6 /* Roboto-LightItalic.ttf in Resources */,
+				CEE40E3126FC9A5500102AA6 /* Roboto-Medium.ttf in Resources */,
+				CEE40E2726FC9A5500102AA6 /* Roboto-Black.ttf in Resources */,
+				CEE40E2926FC9A5500102AA6 /* Roboto-MediumItalic.ttf in Resources */,
+				CEE40E2E26FC9A5500102AA6 /* Roboto-BoldItalic.ttf in Resources */,
 				CE78828D26FB4E07007EBA95 /* Assets.xcassets in Resources */,
-				CE78828826FB4E04007EBA95 /* Main.storyboard in Resources */,
+				CEE40E2626FC9A5500102AA6 /* Roboto-BlackItalic.ttf in Resources */,
+				CEE40E3026FC9A5500102AA6 /* Roboto-ThinItalic.ttf in Resources */,
+				CEE40E2C26FC9A5500102AA6 /* Roboto-Thin.ttf in Resources */,
+				CEE40E2D26FC9A5500102AA6 /* Roboto-Italic.ttf in Resources */,
+				CEE40E2B26FC9A5500102AA6 /* Roboto-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D67336EECDEAF37341CF8A8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Metronome/Pods-Metronome-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Metronome/Pods-Metronome-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Metronome/Pods-Metronome-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EF0F7E774A248DF7FE3C40A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Metronome-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE78827926FB4E04007EBA95 /* Sources */ = {
@@ -141,23 +301,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE78828B26FB4E04007EBA95 /* Metronome.xcdatamodeld in Sources */,
-				CE78828526FB4E04007EBA95 /* ViewController.swift in Sources */,
+				CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */,
+				CE78829926FB4EBC007EBA95 /* MainStart.swift in Sources */,
 				CE78828126FB4E04007EBA95 /* AppDelegate.swift in Sources */,
+				CE23952126FCD011009983CD /* UiAlertController.swift in Sources */,
 				CE78828326FB4E04007EBA95 /* SceneDelegate.swift in Sources */,
+				CE78829D26FB4EE0007EBA95 /* MainViewController.swift in Sources */,
+				CEE40E1826FC84A500102AA6 /* UiButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CE78828626FB4E04007EBA95 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE78828726FB4E04007EBA95 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CE78828E26FB4E07007EBA95 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -287,6 +443,7 @@
 		};
 		CE78829526FB4E07007EBA95 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEF382B7028422D11BC25F14 /* Pods-Metronome.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -306,6 +463,7 @@
 		};
 		CE78829626FB4E07007EBA95 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DC1163AD90AA7BD2F6F060D /* Pods-Metronome.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
