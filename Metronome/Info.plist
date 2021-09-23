@@ -4,6 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Ubuntu-M.ttf</string>
+		<string>Ubuntu-LI.ttf</string>
+		<string>Ubuntu-L.ttf</string>
+		<string>Ubuntu-BI.ttf</string>
+		<string>Ubuntu-B.ttf</string>
 		<string>Roboto-Medium.ttf</string>
 		<string>Roboto-LightItalic.ttf</string>
 		<string>Roboto-Italic.ttf</string>

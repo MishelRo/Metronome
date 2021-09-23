@@ -43,6 +43,10 @@ class MyButton: UIButton {
         timer = nil
     }
     
+    func setImageToButton(image: String){
+        self.setImage(UIImage(named: image), for: .normal)
+    }
+    
     func setName(title: String) {
         setTitle(title, for: .normal)
     }

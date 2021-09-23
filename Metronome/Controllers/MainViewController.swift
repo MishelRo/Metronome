@@ -15,6 +15,8 @@ class MainViewController: UIViewController {
     var startButton: MyButton!
     var beatButton: MyButton!
     var noteButton: MyButton!
+    var appLabel: UILabel!
+    var settingsButton: MyButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +25,15 @@ class MainViewController: UIViewController {
     }
     
     func uiElementConfigure() {
+        
         speedSlider = MySlider()
         startButton = MyButton()
         beatButton = MyButton()
         noteButton = MyButton()
+        settingsButton = MyButton()
         label = UILabel()
+        appLabel = UILabel()
+
         label.font = UIFont(name: "Roboto", size: 48)
         label.text = "120"
         label.textColor = .white
@@ -74,6 +80,24 @@ class MainViewController: UIViewController {
             make.width.equalTo(109)
             make.leading.equalTo(beatButton.snp.trailing).offset(64)
             make.bottom.equalTo(startButton.snp.top).offset(-31)
+        }
+        view.addSubview(appLabel)
+        appLabel.text = "Metronome"
+        appLabel.font = UIFont(name: "Ubuntu", size: 23)
+        appLabel.snp.makeConstraints { make in
+            make.width.greaterThanOrEqualTo(125)
+            make.height.greaterThanOrEqualTo(26)
+            make.top.equalTo(view.snp.top).offset(100)
+            make.leading.equalTo(view.snp.leading).offset(20)
+        }
+        view.addSubview(settingsButton)
+        settingsButton.backgroundColor = .red
+        settingsButton.setImageToButton(image: "Settings")
+        settingsButton.snp.makeConstraints { make in
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+            make.top.equalTo(view.snp.top).offset(100)
+            make.trailing.equalTo(view.snp.trailing).offset(-20)
         }
     }
     
