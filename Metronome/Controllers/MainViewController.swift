@@ -10,38 +10,48 @@ import SnapKit
 
 class MainViewController: UIViewController {
     
+    //MARK:- UIElements propeties
     var speedSlider: MySlider!
     var label: UILabel!
     var startButton: MyButton!
     var beatButton: MyButton!
-    var noteButton: MyButton!
+    var pictureButton: MyButton!
     var appLabel: UILabel!
     var settingsButton: MyButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 0.2156666517, green: 0.2156973481, blue: 0.2156561911, alpha: 1)
-        uiElementConfigure()
-    }
+    
+    //MARK:- UIElements configure
     
     func uiElementConfigure() {
-        
         speedSlider = MySlider()
         startButton = MyButton()
         beatButton = MyButton()
-        noteButton = MyButton()
+        pictureButton = MyButton()
         settingsButton = MyButton()
         label = UILabel()
         appLabel = UILabel()
-
-        label.font = UIFont(name: "Roboto", size: 48)
+        label.font = Constants.robotoFont
         label.text = "130"
         label.textColor = .white
         label.textAlignment = .center
+        layout()
         
-        view.addSubview(speedSlider)
         speedSlider.configure()
         speedSlider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
+        startButton.backgroundColor = .red
+        startButton.configureStartButton()
+        startButton.imageInclude(image: "play")
+        beatButton.litleButtonConfigurate(imageStr: "24")
+        beatButtonActionConfigure()
+        pictureButton.litleButtonConfigurate(imageStr: "Nota")
+        pictureButtonActionConfigure()
+        appLabel.text = Constants.appName
+        appLabel.font = Constants.ubuntu
+        
+    }
+    
+    func layout() {
+        view.addSubview(speedSlider)
         speedSlider.snp.makeConstraints { make in
             make.bottom.greaterThanOrEqualTo(view.snp.bottom).multipliedBy(0.9)
             make.leading.equalTo(view.snp.leading).offset(+40)
@@ -55,9 +65,6 @@ class MainViewController: UIViewController {
             make.centerX.equalTo(view.snp.centerX)
         }
         view.addSubview(startButton)
-        startButton.backgroundColor = .red
-        startButton.configureStartButton()
-        startButton.imageInclude(image: "play")
         startButton.snp.makeConstraints { make in
             make.height.equalTo(228)
             make.width.equalTo(228)
@@ -65,25 +72,20 @@ class MainViewController: UIViewController {
             make.bottom.equalTo(label.snp.top).offset(-17)
         }
         view.addSubview(beatButton)
-        beatButton.litleButtonConfigurate(imageStr: "24")
-        beatButton.addTarget(self, action: #selector(beatPress), for: .touchUpInside)
         beatButton.snp.makeConstraints { make in
             make.height.equalTo(109)
             make.width.equalTo(109)
             make.leading.equalTo(startButton.snp.leading)
             make.bottom.equalTo(startButton.snp.top).offset(-33)
         }
-        view.addSubview(noteButton)
-        noteButton.litleButtonConfigurate(imageStr: "Nota")
-        noteButton.snp.makeConstraints { make in
+        view.addSubview(pictureButton)
+        pictureButton.snp.makeConstraints { make in
             make.height.equalTo(109)
             make.width.equalTo(109)
             make.leading.equalTo(beatButton.snp.trailing).offset(30)
             make.bottom.equalTo(startButton.snp.top).offset(-31)
         }
         view.addSubview(appLabel)
-        appLabel.text = "Metronome"
-        appLabel.font = UIFont(name: "Ubuntu", size: 23)
         appLabel.snp.makeConstraints { make in
             make.width.greaterThanOrEqualTo(125)
             make.height.greaterThanOrEqualTo(26)
@@ -92,8 +94,6 @@ class MainViewController: UIViewController {
             make.leading.equalTo(view.snp.leading).offset(20)
         }
         view.addSubview(settingsButton)
-        settingsButton.backgroundColor = .red
-        settingsButton.setImageToButton(image: "Settings")
         settingsButton.snp.makeConstraints { make in
             make.width.equalTo(30)
             make.height.equalTo(30)
@@ -102,11 +102,28 @@ class MainViewController: UIViewController {
         }
     }
     
-    @objc func beatPress() {
-        UIAlertController.getAlert { alert in
-            self.present(alert, animated: true, completion: nil)
+    //MARK:- UIElements Actions
+    
+    func beatButtonActionConfigure() {
+        beatButton.executeBeatsButton {
+            UIAlertController.getAlert(type: .beats) { alert in
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
+    
+    func pictureButtonActionConfigure() {
+        pictureButton.executePictureButton {
+            UIAlertController.getAlert(type: .picture) { alert in
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    @objc func settingsButtonPress() {
+        MainStart.present(view: self, controller: .settingController)
+    }
+    
     @objc func sliderValueDidChange() {
         let val = speedSlider.value
         let arrayndValue = 240 - val
@@ -114,4 +131,13 @@ class MainViewController: UIViewController {
         startButton.changeBgrnd(frequency: arrayndValue/10)
         label.text = "\(Int(round(val)))"
     }
+    
+    //MARK:-  View
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = Constants.MainBackgroundColor
+        uiElementConfigure()
+    }
+    
 }
+

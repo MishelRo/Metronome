@@ -8,6 +8,7 @@ import UIKit
 
 enum returnVC {
     case mainViewController
+    case settingController
   
 }
 
@@ -16,6 +17,8 @@ extension returnVC {
         switch self {
         case .mainViewController:
             return MainViewController()
+        case .settingController:
+            return SettingsViewController()
         }
     }
 }
@@ -29,7 +32,7 @@ class MainStart {
         controller.path()
     }
     static func present(view: UIViewController, controller: returnVC) {
-        view.navigationController?.pushViewController(controller.path(), animated: false)
+        view.navigationController?.pushViewController(controller.path(), animated: true)
     }
    
 }

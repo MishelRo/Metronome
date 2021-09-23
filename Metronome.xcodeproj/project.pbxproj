@@ -29,6 +29,8 @@
 		CE23954B26FD000B009983CD /* Ubuntu-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE23954326FD000B009983CD /* Ubuntu-B.ttf */; };
 		CE23954C26FD000B009983CD /* Ubuntu-RI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE23954426FD000B009983CD /* Ubuntu-RI.ttf */; };
 		CE23954D26FD000B009983CD /* Ubuntu-M.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE23954526FD000B009983CD /* Ubuntu-M.ttf */; };
+		CE23954F26FD2C0E009983CD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23954E26FD2C0E009983CD /* SettingsViewController.swift */; };
+		CE23955126FD2FE6009983CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23955026FD2FE6009983CD /* Constants.swift */; };
 		CE78828126FB4E04007EBA95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78828026FB4E04007EBA95 /* AppDelegate.swift */; };
 		CE78828326FB4E04007EBA95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78828226FB4E04007EBA95 /* SceneDelegate.swift */; };
 		CE78828B26FB4E04007EBA95 /* Metronome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE78828926FB4E04007EBA95 /* Metronome.xcdatamodeld */; };
@@ -36,7 +38,6 @@
 		CE78829026FB4E07007EBA95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE78828E26FB4E07007EBA95 /* LaunchScreen.storyboard */; };
 		CE78829926FB4EBC007EBA95 /* MainStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78829826FB4EBC007EBA95 /* MainStart.swift */; };
 		CE78829D26FB4EE0007EBA95 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78829B26FB4EE0007EBA95 /* MainViewController.swift */; };
-		CE78829E26FB4EE0007EBA95 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE78829C26FB4EE0007EBA95 /* MainViewController.xib */; };
 		CEE40E1826FC84A500102AA6 /* UiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E1726FC84A500102AA6 /* UiButton.swift */; };
 		CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,8 @@
 		CE23954326FD000B009983CD /* Ubuntu-B.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-B.ttf"; sourceTree = "<group>"; };
 		CE23954426FD000B009983CD /* Ubuntu-RI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-RI.ttf"; sourceTree = "<group>"; };
 		CE23954526FD000B009983CD /* Ubuntu-M.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-M.ttf"; sourceTree = "<group>"; };
+		CE23954E26FD2C0E009983CD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CE23955026FD2FE6009983CD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE78827D26FB4E04007EBA95 /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE78828026FB4E04007EBA95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE78828226FB4E04007EBA95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,7 +77,6 @@
 		CE78829126FB4E07007EBA95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE78829826FB4EBC007EBA95 /* MainStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStart.swift; sourceTree = "<group>"; };
 		CE78829B26FB4EE0007EBA95 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		CE78829C26FB4EE0007EBA95 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		CEE40E1726FC84A500102AA6 /* UiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiButton.swift; sourceTree = "<group>"; };
 		CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiSlider.swift; sourceTree = "<group>"; };
 		EEF382B7028422D11BC25F14 /* Pods-Metronome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.debug.xcconfig"; path = "Target Support Files/Pods-Metronome/Pods-Metronome.debug.xcconfig"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				CE78828E26FB4E07007EBA95 /* LaunchScreen.storyboard */,
 				CE78828026FB4E04007EBA95 /* AppDelegate.swift */,
 				CE78828226FB4E04007EBA95 /* SceneDelegate.swift */,
+				CE23955026FD2FE6009983CD /* Constants.swift */,
 			);
 			path = Resouces;
 			sourceTree = "<group>";
@@ -181,7 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				CE78829B26FB4EE0007EBA95 /* MainViewController.swift */,
-				CE78829C26FB4EE0007EBA95 /* MainViewController.xib */,
+				CE23954E26FD2C0E009983CD /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -278,7 +281,6 @@
 				CE78829026FB4E07007EBA95 /* LaunchScreen.storyboard in Resources */,
 				CE23953926FCFFF4009983CD /* Roboto-LightItalic.ttf in Resources */,
 				CE23954B26FD000B009983CD /* Ubuntu-B.ttf in Resources */,
-				CE78829E26FB4EE0007EBA95 /* MainViewController.xib in Resources */,
 				CE23953426FCFFF4009983CD /* Roboto-Medium.ttf in Resources */,
 				CE23953826FCFFF4009983CD /* Roboto-Bold.ttf in Resources */,
 				CE23954826FD000B009983CD /* Ubuntu-R.ttf in Resources */,
@@ -353,9 +355,11 @@
 				CE78829926FB4EBC007EBA95 /* MainStart.swift in Sources */,
 				CE78828126FB4E04007EBA95 /* AppDelegate.swift in Sources */,
 				CE23952126FCD011009983CD /* UiAlertController.swift in Sources */,
+				CE23955126FD2FE6009983CD /* Constants.swift in Sources */,
 				CE78828326FB4E04007EBA95 /* SceneDelegate.swift in Sources */,
 				CE78829D26FB4EE0007EBA95 /* MainViewController.swift in Sources */,
 				CEE40E1826FC84A500102AA6 /* UiButton.swift in Sources */,
+				CE23954F26FD2C0E009983CD /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

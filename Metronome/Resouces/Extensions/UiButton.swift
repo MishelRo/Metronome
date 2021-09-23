@@ -1,9 +1,7 @@
-//
 //  UiButton.swift
 //  Metronome
 //
 //  Created by User on 23.09.2021.
-//
 
 import UIKit
 import UIKit
@@ -21,10 +19,11 @@ class MyButton: UIButton {
     let image = UIImageView()
     var play: Bool = false
     var timer: Timer?
+    var frequency = 11
+    var beat = Float(15)
     var complessionStart: (()->())!
     var complessionStop: (()->())!
-    
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -88,15 +87,13 @@ class MyButton: UIButton {
         play = !play
         if play{
             imageInclude(image: "pause")
-            changeBgrnd(frequency: 12)
+            changeBgrnd(frequency: Float(frequency))
         } else {
             imageInclude(image: "play")
-            //            complessionStop()
             timer?.invalidate()
             timer = nil
         }
     }
-    
     
     func litleButtonConfigurate(imageStr: String) {
         let view = UIView()
@@ -124,6 +121,19 @@ class MyButton: UIButton {
         backgroundColor = #colorLiteral(red: 0.1273057461, green: 0.8149128556, blue: 0.6144179702, alpha: 1)
         layer.cornerRadius = 54.5
         translatesAutoresizingMaskIntoConstraints = false
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func executeBeatsButton(action: @escaping (()->())) {
+        complessionStart = action
+    }
+    func executePictureButton(action: @escaping (()->())) {
+        complessionStart = action
+    }
+    
+    @objc func handleTap() {
+        complessionStart()
     }
 }
 
@@ -133,8 +143,8 @@ extension MyButton {
     }
     
     func changeBgrnd(frequency: Float) {
-        backgroundColor = .clear
-        let interval = frequency / 15
+        self.frequency = Int(frequency)
+        let interval = frequency / beat
         timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval), repeats: true) { [weak self] _ in
             guard let self = self else {return}
             let backgroundColor = GradientColor(gradientStyle: .leftToRight,
