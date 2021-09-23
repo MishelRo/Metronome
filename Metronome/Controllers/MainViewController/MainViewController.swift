@@ -18,6 +18,9 @@ class MainViewController: UIViewController {
     var pictureButton: MyButton!
     var appLabel: UILabel!
     var settingsButton: MyButton!
+    var model: MainViewModelProtocol! {
+        return MainViewModel()
+    }
     
     
     //MARK:- UIElements configure

@@ -8,6 +8,10 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    var model: SettingViewModelProtocol {
+        return SettingViewModel()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

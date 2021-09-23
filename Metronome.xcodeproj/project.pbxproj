@@ -33,6 +33,8 @@
 		CE23955126FD2FE6009983CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23955026FD2FE6009983CD /* Constants.swift */; };
 		CE23955526FD352B009983CD /* Low.m4a in Resources */ = {isa = PBXBuildFile; fileRef = CE23955326FD352B009983CD /* Low.m4a */; };
 		CE23955626FD352B009983CD /* Hight.m4a in Resources */ = {isa = PBXBuildFile; fileRef = CE23955426FD352B009983CD /* Hight.m4a */; };
+		CE23955926FD370E009983CD /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23955826FD370E009983CD /* MainViewModel.swift */; };
+		CE23955D26FD377D009983CD /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23955C26FD377D009983CD /* SettingViewModel.swift */; };
 		CE78828126FB4E04007EBA95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78828026FB4E04007EBA95 /* AppDelegate.swift */; };
 		CE78828326FB4E04007EBA95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78828226FB4E04007EBA95 /* SceneDelegate.swift */; };
 		CE78828B26FB4E04007EBA95 /* Metronome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE78828926FB4E04007EBA95 /* Metronome.xcdatamodeld */; };
@@ -72,6 +74,8 @@
 		CE23955026FD2FE6009983CD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE23955326FD352B009983CD /* Low.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Low.m4a; sourceTree = "<group>"; };
 		CE23955426FD352B009983CD /* Hight.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hight.m4a; sourceTree = "<group>"; };
+		CE23955826FD370E009983CD /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		CE23955C26FD377D009983CD /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		CE78827D26FB4E04007EBA95 /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE78828026FB4E04007EBA95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE78828226FB4E04007EBA95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +154,31 @@
 			path = Metronome/Sounds;
 			sourceTree = SOURCE_ROOT;
 		};
+		CE23955726FD360A009983CD /* AudioModulle */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AudioModulle;
+			sourceTree = "<group>";
+		};
+		CE23955A26FD3744009983CD /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE78829B26FB4EE0007EBA95 /* MainViewController.swift */,
+				CE23955826FD370E009983CD /* MainViewModel.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		CE23955B26FD3753009983CD /* SettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE23954E26FD2C0E009983CD /* SettingsViewController.swift */,
+				CE23955C26FD377D009983CD /* SettingViewModel.swift */,
+			);
+			path = SettingViewController;
+			sourceTree = "<group>";
+		};
 		CE78827426FB4E04007EBA95 = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +211,7 @@
 		CE78829726FB4EAF007EBA95 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
+				CE23955726FD360A009983CD /* AudioModulle */,
 				CE23955226FD352B009983CD /* Sounds */,
 				CEE40E1926FC9A4400102AA6 /* Fonts */,
 				CEE40E1626FC849600102AA6 /* Extensions */,
@@ -198,8 +228,8 @@
 		CE78829A26FB4EC9007EBA95 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CE78829B26FB4EE0007EBA95 /* MainViewController.swift */,
-				CE23954E26FD2C0E009983CD /* SettingsViewController.swift */,
+				CE23955A26FD3744009983CD /* MainViewController */,
+				CE23955B26FD3753009983CD /* SettingViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -374,9 +404,11 @@
 				CE23952126FCD011009983CD /* UiAlertController.swift in Sources */,
 				CE23955126FD2FE6009983CD /* Constants.swift in Sources */,
 				CE78828326FB4E04007EBA95 /* SceneDelegate.swift in Sources */,
+				CE23955D26FD377D009983CD /* SettingViewModel.swift in Sources */,
 				CE78829D26FB4EE0007EBA95 /* MainViewController.swift in Sources */,
 				CEE40E1826FC84A500102AA6 /* UiButton.swift in Sources */,
 				CE23954F26FD2C0E009983CD /* SettingsViewController.swift in Sources */,
+				CE23955926FD370E009983CD /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
