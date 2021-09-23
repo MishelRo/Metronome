@@ -31,6 +31,8 @@
 		CE23954D26FD000B009983CD /* Ubuntu-M.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE23954526FD000B009983CD /* Ubuntu-M.ttf */; };
 		CE23954F26FD2C0E009983CD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23954E26FD2C0E009983CD /* SettingsViewController.swift */; };
 		CE23955126FD2FE6009983CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23955026FD2FE6009983CD /* Constants.swift */; };
+		CE23955526FD352B009983CD /* Low.m4a in Resources */ = {isa = PBXBuildFile; fileRef = CE23955326FD352B009983CD /* Low.m4a */; };
+		CE23955626FD352B009983CD /* Hight.m4a in Resources */ = {isa = PBXBuildFile; fileRef = CE23955426FD352B009983CD /* Hight.m4a */; };
 		CE78828126FB4E04007EBA95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78828026FB4E04007EBA95 /* AppDelegate.swift */; };
 		CE78828326FB4E04007EBA95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78828226FB4E04007EBA95 /* SceneDelegate.swift */; };
 		CE78828B26FB4E04007EBA95 /* Metronome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE78828926FB4E04007EBA95 /* Metronome.xcdatamodeld */; };
@@ -68,6 +70,8 @@
 		CE23954526FD000B009983CD /* Ubuntu-M.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-M.ttf"; sourceTree = "<group>"; };
 		CE23954E26FD2C0E009983CD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE23955026FD2FE6009983CD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CE23955326FD352B009983CD /* Low.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Low.m4a; sourceTree = "<group>"; };
+		CE23955426FD352B009983CD /* Hight.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hight.m4a; sourceTree = "<group>"; };
 		CE78827D26FB4E04007EBA95 /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE78828026FB4E04007EBA95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE78828226FB4E04007EBA95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +140,16 @@
 			path = Ubuntu;
 			sourceTree = "<group>";
 		};
+		CE23955226FD352B009983CD /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				CE23955426FD352B009983CD /* Hight.m4a */,
+				CE23955326FD352B009983CD /* Low.m4a */,
+			);
+			name = Sounds;
+			path = Metronome/Sounds;
+			sourceTree = SOURCE_ROOT;
+		};
 		CE78827426FB4E04007EBA95 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +182,7 @@
 		CE78829726FB4EAF007EBA95 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
+				CE23955226FD352B009983CD /* Sounds */,
 				CEE40E1926FC9A4400102AA6 /* Fonts */,
 				CEE40E1626FC849600102AA6 /* Extensions */,
 				CE78829826FB4EBC007EBA95 /* MainStart.swift */,
@@ -281,6 +296,7 @@
 				CE78829026FB4E07007EBA95 /* LaunchScreen.storyboard in Resources */,
 				CE23953926FCFFF4009983CD /* Roboto-LightItalic.ttf in Resources */,
 				CE23954B26FD000B009983CD /* Ubuntu-B.ttf in Resources */,
+				CE23955526FD352B009983CD /* Low.m4a in Resources */,
 				CE23953426FCFFF4009983CD /* Roboto-Medium.ttf in Resources */,
 				CE23953826FCFFF4009983CD /* Roboto-Bold.ttf in Resources */,
 				CE23954826FD000B009983CD /* Ubuntu-R.ttf in Resources */,
@@ -294,6 +310,7 @@
 				CE23953B26FCFFF4009983CD /* Roboto-Italic.ttf in Resources */,
 				CE23953C26FCFFF4009983CD /* Roboto-Regular.ttf in Resources */,
 				CE23954A26FD000B009983CD /* Ubuntu-BI.ttf in Resources */,
+				CE23955626FD352B009983CD /* Hight.m4a in Resources */,
 				CE23953526FCFFF4009983CD /* Roboto-BlackItalic.ttf in Resources */,
 				CE23954626FD000B009983CD /* Ubuntu-LI.ttf in Resources */,
 				CE23954C26FD000B009983CD /* Ubuntu-RI.ttf in Resources */,
