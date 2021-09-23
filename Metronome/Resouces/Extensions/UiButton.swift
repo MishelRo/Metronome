@@ -14,7 +14,7 @@ class MyButton: UIButton {
                                       .systemOrange,
                                       .systemYellow,
                                       .systemBlue,
-                                      .systemGreen]
+                                      .systemGreen, #colorLiteral(red: 0.1273057461, green: 0.8149128556, blue: 0.6144179702, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)]
     let view = UIView()
     let image = UIImageView()
     var play: Bool = false
@@ -57,7 +57,7 @@ class MyButton: UIButton {
     func configureStartButton() {
         let view = UIView()
         addSubview(view)
-        view.backgroundColor = #colorLiteral(red: 0.2156666517, green: 0.2156973481, blue: 0.2156561911, alpha: 1)
+        view.backgroundColor = Constants.MainBackgroundColor
         view.snp.makeConstraints { make in
             make.width.greaterThanOrEqualTo(114)
             make.height.greaterThanOrEqualTo(114)
@@ -145,6 +145,7 @@ extension MyButton {
     func changeBgrnd(frequency: Float) {
         self.frequency = Int(frequency)
         let interval = frequency / beat
+        if play{
         timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval), repeats: true) { [weak self] _ in
             guard let self = self else {return}
             let backgroundColor = GradientColor(gradientStyle: .leftToRight,
@@ -160,5 +161,6 @@ extension MyButton {
                                                              self.retrunrColor() ])
                 self.backgroundColor = backgroundColor
         }
+    }
     }
 }
