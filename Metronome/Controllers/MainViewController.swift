@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
         appLabel = UILabel()
 
         label.font = UIFont(name: "Roboto", size: 48)
-        label.text = "120"
+        label.text = "130"
         label.textColor = .white
         label.textAlignment = .center
         
@@ -43,7 +43,7 @@ class MainViewController: UIViewController {
         speedSlider.configure()
         speedSlider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
         speedSlider.snp.makeConstraints { make in
-            make.bottom.lessThanOrEqualTo(view.snp.bottom).offset(-90)
+            make.bottom.greaterThanOrEqualTo(view.snp.bottom).multipliedBy(0.9)
             make.leading.equalTo(view.snp.leading).offset(+40)
             make.trailing.equalTo(view.snp.trailing).offset(-40)
         }
@@ -71,14 +71,14 @@ class MainViewController: UIViewController {
             make.height.equalTo(109)
             make.width.equalTo(109)
             make.leading.equalTo(startButton.snp.leading)
-            make.bottom.equalTo(startButton.snp.top).offset(-31)
+            make.bottom.equalTo(startButton.snp.top).offset(-33)
         }
         view.addSubview(noteButton)
         noteButton.litleButtonConfigurate(imageStr: "Nota")
         noteButton.snp.makeConstraints { make in
             make.height.equalTo(109)
             make.width.equalTo(109)
-            make.leading.equalTo(beatButton.snp.trailing).offset(64)
+            make.leading.equalTo(beatButton.snp.trailing).offset(30)
             make.bottom.equalTo(startButton.snp.top).offset(-31)
         }
         view.addSubview(appLabel)
@@ -88,6 +88,7 @@ class MainViewController: UIViewController {
             make.width.greaterThanOrEqualTo(125)
             make.height.greaterThanOrEqualTo(26)
             make.top.equalTo(view.snp.top).offset(100)
+            make.bottom.lessThanOrEqualTo(beatButton.snp.top).offset(-5)
             make.leading.equalTo(view.snp.leading).offset(20)
         }
         view.addSubview(settingsButton)
@@ -106,7 +107,6 @@ class MainViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
-
     @objc func sliderValueDidChange() {
         let val = speedSlider.value
         let arrayndValue = 240 - val
