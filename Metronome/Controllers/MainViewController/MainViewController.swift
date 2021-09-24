@@ -27,7 +27,9 @@ class MainViewController: UIViewController {
  
     private var start = false
     private var timer: Timer!
+    private var jumptimer: Timer?
 
+    
     var currentPage = 0
     var numberOfPages = 5
     
@@ -221,8 +223,8 @@ class MainViewController: UIViewController {
         beatButton.executeBeatsButton {
             UIAlertController.getAlert(type: .beats) { alert in
                 self.present(alert, animated: true, completion: nil)
-                
             } complessionOk: { beat in
+                guard self.start else {return}
                 switch beat {
                 case "2":
                     self.beatCount = 2
@@ -240,16 +242,44 @@ class MainViewController: UIViewController {
         }
     }
     
-    
     func pictureButtonActionConfigure() {
         pictureButton.executePictureButton {
             UIAlertController.getAlert(type: .picture) { alert in
                 self.present(alert, animated: true, completion: nil)
-            } complessionOk: { pict in
-                print(pict)
+            } complessionOk: { note in
+                guard self.start else {return}
+                switch note {
+                case "pict1":
+                    self.stopJumpTimer()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
+                        self.model.animate(bpm: self.value)
+                        self.jumptimer = self.model.timerReturn(timeInterval: 60.0, bpm: Double(self.value))
+                    }
+                case "pict2":
+                    self.stopJumpTimer()
+                    self.stopJumpTimer()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
+                        self.model.animate(bpm: self.value)
+                        self.jumptimer = self.model.timerReturn(timeInterval: 60.0, bpm: Double(self.value))
+                    }
+                case "pict3":
+                    self.stopJumpTimer()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.7){
+                        self.model.animate(bpm: self.value)
+                        self.jumptimer = self.model.timerReturn(timeInterval: 60.0, bpm: Double(self.value))
+                    }
+                default:
+                    break
+                }
             }
         }
     }
+    
+    func stopJumpTimer() {
+        jumptimer?.invalidate()
+        jumptimer = nil
+    }
+
     func startButtonStartConfigure() {
         startButton.startConfigure {
             self.stopStartTick()
@@ -267,6 +297,7 @@ class MainViewController: UIViewController {
         guard start != false else {return}
         start = false
         timer.invalidate()
+        jumptimer?.invalidate()
         timer = nil
         model.animate(bpm: value)
     }
@@ -286,7 +317,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: tickDelegate {
+extension MainViewController: TickDelegate {
     func tick(count: Int) {
             self.countArray.append(count)
             guard self.countArray.count <= self.beatCount - 1 else {

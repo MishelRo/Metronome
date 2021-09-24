@@ -27,9 +27,9 @@ extension UIAlertController {
             complession(alert)
         case .picture:
             let alert = UIAlertController(title: "Сhoose a picture", message: "", preferredStyle: .actionSheet)
-            let pictOne = UIAlertAction(title: "pict 1", style: .default) { _ in  complessionOk("pictOne")}
-            let pictTwo = UIAlertAction(title: "pict 2", style: .default) { _ in complessionOk("pictTwo")}
-            let pictThree = UIAlertAction(title: "pict 3", style: .default) { _ in  complessionOk("pictThree")}
+            let pictOne = UIAlertAction(title: "pict 1", style: .default) { _ in  complessionOk("pict1")}
+            let pictTwo = UIAlertAction(title: "pict 2", style: .default) { _ in complessionOk("pict2")}
+            let pictThree = UIAlertAction(title: "pict 3", style: .default) { _ in  complessionOk("pict3")}
             alert.addAction(pictOne)
             alert.addAction(pictTwo)
             alert.addAction(pictThree)
