@@ -22,7 +22,6 @@ import AVFoundation
 
 class MainViewModel: MainViewModelProtocol {
     
-    
     var audioPlayer = SoundPlayer.shared
     static var beat = 0
     var tick = 0
@@ -36,7 +35,7 @@ class MainViewModel: MainViewModelProtocol {
                 self.tick += 1
                 self.delegate.tick(count: self.tick)
             }) {
-                print(self.tick)
+                print("tock")
                 self.tick += 1
                 self.delegate.tick(count: self.tick)
             }

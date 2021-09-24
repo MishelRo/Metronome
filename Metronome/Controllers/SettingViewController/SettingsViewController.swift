@@ -9,6 +9,8 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    var activity: UIActivity!
+    
     var model: SettingViewModelProtocol {
         return SettingViewModel()
     }

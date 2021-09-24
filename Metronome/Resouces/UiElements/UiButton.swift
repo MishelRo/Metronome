@@ -116,10 +116,10 @@ class MyButton: UIButton {
         view.snp.makeConstraints { make in
             make.width.greaterThanOrEqualTo(57.5)
             make.height.greaterThanOrEqualTo(57.5)
-            make.bottom.equalTo(self.snp.bottom).offset(-7)
-            make.leading.equalTo(self.snp.leading).offset(7)
-            make.trailing.equalTo(self.snp.trailing).offset(-7)
-            make.top.equalTo(self.snp.top).offset(7)
+            make.bottom.equalTo(self.snp.bottom).offset(-7.5)
+            make.leading.equalTo(self.snp.leading).offset(7.5)
+            make.trailing.equalTo(self.snp.trailing).offset(-7.5)
+            make.top.equalTo(self.snp.top).offset(7.5)
             translatesAutoresizingMaskIntoConstraints = false
         }
         image.image = UIImage(named: imageStr)

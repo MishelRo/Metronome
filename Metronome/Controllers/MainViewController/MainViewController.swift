@@ -25,8 +25,6 @@ class MainViewController: UIViewController {
     var downButton: MyButton!
     var countArray = [Int]()
  
-    
-   
     private var start = false
     private var timer: Timer!
 
@@ -52,8 +50,7 @@ class MainViewController: UIViewController {
     //MARK:- UIElements configure
     
     func uIElementConfigure() {
-        
-        
+
         pageControl = UIPageControl()
         upButton = MyButton()
         downButton = MyButton()
@@ -70,7 +67,6 @@ class MainViewController: UIViewController {
         label.textColor = .white
         label.textAlignment = .center
         layout()
-        
         speedSlider.configure()
         startButton.backgroundColor = .red
         startButton.configureStartButton()
@@ -99,14 +95,20 @@ class MainViewController: UIViewController {
         value -= 1
         label.text = "\(value)"
         speedSlider.setValue( Float(value), animated: true)
+        guard start else {return}
+        stopStartTick()
+        startTick()
     }
     @objc func upButtonPreess() {
-        pageControl.currentPage += 1
         guard value < Constants.maxVal, value >= Constants.minVal else {return}
         value += 1
+        pageControl.currentPage += 1
         guard value > 0 else {return}
         label.text = "\(value)"
         speedSlider.setValue( Float(value), animated: true)
+        guard start else {return}
+        stopStartTick()
+        startTick()
     }
     
     func layout() {
@@ -219,6 +221,7 @@ class MainViewController: UIViewController {
         beatButton.executeBeatsButton {
             UIAlertController.getAlert(type: .beats) { alert in
                 self.present(alert, animated: true, completion: nil)
+                
             } complessionOk: { beat in
                 switch beat {
                 case "2":
@@ -276,6 +279,7 @@ class MainViewController: UIViewController {
     }
     
     func changeBeat(count: Int) {
+        guard self.start else {return}
         stopStartTick()
         model.audioPlayer.changeBeats(beats: count)
         startTick()
