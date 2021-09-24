@@ -10,11 +10,7 @@ import ChameleonFramework
 @IBDesignable
 
 class MyButton: UIButton {
-    let arrayOfColors : [UIColor] = [ .systemPink,
-                                      .systemOrange,
-                                      .systemYellow,
-                                      .systemBlue,
-                                      .systemGreen, #colorLiteral(red: 0.1273057461, green: 0.8149128556, blue: 0.6144179702, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)]
+    let arrayOfColors : [UIColor] =  [#colorLiteral(red: 0, green: 0.6315296888, blue: 0.9803366065, alpha: 1), #colorLiteral(red: 0.163719058, green: 0.9479225278, blue: 0.606187582, alpha: 1)]
     let view = UIView()
     let image = UIImageView()
     var play: Bool = false
@@ -79,7 +75,7 @@ class MyButton: UIButton {
         view.layer.cornerRadius = 104
         layer.cornerRadius = 114
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = #colorLiteral(red: 0.1273057461, green: 0.8149128556, blue: 0.6144179702, alpha: 1)
+        backgroundColor = Constants.littleButtonBackground
     }
     
     @objc func tabOnImage(){
@@ -108,17 +104,17 @@ class MyButton: UIButton {
             translatesAutoresizingMaskIntoConstraints = false
         }
         view.snp.makeConstraints { make in
-            make.width.greaterThanOrEqualTo(54.5)
-            make.height.greaterThanOrEqualTo(54.5)
-            make.bottom.equalTo(self.snp.bottom).offset(-10)
-            make.leading.equalTo(self.snp.leading).offset(10)
-            make.trailing.equalTo(self.snp.trailing).offset(-10)
-            make.top.equalTo(self.snp.top).offset(10)
+            make.width.greaterThanOrEqualTo(57.5)
+            make.height.greaterThanOrEqualTo(57.5)
+            make.bottom.equalTo(self.snp.bottom).offset(-7)
+            make.leading.equalTo(self.snp.leading).offset(7)
+            make.trailing.equalTo(self.snp.trailing).offset(-7)
+            make.top.equalTo(self.snp.top).offset(7)
             translatesAutoresizingMaskIntoConstraints = false
         }
         image.image = UIImage(named: imageStr)
         view.layer.cornerRadius = 45
-        backgroundColor = #colorLiteral(red: 0.1273057461, green: 0.8149128556, blue: 0.6144179702, alpha: 1)
+        backgroundColor = Constants.littleButtonBackground
         layer.cornerRadius = 54.5
         translatesAutoresizingMaskIntoConstraints = false
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -148,7 +144,7 @@ extension MyButton {
         if play{
         timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval), repeats: true) { [weak self] _ in
             guard let self = self else {return}
-            let backgroundColor = GradientColor(gradientStyle: .leftToRight,
+            let backgroundColor = GradientColor(gradientStyle: .topToBottom,
                                                     frame: UIScreen.main.bounds.integral,
                                                     colors: [self.retrunrColor(),
                                                              self.retrunrColor(),

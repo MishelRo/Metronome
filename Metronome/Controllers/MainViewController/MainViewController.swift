@@ -18,14 +18,24 @@ class MainViewController: UIViewController {
     var pictureButton: MyButton!
     var appLabel: UILabel!
     var settingsButton: MyButton!
+    var upButton: MyButton!
+    var downButton: MyButton!
+    var value = Constants.standartVal {
+        didSet {
+            let arrayndValue = 240 - oldValue
+            startButton.stopBackground()
+            startButton.changeBgrnd(frequency: Float(arrayndValue/10))
+        }
+    }
     var model: MainViewModelProtocol! {
         return MainViewModel()
     }
     
-    
     //MARK:- UIElements configure
     
-    func uiElementConfigure() {
+    func uIElementConfigure() {
+        upButton = MyButton()
+        downButton = MyButton()
         speedSlider = MySlider()
         startButton = MyButton()
         beatButton = MyButton()
@@ -33,32 +43,52 @@ class MainViewController: UIViewController {
         settingsButton = MyButton()
         label = UILabel()
         appLabel = UILabel()
+        
         label.font = Constants.robotoFont
-        label.text = "130"
+        label.text = "\(Constants.standartVal)"
         label.textColor = .white
         label.textAlignment = .center
         layout()
         
         speedSlider.configure()
-        speedSlider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
         startButton.backgroundColor = .red
         startButton.configureStartButton()
-        startButton.imageInclude(image: "play")
-        beatButton.litleButtonConfigurate(imageStr: "24")
         beatButtonActionConfigure()
-        pictureButton.litleButtonConfigurate(imageStr: "Nota")
         pictureButtonActionConfigure()
         appLabel.text = Constants.appName
         appLabel.font = Constants.ubuntu
-        
+        startButton.imageInclude(image: "play")
+        downButton.setImageToButton(image: "down")
+        upButton.setImageToButton(image: "up")
+        beatButton.litleButtonConfigurate(imageStr: "24")
+        settingsButton.setImageToButton(image: "Settings")
+        pictureButton.litleButtonConfigurate(imageStr: "Nota")
+        settingsButton.addTarget(self, action: #selector(settingsButtonPress), for: .touchUpInside)
+        speedSlider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
+        downButton.addTarget(self, action: #selector(downButtonPreess), for: .touchUpInside)
+        upButton.addTarget(self, action: #selector(upButtonPreess), for: .touchUpInside)
+    }
+    
+    @objc func downButtonPreess() {
+        guard value >= 21 else {return}
+        value -= 1
+        label.text = "\(value)"
+        speedSlider.setValue( Float(value), animated: true)
+    }
+    @objc func upButtonPreess() {
+        guard value < Constants.maxVal, value >= Constants.minVal else {return}
+        value += 1
+        guard value > 0 else {return}
+        label.text = "\(value)"
+        speedSlider.setValue( Float(value), animated: true)
     }
     
     func layout() {
         view.addSubview(speedSlider)
         speedSlider.snp.makeConstraints { make in
             make.bottom.greaterThanOrEqualTo(view.snp.bottom).multipliedBy(0.9)
-            make.leading.equalTo(view.snp.leading).offset(+40)
-            make.trailing.equalTo(view.snp.trailing).offset(-40)
+            make.leading.greaterThanOrEqualTo(view.snp.leading).offset(+32)
+            make.trailing.lessThanOrEqualTo(view.snp.trailing).offset(-32)
         }
         view.addSubview(label)
         label.snp.makeConstraints { make in
@@ -103,6 +133,24 @@ class MainViewController: UIViewController {
             make.top.equalTo(view.snp.top).offset(100)
             make.trailing.equalTo(view.snp.trailing).offset(-20)
         }
+        view.addSubview(upButton)
+        upButton.backgroundColor = .red
+        upButton.snp.makeConstraints { make in
+            make.width.equalTo(43)
+            make.height.equalTo(43)
+            make.bottom.equalTo(speedSlider.snp.bottom)
+            make.leading.equalTo(view.snp.leading).offset(10)
+            make.trailing.equalTo(speedSlider.snp.leading).offset(-10)
+        }
+        view.addSubview(downButton)
+        downButton.backgroundColor = .yellow
+        downButton.snp.makeConstraints { make in
+            make.width.equalTo(43)
+            make.height.equalTo(43)
+            make.bottom.equalTo(speedSlider.snp.bottom)
+            make.leading.equalTo(speedSlider.snp.trailing).offset(10)
+            make.trailing.equalTo(view.snp.trailing).offset(-10)
+        }
     }
     
     //MARK:- UIElements Actions
@@ -111,7 +159,7 @@ class MainViewController: UIViewController {
         beatButton.executeBeatsButton {
             UIAlertController.getAlert(type: .beats) { alert in
                 self.present(alert, animated: true, completion: nil)
-            }
+            } complessionOk: { beat in print(beat) }
         }
     }
     
@@ -119,6 +167,8 @@ class MainViewController: UIViewController {
         pictureButton.executePictureButton {
             UIAlertController.getAlert(type: .picture) { alert in
                 self.present(alert, animated: true, completion: nil)
+            } complessionOk: { pict in
+                print(pict)
             }
         }
     }
@@ -128,19 +178,18 @@ class MainViewController: UIViewController {
     }
     
     @objc func sliderValueDidChange() {
-        let val = speedSlider.value
-        let arrayndValue = 240 - val
+        value = Int(speedSlider.value)
+        let arrayndValue = 240 - value
         startButton.stopBackground()
-        startButton.changeBgrnd(frequency: arrayndValue/10)
-        label.text = "\(Int(round(val)))"
+        startButton.changeBgrnd(frequency: Float(arrayndValue/10))
+        label.text = "\(value))"
     }
     
     //MARK:-  View
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Constants.MainBackgroundColor
-        uiElementConfigure()
+        uIElementConfigure()
     }
-    
 }
 
