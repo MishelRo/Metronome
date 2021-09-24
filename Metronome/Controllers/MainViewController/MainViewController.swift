@@ -11,6 +11,8 @@ import SnapKit
 class MainViewController: UIViewController {
     
     //MARK:- UIElements propeties
+    
+    var pageControl: UIPageControl!
     var speedSlider: MySlider!
     var label: UILabel!
     var startButton: MyButton!
@@ -20,6 +22,10 @@ class MainViewController: UIViewController {
     var settingsButton: MyButton!
     var upButton: MyButton!
     var downButton: MyButton!
+    
+    var currentPage = 0
+    var numberOfPages = 5
+    
     var value = Constants.standartVal {
         didSet {
             let arrayndValue = 240 - oldValue
@@ -34,6 +40,9 @@ class MainViewController: UIViewController {
     //MARK:- UIElements configure
     
     func uIElementConfigure() {
+        
+        
+        pageControl = UIPageControl()
         upButton = MyButton()
         downButton = MyButton()
         speedSlider = MySlider()
@@ -69,13 +78,16 @@ class MainViewController: UIViewController {
         upButton.addTarget(self, action: #selector(upButtonPreess), for: .touchUpInside)
     }
     
+    
     @objc func downButtonPreess() {
+        pageControl.currentPage -= 1
         guard value >= 21 else {return}
         value -= 1
         label.text = "\(value)"
         speedSlider.setValue( Float(value), animated: true)
     }
     @objc func upButtonPreess() {
+        pageControl.currentPage += 1
         guard value < Constants.maxVal, value >= Constants.minVal else {return}
         value += 1
         guard value > 0 else {return}
@@ -151,6 +163,16 @@ class MainViewController: UIViewController {
             make.leading.equalTo(speedSlider.snp.trailing).offset(10)
             make.trailing.equalTo(view.snp.trailing).offset(-10)
         }
+        self.view.addSubview(pageControl)
+//        (frame: CGRect(x: 100, y: 150, width: 200, height: 40))
+        pageControl.snp.makeConstraints { make in
+            make.width.equalTo(200)
+            make.height.equalTo(40)
+            make.centerX.equalTo(view.snp.centerX)
+            make.top.equalTo(appLabel.snp.top).offset(30)
+        }
+        pageControl.numberOfPages = numberOfPages
+        pageControl.currentPage = currentPage
     }
     
     //MARK:- UIElements Actions
@@ -190,6 +212,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Constants.MainBackgroundColor
         uIElementConfigure()
+         
     }
 }
 

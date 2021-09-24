@@ -179,6 +179,16 @@
 			path = SettingViewController;
 			sourceTree = "<group>";
 		};
+		CE23956026FDE851009983CD /* UiElements */ = {
+			isa = PBXGroup;
+			children = (
+				CE23952026FCD011009983CD /* UiAlertController.swift */,
+				CEE40E1726FC84A500102AA6 /* UiButton.swift */,
+				CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */,
+			);
+			path = UiElements;
+			sourceTree = "<group>";
+		};
 		CE78827426FB4E04007EBA95 = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +221,7 @@
 		CE78829726FB4EAF007EBA95 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
+				CE23956026FDE851009983CD /* UiElements */,
 				CE23955726FD360A009983CD /* AudioModulle */,
 				CE23955226FD352B009983CD /* Sounds */,
 				CEE40E1926FC9A4400102AA6 /* Fonts */,
@@ -237,9 +248,6 @@
 		CEE40E1626FC849600102AA6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CE23952026FCD011009983CD /* UiAlertController.swift */,
-				CEE40E1726FC84A500102AA6 /* UiButton.swift */,
-				CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
