@@ -30,11 +30,9 @@ class MainViewModel: MainViewModelProtocol {
     @objc func newValueTick(bpm: Int) {
         UIView.animate(withDuration:  Double.getDouble(intOne: 60, intTwo: bpm), animations: {
             self.audioPlayer.audioPlayback(complessionTick: {
-                print("tick")
                 self.tick += 1
                 self.delegate.tick(count: self.tick)
             }) {
-                print("tock")
                 self.tick += 1
                 self.delegate.tick(count: self.tick)
             }

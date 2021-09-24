@@ -24,26 +24,25 @@ class MainViewController: UIViewController {
     var upButton: MyButton!
     var downButton: MyButton!
     var countArray = [Int]()
- 
+    
+    //MARK:- Class Propeties
+    
     private var start = false
     private var timer: Timer!
     private var jumptimer: Timer?
-
+    private var currentPage = 0
+    private var numberOfPages = 5
+    private var model = MainViewModel()
     
-    var currentPage = 0
-    var numberOfPages = 5
-    
-    var value = Constants.standartVal {
+    private var value = Constants.standartVal {
         didSet {
             let arrayndValue = 240 - oldValue
             startButton.stopBackground()
             startButton.changeBgrnd(frequency: Float(arrayndValue/10))
         }
     }
-    var model = MainViewModel()
     
-    
-    var beatCount = 0 {
+    private var beatCount = 0 {
         didSet {
             pageControl.numberOfPages = beatCount
         }
@@ -52,7 +51,6 @@ class MainViewController: UIViewController {
     //MARK:- UIElements configure
     
     func uIElementConfigure() {
-
         pageControl = UIPageControl()
         upButton = MyButton()
         downButton = MyButton()
@@ -90,7 +88,6 @@ class MainViewController: UIViewController {
         upButton.addTarget(self, action: #selector(upButtonPreess), for: .touchUpInside)
     }
     
-    
     @objc func downButtonPreess() {
         pageControl.currentPage -= 1
         guard value >= 21 else {return}
@@ -101,6 +98,7 @@ class MainViewController: UIViewController {
         stopStartTick()
         startTick()
     }
+    
     @objc func upButtonPreess() {
         guard value < Constants.maxVal, value >= Constants.minVal else {return}
         value += 1
@@ -113,7 +111,7 @@ class MainViewController: UIViewController {
         startTick()
     }
     
-    func layout() {
+    private func layout() {
         view.addSubview(speedSlider)
         speedSlider.snp.makeConstraints { make in
             make.bottom.greaterThanOrEqualTo(view.snp.bottom).multipliedBy(0.9)
@@ -200,7 +198,7 @@ class MainViewController: UIViewController {
     
     @objc func sliderValueDidChange() {
         value = Int(speedSlider.value)
-        let arrayndValue = 240 - value
+        let arrayndValue = Constants.maxVal - value
         startButton.stopBackground()
         startButton.changeBgrnd(frequency: Float(arrayndValue/10))
         label.text = "\(value)"
@@ -209,16 +207,7 @@ class MainViewController: UIViewController {
         startTick()
     }
     
-    //MARK:-  View
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = Constants.MainBackgroundColor
-        uIElementConfigure()
-    }
-    
-    //MARK:- Timer Implementation
-
-    func beatButtonActionConfigure() {
+    private func beatButtonActionConfigure() {
         countArray = [Int]()
         beatButton.executeBeatsButton {
             UIAlertController.getAlert(type: .beats) { alert in
@@ -242,7 +231,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    func pictureButtonActionConfigure() {
+    private func pictureButtonActionConfigure() {
         pictureButton.executePictureButton {
             UIAlertController.getAlert(type: .picture) { alert in
                 self.present(alert, animated: true, completion: nil)
@@ -253,20 +242,23 @@ class MainViewController: UIViewController {
                     self.stopJumpTimer()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
                         self.model.animate(bpm: self.value)
-                        self.jumptimer = self.model.timerReturn(timeInterval: 60.0, bpm: Double(self.value))
+                        self.jumptimer = self.model.timerReturn(timeInterval: Constants.timeInterval,
+                                                                bpm: Double(self.value))
                     }
                 case "pict2":
                     self.stopJumpTimer()
                     self.stopJumpTimer()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
                         self.model.animate(bpm: self.value)
-                        self.jumptimer = self.model.timerReturn(timeInterval: 60.0, bpm: Double(self.value))
+                        self.jumptimer = self.model.timerReturn(timeInterval: Constants.timeInterval,
+                                                                bpm: Double(self.value))
                     }
                 case "pict3":
                     self.stopJumpTimer()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.7){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.7){
                         self.model.animate(bpm: self.value)
-                        self.jumptimer = self.model.timerReturn(timeInterval: 60.0, bpm: Double(self.value))
+                        self.jumptimer = self.model.timerReturn(timeInterval: Constants.timeInterval,
+                                                                bpm: Double(self.value))
                     }
                 default:
                     break
@@ -274,25 +266,42 @@ class MainViewController: UIViewController {
             }
         }
     }
+    //MARK:-  View
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = Constants.MainBackgroundColor
+        uIElementConfigure()
+    }
     
-    func stopJumpTimer() {
+}
+//MARK:- Timer
+
+extension MainViewController: TickDelegate {
+    
+    func tick(count: Int) {
+        self.countArray.append(count)
+        guard self.countArray.count <= self.beatCount - 1 else {
+            self.countArray = [Int](); return
+                self.pageControl.currentPage = 0 }
+        self.pageControl.currentPage = self.countArray.count
+    }
+    
+    private func stopJumpTimer() {
         jumptimer?.invalidate()
         jumptimer = nil
     }
-
-    func startButtonStartConfigure() {
+    
+    private func startButtonStartConfigure() {
         startButton.startConfigure {
-            self.stopStartTick()
-        }
+            self.stopStartTick() }
     }
     
-    func startButtonStopConfigure() {
+    private func startButtonStopConfigure() {
         startButton.stopConfigure {
-            self.startTick()
-        }
+            self.startTick() }
     }
     
-    func stopStartTick() {
+    private func stopStartTick() {
         UIApplication.shared.isIdleTimerDisabled = false
         guard start != false else {return}
         start = false
@@ -302,29 +311,17 @@ class MainViewController: UIViewController {
         model.animate(bpm: value)
     }
     
-    func startTick() {
+    private func startTick() {
         UIApplication.shared.isIdleTimerDisabled = true
         start = true
         model.animate(bpm: value)
         timer = model.timerReturn(timeInterval: 60.0, bpm: Double(value))
     }
     
-    func changeBeat(count: Int) {
+    private func changeBeat(count: Int) {
         guard self.start else {return}
         stopStartTick()
         model.audioPlayer.changeBeats(beats: count)
         startTick()
     }
-}
-
-extension MainViewController: TickDelegate {
-    func tick(count: Int) {
-            self.countArray.append(count)
-            guard self.countArray.count <= self.beatCount - 1 else {
-                self.countArray = [Int](); return
-                    self.pageControl.currentPage = 0
-            }
-            self.pageControl.currentPage = self.countArray.count
-        }
-    
 }
