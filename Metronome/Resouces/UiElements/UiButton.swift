@@ -82,14 +82,24 @@ class MyButton: UIButton {
         stopBackground()
         play = !play
         if play{
+            complessionStop()
             imageInclude(image: "pause")
             changeBgrnd(frequency: Float(frequency))
         } else {
+            complessionStart()
             imageInclude(image: "play")
             timer?.invalidate()
             timer = nil
         }
     }
+    
+    func startConfigure(action: @escaping (()->())) {
+        complessionStart = action
+    }
+    func stopConfigure(action: @escaping (()->())) {
+        complessionStop = action
+    }
+    
     
     func litleButtonConfigurate(imageStr: String) {
         let view = UIView()
@@ -117,7 +127,7 @@ class MyButton: UIButton {
         backgroundColor = Constants.littleButtonBackground
         layer.cornerRadius = 54.5
         translatesAutoresizingMaskIntoConstraints = false
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(littleButtonHandleTap))
         view.addGestureRecognizer(tap)
     }
     
@@ -128,7 +138,7 @@ class MyButton: UIButton {
         complessionStart = action
     }
     
-    @objc func handleTap() {
+    @objc func littleButtonHandleTap() {
         complessionStart()
     }
 }
@@ -140,7 +150,7 @@ extension MyButton {
     
     func changeBgrnd(frequency: Float) {
         self.frequency = Int(frequency)
-        let interval = frequency / beat
+        let interval = frequency / (beat * 1.6)
         if play{
         timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval), repeats: true) { [weak self] _ in
             guard let self = self else {return}

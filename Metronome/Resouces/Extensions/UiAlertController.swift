@@ -17,9 +17,9 @@ extension UIAlertController {
         switch type {
         case .beats:
             let alert = UIAlertController(title: "Сhoose a bit)", message: "", preferredStyle: .actionSheet)
-            let beatOne = UIAlertAction(title: "2", style: .default) { _ in complessionOk("BeatOne")}
-            let beatTwo = UIAlertAction(title: "3", style: .default) { _ in complessionOk("BeatTwo")}
-            let beatFour = UIAlertAction(title: "4/4", style: .default) { _ in complessionOk("BeatThree")}
+            let beatOne = UIAlertAction(title: "2", style: .default) { _ in complessionOk("2")}
+            let beatTwo = UIAlertAction(title: "3", style: .default) { _ in complessionOk("3")}
+            let beatFour = UIAlertAction(title: "4/4", style: .default) { _ in complessionOk("4")}
           
             alert.addAction(beatOne)
             alert.addAction(beatTwo)

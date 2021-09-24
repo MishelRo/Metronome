@@ -5,11 +5,53 @@
 //  Created by User on 24.09.2021.
 //
 
-protocol MainViewModelProtocol {
-    
+protocol tickDelegate {
+    func tick(count: Int)
 }
 
-import Foundation
+protocol MainViewModelProtocol {
+    var audioPlayer: SoundPlayer {get set}
+    func animate(bpm: Int)
+    func timerReturn(timeInterval: Double, bpm: Double ) -> Timer
+    var tick: Int {get set}
+    var delegate: tickDelegate!{get set}
+}
+
+import UIKit
+import AVFoundation
+
 class MainViewModel: MainViewModelProtocol {
+    
+    
+    var audioPlayer = SoundPlayer.shared
+    static var beat = 0
+    var tick = 0
+    var delegate: tickDelegate!
+    
+    
+    @objc func newValueTick(bpm: Int) {
+        UIView.animate(withDuration:  Double.getDouble(intOne: 60, intTwo: bpm), animations: {
+            self.audioPlayer.audioPlayback(complessionTick: {
+                print("tick")
+                self.tick += 1
+                self.delegate.tick(count: self.tick)
+            }) {
+                print(self.tick)
+                self.tick += 1
+                self.delegate.tick(count: self.tick)
+            }
+        })
+    }
+    
+    func timerReturn(timeInterval: Double, bpm: Double ) -> Timer {
+      let  timer = Timer.scheduledTimer(timeInterval: timeInterval / bpm, target: self, selector: #selector(self.newValueTick), userInfo: nil, repeats: true)
+        return timer
+    }
+   
+    func animate(bpm: Int) {
+    UIView.animate(withDuration: Double.getDouble(intOne: 60, intTwo: bpm), animations: {
+        })
+    }
+    
     
 }

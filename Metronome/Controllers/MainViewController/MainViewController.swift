@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import AVFoundation
 
 class MainViewController: UIViewController {
     
@@ -22,7 +23,13 @@ class MainViewController: UIViewController {
     var settingsButton: MyButton!
     var upButton: MyButton!
     var downButton: MyButton!
+    var countArray = [Int]()
+ 
     
+   
+    private var start = false
+    private var timer: Timer!
+
     var currentPage = 0
     var numberOfPages = 5
     
@@ -33,8 +40,13 @@ class MainViewController: UIViewController {
             startButton.changeBgrnd(frequency: Float(arrayndValue/10))
         }
     }
-    var model: MainViewModelProtocol! {
-        return MainViewModel()
+    var model = MainViewModel()
+    
+    
+    var beatCount = 0 {
+        didSet {
+            pageControl.numberOfPages = beatCount
+        }
     }
     
     //MARK:- UIElements configure
@@ -52,7 +64,7 @@ class MainViewController: UIViewController {
         settingsButton = MyButton()
         label = UILabel()
         appLabel = UILabel()
-        
+        model.delegate = self
         label.font = Constants.robotoFont
         label.text = "\(Constants.standartVal)"
         label.textColor = .white
@@ -62,6 +74,8 @@ class MainViewController: UIViewController {
         speedSlider.configure()
         startButton.backgroundColor = .red
         startButton.configureStartButton()
+        startButtonStartConfigure()
+        startButtonStopConfigure()
         beatButtonActionConfigure()
         pictureButtonActionConfigure()
         appLabel.text = Constants.appName
@@ -106,7 +120,7 @@ class MainViewController: UIViewController {
         label.snp.makeConstraints { make in
             make.bottom.equalTo(speedSlider.snp.top).offset(-30)
             make.height.equalTo(52)
-            make.width.equalTo(95)
+            make.width.equalTo(110)
             make.centerX.equalTo(view.snp.centerX)
         }
         view.addSubview(startButton)
@@ -164,36 +178,17 @@ class MainViewController: UIViewController {
             make.trailing.equalTo(view.snp.trailing).offset(-10)
         }
         self.view.addSubview(pageControl)
-//        (frame: CGRect(x: 100, y: 150, width: 200, height: 40))
         pageControl.snp.makeConstraints { make in
             make.width.equalTo(200)
             make.height.equalTo(40)
             make.centerX.equalTo(view.snp.centerX)
             make.top.equalTo(appLabel.snp.top).offset(30)
         }
-        pageControl.numberOfPages = numberOfPages
+        pageControl.numberOfPages = beatCount
         pageControl.currentPage = currentPage
     }
     
     //MARK:- UIElements Actions
-    
-    func beatButtonActionConfigure() {
-        beatButton.executeBeatsButton {
-            UIAlertController.getAlert(type: .beats) { alert in
-                self.present(alert, animated: true, completion: nil)
-            } complessionOk: { beat in print(beat) }
-        }
-    }
-    
-    func pictureButtonActionConfigure() {
-        pictureButton.executePictureButton {
-            UIAlertController.getAlert(type: .picture) { alert in
-                self.present(alert, animated: true, completion: nil)
-            } complessionOk: { pict in
-                print(pict)
-            }
-        }
-    }
     
     @objc func settingsButtonPress() {
         MainStart.present(view: self, controller: .settingController)
@@ -204,7 +199,10 @@ class MainViewController: UIViewController {
         let arrayndValue = 240 - value
         startButton.stopBackground()
         startButton.changeBgrnd(frequency: Float(arrayndValue/10))
-        label.text = "\(value))"
+        label.text = "\(value)"
+        guard start else {return}
+        stopStartTick()
+        startTick()
     }
     
     //MARK:-  View
@@ -212,7 +210,86 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Constants.MainBackgroundColor
         uIElementConfigure()
-         
+    }
+    
+    //MARK:- Timer Implementation
+
+    func beatButtonActionConfigure() {
+        countArray = [Int]()
+        beatButton.executeBeatsButton {
+            UIAlertController.getAlert(type: .beats) { alert in
+                self.present(alert, animated: true, completion: nil)
+            } complessionOk: { beat in
+                switch beat {
+                case "2":
+                    self.beatCount = 2
+                    self.changeBeat(count: self.beatCount)
+                case "3":
+                    self.beatCount = 3
+                    self.changeBeat(count: self.beatCount)
+                case "4":
+                    self.beatCount = 4
+                    self.changeBeat(count:  self.beatCount)
+                default: break
+                }
+                
+            }
+        }
+    }
+    
+    
+    func pictureButtonActionConfigure() {
+        pictureButton.executePictureButton {
+            UIAlertController.getAlert(type: .picture) { alert in
+                self.present(alert, animated: true, completion: nil)
+            } complessionOk: { pict in
+                print(pict)
+            }
+        }
+    }
+    func startButtonStartConfigure() {
+        startButton.startConfigure {
+            self.stopStartTick()
+        }
+    }
+    
+    func startButtonStopConfigure() {
+        startButton.stopConfigure {
+            self.startTick()
+        }
+    }
+    
+    func stopStartTick() {
+        UIApplication.shared.isIdleTimerDisabled = false
+        guard start != false else {return}
+        start = false
+        timer.invalidate()
+        timer = nil
+        model.animate(bpm: value)
+    }
+    
+    func startTick() {
+        UIApplication.shared.isIdleTimerDisabled = true
+        start = true
+        model.animate(bpm: value)
+        timer = model.timerReturn(timeInterval: 60.0, bpm: Double(value))
+    }
+    
+    func changeBeat(count: Int) {
+        stopStartTick()
+        model.audioPlayer.changeBeats(beats: count)
+        startTick()
     }
 }
 
+extension MainViewController: tickDelegate {
+    func tick(count: Int) {
+            self.countArray.append(count)
+            guard self.countArray.count <= self.beatCount - 1 else {
+                self.countArray = [Int](); return
+                    self.pageControl.currentPage = 0
+            }
+            self.pageControl.currentPage = self.countArray.count
+        }
+    
+}
