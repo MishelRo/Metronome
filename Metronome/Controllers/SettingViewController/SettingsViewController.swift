@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+
 class SettingsViewController: UIViewController {
     
     
@@ -16,7 +17,6 @@ class SettingsViewController: UIViewController {
     }
     var replicatorLayer : CAReplicatorLayer!
     var sourceLayer : CALayer!
-    
     
     
 
@@ -53,4 +53,6 @@ class SettingsViewController: UIViewController {
         opacityAnimasion.repeatCount = Float.infinity
         sourceLayer.add(opacityAnimasion, forKey: nil)
     }
-}
+    
+    
+    }

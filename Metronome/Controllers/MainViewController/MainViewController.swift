@@ -24,6 +24,8 @@ class MainViewController: UIViewController {
     var upButton: MyButton!
     var downButton: MyButton!
     var countArray = [Int]()
+    var changeSoundButton: MyButton!
+    
     
     //MARK:- Class Propeties
     
@@ -42,15 +44,18 @@ class MainViewController: UIViewController {
         }
     }
     
-    private var beatCount = 0 {
+    private var beatCount = 1 {
         didSet {
             pageControl.numberOfPages = beatCount
+            guard beatCount == 0 else {return}
+            numberOfPages = 1
         }
     }
     
     //MARK:- UIElements configure
     
     func uIElementConfigure() {
+        model.audioPlayer = SoundPlayer(model: .standart)
         pageControl = UIPageControl()
         upButton = MyButton()
         downButton = MyButton()
@@ -59,6 +64,7 @@ class MainViewController: UIViewController {
         beatButton = MyButton()
         pictureButton = MyButton()
         settingsButton = MyButton()
+        changeSoundButton = MyButton()
         label = UILabel()
         appLabel = UILabel()
         model.delegate = self
@@ -79,6 +85,7 @@ class MainViewController: UIViewController {
         startButton.imageInclude(image: "play")
         downButton.setImageToButton(image: "down")
         upButton.setImageToButton(image: "up")
+        changeSoundButton.setImageToButton(image: "buttonNota")
         beatButton.litleButtonConfigurate(imageStr: "24")
         settingsButton.setImageToButton(image: "Settings")
         pictureButton.litleButtonConfigurate(imageStr: "Nota")
@@ -86,6 +93,35 @@ class MainViewController: UIViewController {
         speedSlider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
         downButton.addTarget(self, action: #selector(downButtonPreess), for: .touchUpInside)
         upButton.addTarget(self, action: #selector(upButtonPreess), for: .touchUpInside)
+        changeSoundButton.addTarget(self, action: #selector(changeSoundButtonPress), for: .touchUpInside)
+    }
+    
+    @objc func changeSoundButtonPress() {
+//        model.audioPlayer = SoundPlayer(model: .digital)
+        UIAlertController.getAlert(type: .soundChange) { alert in
+            self.present(alert, animated: true, completion: nil)
+        } complessionOk: { [self] value in
+            beatCount = 1
+            switch value {
+            case "standart":
+                model.audioPlayer = SoundPlayer(model: .standart)
+            case "light":
+                model.audioPlayer = SoundPlayer(model: .light)
+            case "custom":
+                model.audioPlayer = SoundPlayer(model: .custom)
+            case "other":
+                model.audioPlayer = SoundPlayer(model: .other)
+            case "digital":
+                model.audioPlayer = SoundPlayer(model: .digital)
+            case "triplet":
+                model.audioPlayer = SoundPlayer(model: .triplet)
+            case "subDevision":
+                model.audioPlayer = SoundPlayer(model: .subDevision)
+
+            default: break
+            }
+        }
+
     }
     
     @objc func downButtonPreess() {
@@ -162,7 +198,6 @@ class MainViewController: UIViewController {
             make.trailing.equalTo(view.snp.trailing).offset(-20)
         }
         view.addSubview(upButton)
-        upButton.backgroundColor = .red
         upButton.snp.makeConstraints { make in
             make.width.equalTo(43)
             make.height.equalTo(43)
@@ -171,7 +206,6 @@ class MainViewController: UIViewController {
             make.trailing.equalTo(speedSlider.snp.leading).offset(-10)
         }
         view.addSubview(downButton)
-        downButton.backgroundColor = .yellow
         downButton.snp.makeConstraints { make in
             make.width.equalTo(43)
             make.height.equalTo(43)
@@ -188,6 +222,14 @@ class MainViewController: UIViewController {
         }
         pageControl.numberOfPages = beatCount
         pageControl.currentPage = currentPage
+        
+        self.view.addSubview(changeSoundButton)
+        changeSoundButton.snp.makeConstraints { make in
+                make.width.equalTo(30)
+                make.height.equalTo(30)
+                make.top.equalTo(view.snp.top).offset(100)
+                make.trailing.equalTo(settingsButton.snp.trailing).offset(-50)
+        }
     }
     
     //MARK:- UIElements Actions
@@ -271,6 +313,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Constants.MainBackgroundColor
         uIElementConfigure()
+        
     }
     
 }
@@ -321,7 +364,8 @@ extension MainViewController: TickDelegate {
     private func changeBeat(count: Int) {
         guard self.start else {return}
         stopStartTick()
-        model.audioPlayer.changeBeats(beats: count)
+        model.audioPlayer?.changeBeats(beats: count)
         startTick()
     }
 }
+

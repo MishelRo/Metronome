@@ -37,6 +37,20 @@
 		CE23955D26FD377D009983CD /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23955C26FD377D009983CD /* SettingViewModel.swift */; };
 		CE23956226FE03E9009983CD /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23956126FE03E9009983CD /* SoundPlayer.swift */; };
 		CE23956426FE062C009983CD /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23956326FE062C009983CD /* Double.swift */; };
+		CE23956626FF15E7009983CD /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23956526FF15E7009983CD /* UIView.swift */; };
+		CE23956926FFAD5D009983CD /* SoundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23956826FFAD5D009983CD /* SoundModel.swift */; };
+		CE23957626FFB0E7009983CD /* Division.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE23956A26FFB0E7009983CD /* Division.wav */; };
+		CE23957726FFB0E7009983CD /* Triplet.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE23956B26FFB0E7009983CD /* Triplet.wav */; };
+		CE23957826FFB0E7009983CD /* Accent.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE23956C26FFB0E7009983CD /* Accent.wav */; };
+		CE23957926FFB0E7009983CD /* digital-Division.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE23956D26FFB0E7009983CD /* digital-Division.wav */; };
+		CE23957A26FFB0E7009983CD /* cowbellaccent.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE23956E26FFB0E7009983CD /* cowbellaccent.wav */; };
+		CE23957B26FFB0E7009983CD /* Beat.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE23956F26FFB0E7009983CD /* Beat.wav */; };
+		CE23957C26FFB0E7009983CD /* digital-Accent.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE23957026FFB0E7009983CD /* digital-Accent.wav */; };
+		CE23957D26FFB0E7009983CD /* digital-Subdivision.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE23957126FFB0E7009983CD /* digital-Subdivision.wav */; };
+		CE23957E26FFB0E7009983CD /* cowbell.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE23957226FFB0E7009983CD /* cowbell.wav */; };
+		CE23957F26FFB0E7009983CD /* digital-Triplet.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE23957326FFB0E7009983CD /* digital-Triplet.wav */; };
+		CE23958026FFB0E7009983CD /* digital-Beat.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE23957426FFB0E7009983CD /* digital-Beat.wav */; };
+		CE23958126FFB0E7009983CD /* Subdivision.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE23957526FFB0E7009983CD /* Subdivision.wav */; };
 		CE78828126FB4E04007EBA95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78828026FB4E04007EBA95 /* AppDelegate.swift */; };
 		CE78828326FB4E04007EBA95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78828226FB4E04007EBA95 /* SceneDelegate.swift */; };
 		CE78828B26FB4E04007EBA95 /* Metronome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE78828926FB4E04007EBA95 /* Metronome.xcdatamodeld */; };
@@ -80,6 +94,20 @@
 		CE23955C26FD377D009983CD /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		CE23956126FE03E9009983CD /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		CE23956326FE062C009983CD /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		CE23956526FF15E7009983CD /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		CE23956826FFAD5D009983CD /* SoundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundModel.swift; sourceTree = "<group>"; };
+		CE23956A26FFB0E7009983CD /* Division.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Division.wav; sourceTree = "<group>"; };
+		CE23956B26FFB0E7009983CD /* Triplet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Triplet.wav; sourceTree = "<group>"; };
+		CE23956C26FFB0E7009983CD /* Accent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Accent.wav; sourceTree = "<group>"; };
+		CE23956D26FFB0E7009983CD /* digital-Division.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "digital-Division.wav"; sourceTree = "<group>"; };
+		CE23956E26FFB0E7009983CD /* cowbellaccent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cowbellaccent.wav; sourceTree = "<group>"; };
+		CE23956F26FFB0E7009983CD /* Beat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Beat.wav; sourceTree = "<group>"; };
+		CE23957026FFB0E7009983CD /* digital-Accent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "digital-Accent.wav"; sourceTree = "<group>"; };
+		CE23957126FFB0E7009983CD /* digital-Subdivision.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "digital-Subdivision.wav"; sourceTree = "<group>"; };
+		CE23957226FFB0E7009983CD /* cowbell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cowbell.wav; sourceTree = "<group>"; };
+		CE23957326FFB0E7009983CD /* digital-Triplet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "digital-Triplet.wav"; sourceTree = "<group>"; };
+		CE23957426FFB0E7009983CD /* digital-Beat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "digital-Beat.wav"; sourceTree = "<group>"; };
+		CE23957526FFB0E7009983CD /* Subdivision.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Subdivision.wav; sourceTree = "<group>"; };
 		CE78827D26FB4E04007EBA95 /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE78828026FB4E04007EBA95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE78828226FB4E04007EBA95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +181,18 @@
 			children = (
 				CE23955426FD352B009983CD /* Hight.m4a */,
 				CE23955326FD352B009983CD /* Low.m4a */,
+				CE23956C26FFB0E7009983CD /* Accent.wav */,
+				CE23956F26FFB0E7009983CD /* Beat.wav */,
+				CE23957226FFB0E7009983CD /* cowbell.wav */,
+				CE23956E26FFB0E7009983CD /* cowbellaccent.wav */,
+				CE23957026FFB0E7009983CD /* digital-Accent.wav */,
+				CE23957426FFB0E7009983CD /* digital-Beat.wav */,
+				CE23956D26FFB0E7009983CD /* digital-Division.wav */,
+				CE23957126FFB0E7009983CD /* digital-Subdivision.wav */,
+				CE23957326FFB0E7009983CD /* digital-Triplet.wav */,
+				CE23956A26FFB0E7009983CD /* Division.wav */,
+				CE23957526FFB0E7009983CD /* Subdivision.wav */,
+				CE23956B26FFB0E7009983CD /* Triplet.wav */,
 			);
 			name = Sounds;
 			path = Metronome/Sounds;
@@ -189,8 +229,17 @@
 			children = (
 				CEE40E1726FC84A500102AA6 /* UiButton.swift */,
 				CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */,
+				CE23956526FF15E7009983CD /* UIView.swift */,
 			);
 			path = UiElements;
+			sourceTree = "<group>";
+		};
+		CE23956726FFAD4F009983CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE23956826FFAD5D009983CD /* SoundModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CE78827426FB4E04007EBA95 = {
@@ -225,6 +274,7 @@
 		CE78829726FB4EAF007EBA95 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
+				CE23956726FFAD4F009983CD /* Model */,
 				CE23956026FDE851009983CD /* UiElements */,
 				CE23955726FD360A009983CD /* AudioModulle */,
 				CE23955226FD352B009983CD /* Sounds */,
@@ -337,7 +387,10 @@
 			files = (
 				CE23954D26FD000B009983CD /* Ubuntu-M.ttf in Resources */,
 				CE23953326FCFFF4009983CD /* Roboto-BoldItalic.ttf in Resources */,
+				CE23957A26FFB0E7009983CD /* cowbellaccent.wav in Resources */,
 				CE78829026FB4E07007EBA95 /* LaunchScreen.storyboard in Resources */,
+				CE23957726FFB0E7009983CD /* Triplet.wav in Resources */,
+				CE23957926FFB0E7009983CD /* digital-Division.wav in Resources */,
 				CE23953926FCFFF4009983CD /* Roboto-LightItalic.ttf in Resources */,
 				CE23954B26FD000B009983CD /* Ubuntu-B.ttf in Resources */,
 				CE23955526FD352B009983CD /* Low.m4a in Resources */,
@@ -345,20 +398,29 @@
 				CE23953826FCFFF4009983CD /* Roboto-Bold.ttf in Resources */,
 				CE23954826FD000B009983CD /* Ubuntu-R.ttf in Resources */,
 				CE23953226FCFFF4009983CD /* Roboto-Black.ttf in Resources */,
+				CE23957D26FFB0E7009983CD /* digital-Subdivision.wav in Resources */,
 				CE23954926FD000B009983CD /* Ubuntu-MI.ttf in Resources */,
 				CE23953126FCFFF4009983CD /* Roboto-Light.ttf in Resources */,
 				CE78828D26FB4E07007EBA95 /* Assets.xcassets in Resources */,
+				CE23957B26FFB0E7009983CD /* Beat.wav in Resources */,
 				CE23954726FD000B009983CD /* Ubuntu-L.ttf in Resources */,
 				CE23953626FCFFF4009983CD /* Roboto-MediumItalic.ttf in Resources */,
+				CE23957E26FFB0E7009983CD /* cowbell.wav in Resources */,
 				CE23953726FCFFF4009983CD /* Roboto-Thin.ttf in Resources */,
+				CE23957F26FFB0E7009983CD /* digital-Triplet.wav in Resources */,
 				CE23953B26FCFFF4009983CD /* Roboto-Italic.ttf in Resources */,
 				CE23953C26FCFFF4009983CD /* Roboto-Regular.ttf in Resources */,
 				CE23954A26FD000B009983CD /* Ubuntu-BI.ttf in Resources */,
+				CE23957826FFB0E7009983CD /* Accent.wav in Resources */,
+				CE23958026FFB0E7009983CD /* digital-Beat.wav in Resources */,
 				CE23955626FD352B009983CD /* Hight.m4a in Resources */,
 				CE23953526FCFFF4009983CD /* Roboto-BlackItalic.ttf in Resources */,
+				CE23957C26FFB0E7009983CD /* digital-Accent.wav in Resources */,
 				CE23954626FD000B009983CD /* Ubuntu-LI.ttf in Resources */,
 				CE23954C26FD000B009983CD /* Ubuntu-RI.ttf in Resources */,
 				CE23953A26FCFFF4009983CD /* Roboto-ThinItalic.ttf in Resources */,
+				CE23958126FFB0E7009983CD /* Subdivision.wav in Resources */,
+				CE23957626FFB0E7009983CD /* Division.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,11 +478,13 @@
 				CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */,
 				CE78829926FB4EBC007EBA95 /* MainStart.swift in Sources */,
 				CE78828126FB4E04007EBA95 /* AppDelegate.swift in Sources */,
+				CE23956926FFAD5D009983CD /* SoundModel.swift in Sources */,
 				CE23952126FCD011009983CD /* UiAlertController.swift in Sources */,
 				CE23956426FE062C009983CD /* Double.swift in Sources */,
 				CE23955126FD2FE6009983CD /* Constants.swift in Sources */,
 				CE78828326FB4E04007EBA95 /* SceneDelegate.swift in Sources */,
 				CE23955D26FD377D009983CD /* SettingViewModel.swift in Sources */,
+				CE23956626FF15E7009983CD /* UIView.swift in Sources */,
 				CE78829D26FB4EE0007EBA95 /* MainViewController.swift in Sources */,
 				CEE40E1826FC84A500102AA6 /* UiButton.swift in Sources */,
 				CE23954F26FD2C0E009983CD /* SettingsViewController.swift in Sources */,

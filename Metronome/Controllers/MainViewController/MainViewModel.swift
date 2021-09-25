@@ -10,7 +10,7 @@ protocol TickDelegate {
 }
 
 protocol MainViewModelProtocol {
-    var audioPlayer: SoundPlayer {get set}
+    var audioPlayer: SoundPlayer? {get set}
     func animate(bpm: Int)
     func timerReturn(timeInterval: Double, bpm: Double ) -> Timer
     var tick: Int {get set}
@@ -21,15 +21,15 @@ import UIKit
 import AVFoundation
 
 class MainViewModel: MainViewModelProtocol {
-    
-    var audioPlayer = SoundPlayer.shared
+
+    var audioPlayer: SoundPlayer?
     var tick = 0
     
     var delegate: TickDelegate!
     
     @objc func newValueTick(bpm: Int) {
         UIView.animate(withDuration:  Double.getDouble(intOne: 60, intTwo: bpm), animations: {
-            self.audioPlayer.audioPlayback(complessionTick: {
+            self.audioPlayer?.audioPlayback(complessionTick: {
                 self.tick += 1
                 self.delegate.tick(count: self.tick)
             }) {
