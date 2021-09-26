@@ -18,7 +18,6 @@ class SettingsViewController: UIViewController {
     var replicatorLayer : CAReplicatorLayer!
     var sourceLayer : CALayer!
     
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +26,19 @@ class SettingsViewController: UIViewController {
         sourceLayer = CALayer()
         self.view.layer.addSublayer(replicatorLayer)
         replicatorLayer.addSublayer(sourceLayer)
-        startAnimation(delay: 0.01, replication: 100)
+        start()
+        stop()
+    }
+    
+    
+    func start() {
+        startAnimation(delay: 0.04, replication: 100)
+    }
+    
+    func stop() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.7, qos: .default, flags: .barrier) {
+            self.replicatorLayer.removeFromSuperlayer()
+        }
     }
     
     

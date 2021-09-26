@@ -117,7 +117,6 @@ class MainViewController: UIViewController {
                 model.audioPlayer = SoundPlayer(model: .triplet)
             case "subDevision":
                 model.audioPlayer = SoundPlayer(model: .subDevision)
-
             default: break
             }
         }
