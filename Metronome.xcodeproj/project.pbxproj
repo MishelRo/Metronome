@@ -58,6 +58,13 @@
 		CE78829026FB4E07007EBA95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE78828E26FB4E07007EBA95 /* LaunchScreen.storyboard */; };
 		CE78829926FB4EBC007EBA95 /* MainStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78829826FB4EBC007EBA95 /* MainStart.swift */; };
 		CE78829D26FB4EE0007EBA95 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78829B26FB4EE0007EBA95 /* MainViewController.swift */; };
+		CE8073EA2700EE3E0070018C /* Equalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8073E92700EE3E0070018C /* Equalizer.swift */; };
+		CE8073F02700F7AD0070018C /* NSObject+Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8073EC2700F7AD0070018C /* NSObject+Load.swift */; };
+		CE8073F12700F7AD0070018C /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8073ED2700F7AD0070018C /* View.swift */; };
+		CE8073F22700F7AD0070018C /* NibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8073EE2700F7AD0070018C /* NibLoadableView.swift */; };
+		CE8073F32700F7AD0070018C /* UiViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8073EF2700F7AD0070018C /* UiViewExtension.swift */; };
+		CE8073F92700FA2B0070018C /* StackViewCel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8073F72700FA2B0070018C /* StackViewCel.swift */; };
+		CE8073FA2700FA2B0070018C /* StackViewCel.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8073F82700FA2B0070018C /* StackViewCel.xib */; };
 		CEE40E1826FC84A500102AA6 /* UiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E1726FC84A500102AA6 /* UiButton.swift */; };
 		CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */; };
 /* End PBXBuildFile section */
@@ -117,6 +124,13 @@
 		CE78829126FB4E07007EBA95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE78829826FB4EBC007EBA95 /* MainStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStart.swift; sourceTree = "<group>"; };
 		CE78829B26FB4EE0007EBA95 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CE8073E92700EE3E0070018C /* Equalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equalizer.swift; sourceTree = "<group>"; };
+		CE8073EC2700F7AD0070018C /* NSObject+Load.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Load.swift"; sourceTree = "<group>"; };
+		CE8073ED2700F7AD0070018C /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		CE8073EE2700F7AD0070018C /* NibLoadableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadableView.swift; sourceTree = "<group>"; };
+		CE8073EF2700F7AD0070018C /* UiViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UiViewExtension.swift; sourceTree = "<group>"; };
+		CE8073F72700FA2B0070018C /* StackViewCel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewCel.swift; sourceTree = "<group>"; };
+		CE8073F82700FA2B0070018C /* StackViewCel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StackViewCel.xib; sourceTree = "<group>"; };
 		CEE40E1726FC84A500102AA6 /* UiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiButton.swift; sourceTree = "<group>"; };
 		CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiSlider.swift; sourceTree = "<group>"; };
 		EEF382B7028422D11BC25F14 /* Pods-Metronome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.debug.xcconfig"; path = "Target Support Files/Pods-Metronome/Pods-Metronome.debug.xcconfig"; sourceTree = "<group>"; };
@@ -227,9 +241,9 @@
 		CE23956026FDE851009983CD /* UiElements */ = {
 			isa = PBXGroup;
 			children = (
+				CE8073E62700E98C0070018C /* Visual */,
 				CEE40E1726FC84A500102AA6 /* UiButton.swift */,
 				CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */,
-				CE23956526FF15E7009983CD /* UIView.swift */,
 			);
 			path = UiElements;
 			sourceTree = "<group>";
@@ -274,6 +288,7 @@
 		CE78829726FB4EAF007EBA95 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
+				CE8073EB2700F7AD0070018C /* NibLoaded */,
 				CE23956726FFAD4F009983CD /* Model */,
 				CE23956026FDE851009983CD /* UiElements */,
 				CE23955726FD360A009983CD /* AudioModulle */,
@@ -299,9 +314,39 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		CE8073E62700E98C0070018C /* Visual */ = {
+			isa = PBXGroup;
+			children = (
+				CE8073F42700F7C20070018C /* Cell */,
+				CE8073E92700EE3E0070018C /* Equalizer.swift */,
+			);
+			path = Visual;
+			sourceTree = "<group>";
+		};
+		CE8073EB2700F7AD0070018C /* NibLoaded */ = {
+			isa = PBXGroup;
+			children = (
+				CE8073EC2700F7AD0070018C /* NSObject+Load.swift */,
+				CE8073ED2700F7AD0070018C /* View.swift */,
+				CE8073EE2700F7AD0070018C /* NibLoadableView.swift */,
+				CE8073EF2700F7AD0070018C /* UiViewExtension.swift */,
+			);
+			path = NibLoaded;
+			sourceTree = "<group>";
+		};
+		CE8073F42700F7C20070018C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CE8073F72700FA2B0070018C /* StackViewCel.swift */,
+				CE8073F82700FA2B0070018C /* StackViewCel.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		CEE40E1626FC849600102AA6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CE23956526FF15E7009983CD /* UIView.swift */,
 				CE23952026FCD011009983CD /* UiAlertController.swift */,
 				CE23956326FE062C009983CD /* Double.swift */,
 			);
@@ -390,6 +435,7 @@
 				CE23957A26FFB0E7009983CD /* cowbellaccent.wav in Resources */,
 				CE78829026FB4E07007EBA95 /* LaunchScreen.storyboard in Resources */,
 				CE23957726FFB0E7009983CD /* Triplet.wav in Resources */,
+				CE8073FA2700FA2B0070018C /* StackViewCel.xib in Resources */,
 				CE23957926FFB0E7009983CD /* digital-Division.wav in Resources */,
 				CE23953926FCFFF4009983CD /* Roboto-LightItalic.ttf in Resources */,
 				CE23954B26FD000B009983CD /* Ubuntu-B.ttf in Resources */,
@@ -476,16 +522,22 @@
 				CE23956226FE03E9009983CD /* SoundPlayer.swift in Sources */,
 				CE78828B26FB4E04007EBA95 /* Metronome.xcdatamodeld in Sources */,
 				CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */,
+				CE8073F02700F7AD0070018C /* NSObject+Load.swift in Sources */,
 				CE78829926FB4EBC007EBA95 /* MainStart.swift in Sources */,
 				CE78828126FB4E04007EBA95 /* AppDelegate.swift in Sources */,
+				CE8073F12700F7AD0070018C /* View.swift in Sources */,
+				CE8073EA2700EE3E0070018C /* Equalizer.swift in Sources */,
+				CE8073F32700F7AD0070018C /* UiViewExtension.swift in Sources */,
 				CE23956926FFAD5D009983CD /* SoundModel.swift in Sources */,
 				CE23952126FCD011009983CD /* UiAlertController.swift in Sources */,
 				CE23956426FE062C009983CD /* Double.swift in Sources */,
 				CE23955126FD2FE6009983CD /* Constants.swift in Sources */,
+				CE8073F92700FA2B0070018C /* StackViewCel.swift in Sources */,
 				CE78828326FB4E04007EBA95 /* SceneDelegate.swift in Sources */,
 				CE23955D26FD377D009983CD /* SettingViewModel.swift in Sources */,
 				CE23956626FF15E7009983CD /* UIView.swift in Sources */,
 				CE78829D26FB4EE0007EBA95 /* MainViewController.swift in Sources */,
+				CE8073F22700F7AD0070018C /* NibLoadableView.swift in Sources */,
 				CEE40E1826FC84A500102AA6 /* UiButton.swift in Sources */,
 				CE23954F26FD2C0E009983CD /* SettingsViewController.swift in Sources */,
 				CE23955926FD370E009983CD /* MainViewModel.swift in Sources */,

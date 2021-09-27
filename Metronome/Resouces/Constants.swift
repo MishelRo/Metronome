@@ -20,6 +20,6 @@ class Constants {
     static var timeInterval = 60.0
     static var littleButtonBackground = GradientColor(gradientStyle: .topToBottom,
                                                       frame: UIScreen.main.bounds.integral,
-                                                      colors: [#colorLiteral(red: 0, green: 0.6315296888, blue: 0.9803366065, alpha: 1), #colorLiteral(red: 0.163719058, green: 0.9479225278, blue: 0.606187582, alpha: 1), #colorLiteral(red: 0.163719058, green: 0.9479225278, blue: 0.606187582, alpha: 1), #colorLiteral(red: 0.163719058, green: 0.9479225278, blue: 0.606187582, alpha: 1)])
+                                                      colors: [ #colorLiteral(red: 0, green: 0.746678412, blue: 0.4497615099, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1)])
 }
 

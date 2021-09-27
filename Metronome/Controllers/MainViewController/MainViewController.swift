@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
     var downButton: MyButton!
     var countArray = [Int]()
     var changeSoundButton: MyButton!
-    
+    var equalizerView: Equalizer!
     
     //MARK:- Class Propeties
     
@@ -46,9 +46,12 @@ class MainViewController: UIViewController {
     
     private var beatCount = 1 {
         didSet {
+            equalizerView = nil
             pageControl.numberOfPages = beatCount
+            equalizerView = Equalizer(count: beatCount)
             guard beatCount == 0 else {return}
             numberOfPages = 1
+            equalizerView = Equalizer(count: 1)
         }
     }
     
@@ -57,6 +60,7 @@ class MainViewController: UIViewController {
     func uIElementConfigure() {
         model.audioPlayer = SoundPlayer(model: .standart)
         pageControl = UIPageControl()
+        equalizerView = Equalizer(count: 4)
         upButton = MyButton()
         downButton = MyButton()
         speedSlider = MySlider()
@@ -152,6 +156,7 @@ class MainViewController: UIViewController {
             make.bottom.greaterThanOrEqualTo(view.snp.bottom).multipliedBy(0.9)
             make.leading.greaterThanOrEqualTo(view.snp.leading).offset(+32)
             make.trailing.lessThanOrEqualTo(view.snp.trailing).offset(-32)
+            make.height.equalTo(10)
         }
         view.addSubview(label)
         label.snp.makeConstraints { make in
@@ -228,6 +233,13 @@ class MainViewController: UIViewController {
                 make.height.equalTo(30)
                 make.top.equalTo(view.snp.top).offset(100)
                 make.trailing.equalTo(settingsButton.snp.trailing).offset(-50)
+        }
+        self.view.addSubview(equalizerView)
+        equalizerView.snp.makeConstraints { make in
+            make.width.greaterThanOrEqualTo(20)
+            make.height.equalTo(50)
+            make.centerX.equalTo(view.snp.centerX)
+            make.bottom.equalTo(pictureButton.snp.top).offset(-54)
         }
     }
     
@@ -335,12 +347,14 @@ extension MainViewController: TickDelegate {
     
     private func startButtonStartConfigure() {
         startButton.startConfigure {
-            self.stopStartTick() }
+            self.stopStartTick()
+        }
     }
     
     private func startButtonStopConfigure() {
         startButton.stopConfigure {
-            self.startTick() }
+            self.startTick()
+        }
     }
     
     private func stopStartTick() {

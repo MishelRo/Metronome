@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "pause.png",
+      "filename" : "selectedCell.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

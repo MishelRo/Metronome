@@ -82,7 +82,7 @@ final class SoundPlayer {
     func audioPlayback(complessionTick: @escaping()->(), complessionTock: @escaping()->()) {
         if let tick = tickNote, let tock = tockNote {
             if count == 1 {
-                tick.play()
+                    tick.play()
                 complessionTick()
             } else {
                 tock.play()
@@ -90,6 +90,7 @@ final class SoundPlayer {
             }
             if count < beat {
                 count += 1
+                print(count)
             } else {
                 count = 1
             }

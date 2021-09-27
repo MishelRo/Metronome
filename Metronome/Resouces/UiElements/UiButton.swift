@@ -48,6 +48,7 @@ class MyButton: UIButton {
     
     func imageInclude(image str: String) {
         image.image = UIImage(named: "\(str)")
+        image.contentMode = .center
     }
     
     func configureStartButton() {

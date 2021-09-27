@@ -17,6 +17,8 @@ class MySlider: UISlider {
         thumbTintColor = .black
         minimumTrackTintColor = UIColor(hexString:"#747474")
         maximumTrackTintColor = UIColor(hexString: "#504F4F")
+        setThumbImage(UIImage(named: "seek"), for: UIControl.State.highlighted)
+        setThumbImage(UIImage(named: "seek"), for: UIControl.State.normal)
     }
     
     init() {
