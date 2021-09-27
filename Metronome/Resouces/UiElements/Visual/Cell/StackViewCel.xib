@@ -15,13 +15,13 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="rXT-en-vHV">
-            <rect key="frame" x="0.0" y="0.0" width="74" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="46" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="krk-Dn-boY">
-                    <rect key="frame" x="0.0" y="0.0" width="74" height="100"/>
+                    <rect key="frame" x="0.5" y="0.0" width="45" height="100"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="74" id="RPb-Dh-Vp6"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="68" id="S5j-1l-tf7"/>
                         <constraint firstAttribute="height" constant="100" id="Szl-GF-Orb"/>
                     </constraints>
                 </imageView>
@@ -31,11 +31,17 @@
             <constraints>
                 <constraint firstItem="krk-Dn-boY" firstAttribute="top" secondItem="rXT-en-vHV" secondAttribute="top" id="1GH-Ib-Lyk"/>
                 <constraint firstItem="krk-Dn-boY" firstAttribute="bottom" secondItem="cM7-cA-UiL" secondAttribute="bottom" id="9fT-Gu-9le"/>
-                <constraint firstItem="krk-Dn-boY" firstAttribute="leading" secondItem="cM7-cA-UiL" secondAttribute="leading" id="JYd-aS-Q1I"/>
-                <constraint firstItem="krk-Dn-boY" firstAttribute="trailing" secondItem="cM7-cA-UiL" secondAttribute="trailing" id="aPv-DC-QXN"/>
+                <constraint firstItem="cM7-cA-UiL" firstAttribute="trailing" secondItem="krk-Dn-boY" secondAttribute="trailing" constant="0.5" id="FqH-Nn-xiw"/>
+                <constraint firstItem="krk-Dn-boY" firstAttribute="leading" secondItem="cM7-cA-UiL" secondAttribute="leading" constant="0.5" id="R1g-XH-70M"/>
+                <constraint firstItem="krk-Dn-boY" firstAttribute="centerX" secondItem="rXT-en-vHV" secondAttribute="centerX" id="uMp-Uk-7ns"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="134.78260869565219" y="71.651785714285708"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                    <real key="value" value="0.0"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="132.60869565217394" y="71.651785714285708"/>
         </view>
     </objects>
     <resources>

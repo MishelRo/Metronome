@@ -298,9 +298,9 @@
 				CE78829826FB4EBC007EBA95 /* MainStart.swift */,
 				CE78828C26FB4E07007EBA95 /* Assets.xcassets */,
 				CE78828E26FB4E07007EBA95 /* LaunchScreen.storyboard */,
+				CE23955026FD2FE6009983CD /* Constants.swift */,
 				CE78828026FB4E04007EBA95 /* AppDelegate.swift */,
 				CE78828226FB4E04007EBA95 /* SceneDelegate.swift */,
-				CE23955026FD2FE6009983CD /* Constants.swift */,
 			);
 			path = Resouces;
 			sourceTree = "<group>";

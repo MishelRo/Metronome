@@ -10,7 +10,12 @@ import ChameleonFramework
 @IBDesignable
 
 class MyButton: UIButton {
-    let arrayOfColors : [UIColor] =  [#colorLiteral(red: 0, green: 0.6315296888, blue: 0.9803366065, alpha: 1), #colorLiteral(red: 0.163719058, green: 0.9479225278, blue: 0.606187582, alpha: 1)]
+    let arrayOfColors : [UIColor] =  [UIColor(hexString: "2AF598"),
+                                      UIColor(hexString: "009EFD"),
+                                      UIColor(hexString: "21E2AF"),
+                                      UIColor(hexString: "15CAC9"),
+                                      UIColor(hexString: "0AB3E4")
+    ]
     let view = UIView()
     let image = UIImageView()
     var play: Bool = false
@@ -22,6 +27,8 @@ class MyButton: UIButton {
         
     override init(frame: CGRect) {
         super.init(frame: frame)
+
+
     }
     
     required init?(coder: NSCoder) {

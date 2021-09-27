@@ -86,6 +86,7 @@ class MainViewController: UIViewController {
         pictureButtonActionConfigure()
         appLabel.text = Constants.appName
         appLabel.font = Constants.ubuntu
+        appLabel.textColor = .white
         startButton.imageInclude(image: "play")
         downButton.setImageToButton(image: "down")
         upButton.setImageToButton(image: "up")
@@ -176,14 +177,14 @@ class MainViewController: UIViewController {
         beatButton.snp.makeConstraints { make in
             make.height.equalTo(109)
             make.width.equalTo(109)
-            make.leading.equalTo(startButton.snp.leading)
-            make.bottom.equalTo(startButton.snp.top).offset(-33)
+            make.trailing.greaterThanOrEqualTo(view.snp.centerX).offset(-10)
+            make.bottom.greaterThanOrEqualTo(startButton.snp.top).offset(-33)
         }
         view.addSubview(pictureButton)
         pictureButton.snp.makeConstraints { make in
             make.height.equalTo(109)
             make.width.equalTo(109)
-            make.leading.equalTo(beatButton.snp.trailing).offset(30)
+            make.trailing.equalTo(startButton.snp.trailing)
             make.bottom.equalTo(startButton.snp.top).offset(-31)
         }
         view.addSubview(appLabel)
@@ -205,17 +206,17 @@ class MainViewController: UIViewController {
         upButton.snp.makeConstraints { make in
             make.width.equalTo(43)
             make.height.equalTo(43)
-            make.bottom.equalTo(speedSlider.snp.bottom)
-            make.leading.equalTo(view.snp.leading).offset(10)
-            make.trailing.equalTo(speedSlider.snp.leading).offset(-10)
+            make.bottom.equalTo(speedSlider.snp.bottom).offset(15)
+            make.leading.equalTo(speedSlider.snp.trailing).offset(10)
+            make.trailing.equalTo(view.snp.trailing).offset(-10)
         }
         view.addSubview(downButton)
         downButton.snp.makeConstraints { make in
             make.width.equalTo(43)
             make.height.equalTo(43)
-            make.bottom.equalTo(speedSlider.snp.bottom)
-            make.leading.equalTo(speedSlider.snp.trailing).offset(10)
-            make.trailing.equalTo(view.snp.trailing).offset(-10)
+            make.bottom.equalTo(speedSlider.snp.bottom).offset(15)
+            make.leading.equalTo(view.snp.leading).offset(10)
+            make.trailing.equalTo(speedSlider.snp.leading).offset(-10)
         }
         self.view.addSubview(pageControl)
         pageControl.snp.makeConstraints { make in
@@ -226,7 +227,6 @@ class MainViewController: UIViewController {
         }
         pageControl.numberOfPages = beatCount
         pageControl.currentPage = currentPage
-        
         self.view.addSubview(changeSoundButton)
         changeSoundButton.snp.makeConstraints { make in
                 make.width.equalTo(30)

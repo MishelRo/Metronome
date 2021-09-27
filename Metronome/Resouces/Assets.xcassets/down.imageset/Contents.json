@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "down.png",
+      "filename" : "downButton.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
