@@ -57,7 +57,7 @@ class MainViewController: UIViewController {
     
     //MARK:- UIElements configure
     
-    func uIElementConfigure() {
+    private func uIElementConfigure() {
         model.audioPlayer = SoundPlayer(model: .standart)
         pageControl = UIPageControl()
         equalizerView = Equalizer(count: 4)
@@ -71,6 +71,10 @@ class MainViewController: UIViewController {
         changeSoundButton = MyButton()
         label = UILabel()
         appLabel = UILabel()
+        elementSettings()
+    }
+    
+    private func elementSettings() {
         model.delegate = self
         label.font = Constants.robotoFont
         label.text = "\(Constants.standartVal)"
@@ -101,31 +105,119 @@ class MainViewController: UIViewController {
         changeSoundButton.addTarget(self, action: #selector(changeSoundButtonPress), for: .touchUpInside)
     }
     
+    private func layout() {
+        view.addSubview(appLabel)
+        appLabel.snp.makeConstraints { make in
+            make.width.greaterThanOrEqualTo(125)
+            make.height.greaterThanOrEqualTo(26)
+            make.top.equalTo(view.snp.top).offset(100)
+            make.leading.equalTo(view.snp.leading).offset(20)
+        }
+        view.addSubview(settingsButton)
+        settingsButton.snp.makeConstraints { make in
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+            make.top.equalTo(view.snp.top).offset(100)
+            make.trailing.equalTo(view.snp.trailing).offset(-20)
+        }
+        
+        self.view.addSubview(pageControl)
+        pageControl.snp.makeConstraints { make in
+            make.top.equalTo(appLabel.snp.bottom).offset(120)
+            make.width.equalTo(200)
+            make.height.equalTo(40)
+            make.centerX.equalTo(view.snp.centerX)
+            make.top.lessThanOrEqualTo(appLabel.snp.top).offset(20)
+        }
+        self.view.addSubview(equalizerView)
+        equalizerView.snp.makeConstraints { make in
+            make.width.greaterThanOrEqualTo(240)
+            make.height.equalTo(50)
+            make.centerX.equalTo(view.snp.centerX)
+            make.top.equalTo(pageControl.snp.bottom).offset(10)
+        }
+        view.addSubview(beatButton)
+        beatButton.snp.makeConstraints { make in
+            make.height.equalTo(109)
+            make.width.equalTo(109)
+            make.trailing.greaterThanOrEqualTo(view.snp.centerX).offset(-10)
+            make.top.greaterThanOrEqualTo(equalizerView.snp.bottom).offset(20)
+        }
+        view.addSubview(pictureButton)
+        pictureButton.snp.makeConstraints { make in
+            make.height.equalTo(109)
+            make.width.equalTo(109)
+            make.leading.greaterThanOrEqualTo(view.snp.centerX).offset(15)
+            make.top.greaterThanOrEqualTo(equalizerView.snp.bottom).offset(20)
+        }
+        
+        view.addSubview(startButton)
+        startButton.snp.makeConstraints { make in
+            make.height.equalTo(228)
+            make.width.equalTo(228)
+            make.centerX.equalTo(view.snp.centerX)
+            make.top.equalTo(pictureButton.snp.bottom).offset(40)
+            make.top.equalTo(beatButton.snp.bottom).offset(40)
+        }
+        
+        view.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.top.lessThanOrEqualTo(startButton.snp.bottom).offset(20)
+            make.height.equalTo(52)
+            make.width.equalTo(110)
+            make.centerX.equalTo(view.snp.centerX)
+        }
+        
+        view.addSubview(speedSlider)
+        speedSlider.snp.makeConstraints { make in
+            make.bottom.greaterThanOrEqualTo(view.snp.bottom).offset(-100)
+            make.top.greaterThanOrEqualTo(label.snp.bottom).offset(35)
+            make.leading.greaterThanOrEqualTo(view.snp.leading).offset(+32)
+            make.trailing.lessThanOrEqualTo(view.snp.trailing).offset(-32)
+            make.height.equalTo(10)
+        }
+        
+        view.addSubview(upButton)
+        upButton.snp.makeConstraints { make in
+            make.width.equalTo(43)
+            make.height.equalTo(43)
+            make.bottom.equalTo(speedSlider.snp.bottom).offset(15)
+            make.leading.equalTo(speedSlider.snp.trailing).offset(10)
+            make.trailing.equalTo(view.snp.trailing).offset(-10)
+        }
+        
+        view.addSubview(downButton)
+        downButton.snp.makeConstraints { make in
+            make.width.equalTo(43)
+            make.height.equalTo(43)
+            make.bottom.equalTo(speedSlider.snp.bottom).offset(15)
+            make.leading.equalTo(view.snp.leading).offset(10)
+            make.trailing.equalTo(speedSlider.snp.leading).offset(-10)
+        }
+        
+        pageControl.numberOfPages = beatCount
+        pageControl.currentPage = currentPage
+        
+        self.view.addSubview(changeSoundButton)
+        changeSoundButton.snp.makeConstraints { make in
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+            make.top.equalTo(view.snp.top).offset(100)
+            make.trailing.equalTo(settingsButton.snp.trailing).offset(-50)
+        }
+        
+    }
+    
+    //MARK:- UIElements Actions
+    
     @objc func changeSoundButtonPress() {
-//        model.audioPlayer = SoundPlayer(model: .digital)
         UIAlertController.getAlert(type: .soundChange) { alert in
             self.present(alert, animated: true, completion: nil)
         } complessionOk: { [self] value in
             beatCount = 1
-            switch value {
-            case "standart":
-                model.audioPlayer = SoundPlayer(model: .standart)
-            case "light":
-                model.audioPlayer = SoundPlayer(model: .light)
-            case "custom":
-                model.audioPlayer = SoundPlayer(model: .custom)
-            case "other":
-                model.audioPlayer = SoundPlayer(model: .other)
-            case "digital":
-                model.audioPlayer = SoundPlayer(model: .digital)
-            case "triplet":
-                model.audioPlayer = SoundPlayer(model: .triplet)
-            case "subDevision":
-                model.audioPlayer = SoundPlayer(model: .subDevision)
-            default: break
-            }
+            let sound = model.bit(value: value)
+           model.audioPlayer = sound
         }
-
     }
     
     @objc func downButtonPreess() {
@@ -150,100 +242,6 @@ class MainViewController: UIViewController {
         stopStartTick()
         startTick()
     }
-    
-    private func layout() {
-        view.addSubview(speedSlider)
-        speedSlider.snp.makeConstraints { make in
-            make.bottom.greaterThanOrEqualTo(view.snp.bottom).multipliedBy(0.9)
-            make.leading.greaterThanOrEqualTo(view.snp.leading).offset(+32)
-            make.trailing.lessThanOrEqualTo(view.snp.trailing).offset(-32)
-            make.height.equalTo(10)
-        }
-        view.addSubview(label)
-        label.snp.makeConstraints { make in
-            make.bottom.equalTo(speedSlider.snp.top).offset(-30)
-            make.height.equalTo(52)
-            make.width.equalTo(110)
-            make.centerX.equalTo(view.snp.centerX)
-        }
-        view.addSubview(startButton)
-        startButton.snp.makeConstraints { make in
-            make.height.equalTo(228)
-            make.width.equalTo(228)
-            make.centerX.equalTo(view.snp.centerX)
-            make.bottom.equalTo(label.snp.top).offset(-17)
-        }
-        view.addSubview(beatButton)
-        beatButton.snp.makeConstraints { make in
-            make.height.equalTo(109)
-            make.width.equalTo(109)
-            make.trailing.greaterThanOrEqualTo(view.snp.centerX).offset(-10)
-            make.bottom.greaterThanOrEqualTo(startButton.snp.top).offset(-33)
-        }
-        view.addSubview(pictureButton)
-        pictureButton.snp.makeConstraints { make in
-            make.height.equalTo(109)
-            make.width.equalTo(109)
-            make.trailing.equalTo(startButton.snp.trailing)
-            make.bottom.equalTo(startButton.snp.top).offset(-31)
-        }
-        view.addSubview(appLabel)
-        appLabel.snp.makeConstraints { make in
-            make.width.greaterThanOrEqualTo(125)
-            make.height.greaterThanOrEqualTo(26)
-            make.top.equalTo(view.snp.top).offset(100)
-            make.bottom.lessThanOrEqualTo(beatButton.snp.top).offset(-5)
-            make.leading.equalTo(view.snp.leading).offset(20)
-        }
-        view.addSubview(settingsButton)
-        settingsButton.snp.makeConstraints { make in
-            make.width.equalTo(30)
-            make.height.equalTo(30)
-            make.top.equalTo(view.snp.top).offset(100)
-            make.trailing.equalTo(view.snp.trailing).offset(-20)
-        }
-        view.addSubview(upButton)
-        upButton.snp.makeConstraints { make in
-            make.width.equalTo(43)
-            make.height.equalTo(43)
-            make.bottom.equalTo(speedSlider.snp.bottom).offset(15)
-            make.leading.equalTo(speedSlider.snp.trailing).offset(10)
-            make.trailing.equalTo(view.snp.trailing).offset(-10)
-        }
-        view.addSubview(downButton)
-        downButton.snp.makeConstraints { make in
-            make.width.equalTo(43)
-            make.height.equalTo(43)
-            make.bottom.equalTo(speedSlider.snp.bottom).offset(15)
-            make.leading.equalTo(view.snp.leading).offset(10)
-            make.trailing.equalTo(speedSlider.snp.leading).offset(-10)
-        }
-        self.view.addSubview(pageControl)
-        pageControl.snp.makeConstraints { make in
-            make.width.equalTo(200)
-            make.height.equalTo(40)
-            make.centerX.equalTo(view.snp.centerX)
-            make.top.equalTo(appLabel.snp.top).offset(30)
-        }
-        pageControl.numberOfPages = beatCount
-        pageControl.currentPage = currentPage
-        self.view.addSubview(changeSoundButton)
-        changeSoundButton.snp.makeConstraints { make in
-                make.width.equalTo(30)
-                make.height.equalTo(30)
-                make.top.equalTo(view.snp.top).offset(100)
-                make.trailing.equalTo(settingsButton.snp.trailing).offset(-50)
-        }
-        self.view.addSubview(equalizerView)
-        equalizerView.snp.makeConstraints { make in
-            make.width.greaterThanOrEqualTo(20)
-            make.height.equalTo(50)
-            make.centerX.equalTo(view.snp.centerX)
-            make.bottom.equalTo(pictureButton.snp.top).offset(-54)
-        }
-    }
-    
-    //MARK:- UIElements Actions
     
     @objc func settingsButtonPress() {
         MainStart.present(view: self, controller: .settingController)
@@ -332,7 +330,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController: TickDelegate {
     
-    func tick(count: Int) {
+     func tick(count: Int) {
         self.countArray.append(count)
         guard self.countArray.count <= self.beatCount - 1 else {
             self.countArray = [Int](); return

@@ -27,8 +27,6 @@ class MyButton: UIButton {
         
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-
     }
     
     required init?(coder: NSCoder) {
@@ -63,20 +61,15 @@ class MyButton: UIButton {
         addSubview(view)
         view.backgroundColor = Constants.MainBackgroundColor
         view.snp.makeConstraints { make in
-            make.width.greaterThanOrEqualTo(114)
-            make.height.greaterThanOrEqualTo(114)
             make.bottom.equalTo(self.snp.bottom).offset(-10)
             make.leading.equalTo(self.snp.leading).offset(10)
             make.trailing.equalTo(self.snp.trailing).offset(-10)
             make.top.equalTo(self.snp.top).offset(10)
-            translatesAutoresizingMaskIntoConstraints = false
         }
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(tabOnImage))
         view.addGestureRecognizer(recognizer)
         view.addSubview(image)
         image.snp.makeConstraints { make in
-            make.width.equalTo(120)
-            make.height.equalTo(100)
             make.centerY.equalTo(view.snp.centerY)
             make.centerX.equalTo(view.snp.centerX)
         }
@@ -86,7 +79,7 @@ class MyButton: UIButton {
         backgroundColor = Constants.littleButtonBackground
     }
     
-    @objc func tabOnImage(){
+    @objc func tabOnImage() {
         stopBackground()
         play = !play
         if play{
@@ -115,8 +108,8 @@ class MyButton: UIButton {
         view.backgroundColor = #colorLiteral(red: 0.2156666517, green: 0.2156973481, blue: 0.2156561911, alpha: 1)
         view.addSubview(image)
         image.snp.makeConstraints { make in
-            make.width.equalTo(55)
-            make.height.equalTo(40)
+            make.width.lessThanOrEqualTo(55)
+            make.height.lessThanOrEqualTo(40)
             make.centerY.equalTo(snp.centerY)
             make.centerX.equalTo(snp.centerX)
             translatesAutoresizingMaskIntoConstraints = false

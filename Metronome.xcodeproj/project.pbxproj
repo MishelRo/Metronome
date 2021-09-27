@@ -156,6 +156,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE0C51D727023052007831E4 /* StackViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE8073F82700FA2B0070018C /* StackViewCel.xib */,
+				CE8073F72700FA2B0070018C /* StackViewCel.swift */,
+			);
+			path = StackViewCell;
+			sourceTree = "<group>";
+		};
 		CE23952426FCFF9A009983CD /* Roboto */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,8 +346,7 @@
 		CE8073F42700F7C20070018C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				CE8073F72700FA2B0070018C /* StackViewCel.swift */,
-				CE8073F82700FA2B0070018C /* StackViewCel.xib */,
+				CE0C51D727023052007831E4 /* StackViewCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
