@@ -107,6 +107,7 @@ class MainViewController: UIViewController {
         downButton.addTarget(self, action: #selector(downButtonPreess), for: .touchUpInside)
         upButton.addTarget(self, action: #selector(upButtonPreess), for: .touchUpInside)
         changeSoundButton.addTarget(self, action: #selector(changeSoundButtonPress), for: .touchUpInside)
+        alertPict.setupImageToButton(firstImage: "OneNota", SecondImage: "twoNota", thirstImage: "nota3")
     }
     
     private func layout() {
@@ -220,7 +221,7 @@ class MainViewController: UIViewController {
         } complessionOk: { [self] value in
             beatCount = 1
             let sound = model.bit(value: value)
-           model.audioPlayer = sound
+            model.audioPlayer = sound
         }
     }
     
@@ -265,85 +266,113 @@ class MainViewController: UIViewController {
     private func beatButtonActionConfigure() {
         countArray = [Int]()
         beatButton.executeBeatsButton {
-            UIAlertController.getAlert(type: .beats) { alert in
-                self.view.addSubview(self.alertBeat)
-                self.alertBeat.isHidden = false
-                self.alertBeat.snp.makeConstraints { make in
-                    make.width.equalTo(self.view.snp.width)
-                    make.height.equalTo(self.view.snp.height).offset(-480)
-                    make.bottom.equalTo(self.view.snp.bottom)
-                }
-                
-                self.present(alert, animated: true, completion: nil)
-            } complessionOk: { beat in
-                self.alertBeat.isHidden = true
-                guard self.start else {return}
-                switch beat {
-                case "2":
-                    self.beatCount = 2
-                    self.changeBeat(count: self.beatCount)
-                case "3":
-                    self.beatCount = 3
-                    self.changeBeat(count: self.beatCount)
-                case "4":
-                    self.beatCount = 4
-                    self.changeBeat(count:  self.beatCount)
-                default: break
-                }
-                
+            self.view.addSubview(self.alertBeat)
+            self.alertBeat.isHidden = false
+            self.alertBeat.snp.makeConstraints { make in
+                make.width.equalTo(self.view.snp.width)
+                make.height.equalTo(self.view.frame.height / 3)
+                make.bottom.equalTo(self.view.snp.bottom)
             }
         }
     }
     
     private func pictureButtonActionConfigure() {
-        pictureButton.executePictureButton {
-            UIAlertController.getAlert(type: .picture) { alert in
-                self.view.addSubview(self.alertPict)
-                self.alertPict.isHidden = false
-                self.alertPict.snp.makeConstraints { make in
-                    make.width.equalTo(self.view.snp.width)
-                    make.height.equalTo(self.view.snp.height).offset(-480)
-                    make.bottom.equalTo(self.view.snp.bottom)
-                }
-                self.present(alert, animated: true, completion: nil)
-            } complessionOk: { note in
-                self.alertPict.isHidden = true
-                guard self.start else {return}
-                switch note {
-                case "pict1":
-                    self.stopJumpTimer()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
-                        self.model.animate(bpm: self.value)
-                        self.jumptimer = self.model.timerReturn(timeInterval: Constants.timeInterval,
-                                                                bpm: Double(self.value))
-                    }
-                case "pict2":
-                    self.stopJumpTimer()
-                    self.stopJumpTimer()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
-                        self.model.animate(bpm: self.value)
-                        self.jumptimer = self.model.timerReturn(timeInterval: Constants.timeInterval,
-                                                                bpm: Double(self.value))
-                    }
-                case "pict3":
-                    self.stopJumpTimer()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.7){
-                        self.model.animate(bpm: self.value)
-                        self.jumptimer = self.model.timerReturn(timeInterval: Constants.timeInterval,
-                                                                bpm: Double(self.value))
-                    }
-                default:
-                    break
-                }
+        self.pictureButton.executeBeatsButton {
+            self.view.addSubview(self.alertPict)
+            self.alertPict.isHidden = false
+            self.alertPict.snp.makeConstraints { make in
+                make.width.equalTo(self.view.snp.width)
+                make.height.equalTo(self.view.frame.height / 3)
+                make.bottom.equalTo(self.view.snp.bottom)
             }
         }
     }
+    //MARK:- AllertConfigure
+    
+    private func alertPictConfigure() {
+        alertPict.complessionFirst = pictOne
+        alertPict.complessionSecond = pictTwo
+        alertPict.complessionThird = pictThree
+        alertPict.pictConfigure()
+        
+    }
+    
+    private func pictOne() {
+        self.alertPict.isHidden = true
+        guard self.start else {return}
+        self.beatCount = 2
+        self.changeBeat(count: self.beatCount)
+        self.alertBeat.isHidden = true
+        self.stopJumpTimer()
+        self.stopJumpTimer()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
+            self.model.animate(bpm: self.value)
+            self.jumptimer = self.model.timerReturn(timeInterval: Constants.timeInterval,
+                                                    bpm: Double(self.value))
+        }
+    }
+    private func pictTwo() {
+        self.alertPict.isHidden = true
+        guard self.start else {return}
+        self.beatCount = 3
+        self.changeBeat(count: self.beatCount)
+        self.alertBeat.isHidden = true
+        self.stopJumpTimer()
+        self.stopJumpTimer()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
+            self.model.animate(bpm: self.value)
+            self.jumptimer = self.model.timerReturn(timeInterval: Constants.timeInterval,
+                                                    bpm: Double(self.value))
+        }
+    }
+    private func pictThree() {
+        self.alertPict.isHidden = true
+        guard self.start else {return}
+        self.beatCount = 4
+        self.changeBeat(count: self.beatCount)
+        self.alertBeat.isHidden = true
+        self.stopJumpTimer()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.7){
+            self.model.animate(bpm: self.value)
+            self.jumptimer = self.model.timerReturn(timeInterval: Constants.timeInterval,
+                                                    bpm: Double(self.value))
+        }
+    }
+    
+    private func alertConfigure() {
+        alertBeat.complessionFirst = beatOne
+        alertBeat.complessionSecond = beatTwo
+        alertBeat.complessionThird = beatThree
+        alertBeat.beatConfigure()
+        
+    }
+    
+    private func beatOne() {
+        self.beatCount = 2
+        self.changeBeat(count: self.beatCount)
+        self.alertBeat.isHidden = true
+    }
+    private func beatTwo() {
+        self.beatCount = 3
+        self.changeBeat(count: self.beatCount)
+        self.alertBeat.isHidden = true
+    }
+    private func beatThree() {
+        self.beatCount = 4
+        self.changeBeat(count: self.beatCount)
+        self.alertBeat.isHidden = true
+    }
+    
+    
+    
+    
     //MARK:-  View
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Constants.MainBackgroundColor
         uIElementConfigure()
-        
+        alertConfigure()
+        alertPictConfigure()
     }
     
 }
@@ -351,7 +380,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController: TickDelegate {
     
-     func tick(count: Int) {
+    func tick(count: Int) {
         self.countArray.append(count)
         guard self.countArray.count <= self.beatCount - 1 else {
             self.countArray = [Int](); return

@@ -24,7 +24,7 @@ extension SoundScheme {
             let scheme = mp4aSounSchemeConfigure(hightSound: "Low", lowSound: "Hight")
             return scheme!
         case .light:
-            let scheme = wavSounSchemeConfigure(hightSound: "cowbellaccent", lowSound: "Beat")
+            let scheme = wavSounSchemeConfigure(hightSound: "Triplet", lowSound: "Beat")
             return scheme!
         case .custom:
             let scheme = wavSounSchemeConfigure(hightSound: "cowbell", lowSound: "cowbellaccent")
