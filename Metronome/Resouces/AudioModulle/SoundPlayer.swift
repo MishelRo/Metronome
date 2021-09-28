@@ -66,7 +66,6 @@ extension SoundScheme {
 
 final class SoundPlayer {
     
-//    static var sharedStandartSound = SoundPlayer(model: .triplet)
     var tockNote: AVAudioPlayer?
     var tickNote: AVAudioPlayer?
     private var count = 1

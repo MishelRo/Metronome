@@ -73,8 +73,10 @@ class MainViewController: UIViewController {
         changeSoundButton = MyButton()
         label = UILabel()
         appLabel = UILabel()
-        alertBeat = CustomAlert(labelText: "Размер")
-        alertPict = CustomAlert(labelText: "Рисунок")
+        alertBeat = CustomAlert()
+        alertPict = CustomAlert()
+        alertBeat.configure(labelText: "Размер")
+        alertPict.configurePict(labelText: "Рисунок")
         elementSettings()
     }
     
@@ -293,7 +295,6 @@ class MainViewController: UIViewController {
         alertPict.complessionFirst = pictOne
         alertPict.complessionSecond = pictTwo
         alertPict.complessionThird = pictThree
-        alertPict.pictConfigure()
         
     }
     
@@ -343,7 +344,6 @@ class MainViewController: UIViewController {
         alertBeat.complessionFirst = beatOne
         alertBeat.complessionSecond = beatTwo
         alertBeat.complessionThird = beatThree
-        alertBeat.beatConfigure()
         
     }
     
