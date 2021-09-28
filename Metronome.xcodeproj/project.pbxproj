@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5188FAE32251BE2731FC2AB1 /* Pods_Metronome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC87757CCB16255A87F646 /* Pods_Metronome.framework */; };
+		CE0ED541270274510091F640 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ED540270274510091F640 /* CustomAlert.swift */; };
+		CE0ED545270275830091F640 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ED543270275830091F640 /* CollectionViewCell.swift */; };
+		CE0ED546270275830091F640 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE0ED544270275830091F640 /* CollectionViewCell.xib */; };
 		CE23952126FCD011009983CD /* UiAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23952026FCD011009983CD /* UiAlertController.swift */; };
 		CE23953126FCFFF4009983CD /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE23952526FCFFF4009983CD /* Roboto-Light.ttf */; };
 		CE23953226FCFFF4009983CD /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE23952626FCFFF4009983CD /* Roboto-Black.ttf */; };
@@ -72,6 +75,9 @@
 /* Begin PBXFileReference section */
 		00BC87757CCB16255A87F646 /* Pods_Metronome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metronome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DC1163AD90AA7BD2F6F060D /* Pods-Metronome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.release.xcconfig"; path = "Target Support Files/Pods-Metronome/Pods-Metronome.release.xcconfig"; sourceTree = "<group>"; };
+		CE0ED540270274510091F640 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		CE0ED543270275830091F640 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		CE0ED544270275830091F640 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		CE23952026FCD011009983CD /* UiAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiAlertController.swift; sourceTree = "<group>"; };
 		CE23952526FCFFF4009983CD /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		CE23952626FCFFF4009983CD /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
@@ -163,6 +169,24 @@
 				CE8073F72700FA2B0070018C /* StackViewCel.swift */,
 			);
 			path = StackViewCell;
+			sourceTree = "<group>";
+		};
+		CE0ED53F270274150091F640 /* CustomAlert */ = {
+			isa = PBXGroup;
+			children = (
+				CE0ED5422702756E0091F640 /* Cell */,
+				CE0ED540270274510091F640 /* CustomAlert.swift */,
+			);
+			path = CustomAlert;
+			sourceTree = "<group>";
+		};
+		CE0ED5422702756E0091F640 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CE0ED543270275830091F640 /* CollectionViewCell.swift */,
+				CE0ED544270275830091F640 /* CollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		CE23952426FCFF9A009983CD /* Roboto */ = {
@@ -297,6 +321,7 @@
 		CE78829726FB4EAF007EBA95 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
+				CE0ED53F270274150091F640 /* CustomAlert */,
 				CE8073EB2700F7AD0070018C /* NibLoaded */,
 				CE23956726FFAD4F009983CD /* Model */,
 				CE23956026FDE851009983CD /* UiElements */,
@@ -444,6 +469,7 @@
 				CE78829026FB4E07007EBA95 /* LaunchScreen.storyboard in Resources */,
 				CE23957726FFB0E7009983CD /* Triplet.wav in Resources */,
 				CE8073FA2700FA2B0070018C /* StackViewCel.xib in Resources */,
+				CE0ED546270275830091F640 /* CollectionViewCell.xib in Resources */,
 				CE23957926FFB0E7009983CD /* digital-Division.wav in Resources */,
 				CE23953926FCFFF4009983CD /* Roboto-LightItalic.ttf in Resources */,
 				CE23954B26FD000B009983CD /* Ubuntu-B.ttf in Resources */,
@@ -529,7 +555,9 @@
 			files = (
 				CE23956226FE03E9009983CD /* SoundPlayer.swift in Sources */,
 				CE78828B26FB4E04007EBA95 /* Metronome.xcdatamodeld in Sources */,
+				CE0ED545270275830091F640 /* CollectionViewCell.swift in Sources */,
 				CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */,
+				CE0ED541270274510091F640 /* CustomAlert.swift in Sources */,
 				CE8073F02700F7AD0070018C /* NSObject+Load.swift in Sources */,
 				CE78829926FB4EBC007EBA95 /* MainStart.swift in Sources */,
 				CE78828126FB4E04007EBA95 /* AppDelegate.swift in Sources */,

@@ -26,6 +26,8 @@ class MainViewController: UIViewController {
     var countArray = [Int]()
     var changeSoundButton: MyButton!
     var equalizerView: Equalizer!
+    var alertBeat: CustomAlert!
+    var alertPict: CustomAlert!
     
     //MARK:- Class Propeties
     
@@ -71,6 +73,8 @@ class MainViewController: UIViewController {
         changeSoundButton = MyButton()
         label = UILabel()
         appLabel = UILabel()
+        alertBeat = CustomAlert(labelText: "Размер")
+        alertPict = CustomAlert(labelText: "Рисунок")
         elementSettings()
     }
     
@@ -262,8 +266,17 @@ class MainViewController: UIViewController {
         countArray = [Int]()
         beatButton.executeBeatsButton {
             UIAlertController.getAlert(type: .beats) { alert in
+                self.view.addSubview(self.alertBeat)
+                self.alertBeat.isHidden = false
+                self.alertBeat.snp.makeConstraints { make in
+                    make.width.equalTo(self.view.snp.width)
+                    make.height.equalTo(self.view.snp.height).offset(-480)
+                    make.bottom.equalTo(self.view.snp.bottom)
+                }
+                
                 self.present(alert, animated: true, completion: nil)
             } complessionOk: { beat in
+                self.alertBeat.isHidden = true
                 guard self.start else {return}
                 switch beat {
                 case "2":
@@ -285,8 +298,16 @@ class MainViewController: UIViewController {
     private func pictureButtonActionConfigure() {
         pictureButton.executePictureButton {
             UIAlertController.getAlert(type: .picture) { alert in
+                self.view.addSubview(self.alertPict)
+                self.alertPict.isHidden = false
+                self.alertPict.snp.makeConstraints { make in
+                    make.width.equalTo(self.view.snp.width)
+                    make.height.equalTo(self.view.snp.height).offset(-480)
+                    make.bottom.equalTo(self.view.snp.bottom)
+                }
                 self.present(alert, animated: true, completion: nil)
             } complessionOk: { note in
+                self.alertPict.isHidden = true
                 guard self.start else {return}
                 switch note {
                 case "pict1":
