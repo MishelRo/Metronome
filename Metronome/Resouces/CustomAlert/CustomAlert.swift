@@ -53,13 +53,12 @@ class CustomAlert: UIView {
         
         addSubview(lineView)
         lineView.snp.makeConstraints { make in
-            lineView.backgroundColor = #colorLiteral(red: 0.4548649788, green: 0.4549226761, blue: 0.4548452497, alpha: 1)
+            lineView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             make.top.equalTo(label.snp.bottom).offset(1)
             make.height.equalTo(1)
             make.width.equalTo(label.snp.width)
         }
         addSubview(pickViewContentView)
-        pickViewContentView.backgroundColor = #colorLiteral(red: 0.4363265336, green: 0.4308672249, blue: 0.4484602213, alpha: 1)
         pickViewContentView.layer.cornerRadius = 10
         pickViewContentView.snp.makeConstraints { make in
             make.width.equalTo(snp.width).offset(-20)
@@ -108,7 +107,7 @@ class CustomAlert: UIView {
         
         addSubview(lineView)
         lineView.snp.makeConstraints { make in
-            lineView.backgroundColor = #colorLiteral(red: 0.4548649788, green: 0.4549226761, blue: 0.4548452497, alpha: 1)
+            lineView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             make.top.equalTo(label.snp.bottom).offset(1)
             make.height.equalTo(1)
             make.width.equalTo(label.snp.width)
@@ -151,10 +150,10 @@ class CustomAlert: UIView {
         complessionThird()
     }
     
-    func setupImageToButton(firstImage: String, SecondImage: String, thirstImage: String) {
-        firstButton.setImage(UIImage(named: firstImage), for: .normal)
-        secondButton.setImage(UIImage(named: SecondImage), for: .normal)
-        thirdButton.setImage(UIImage(named: thirstImage), for: .normal)
+    func setupImageToButton(firstImage: UIImage, SecondImage: UIImage, thirstImage: UIImage) {
+        firstButton.setImage(firstImage, for: .normal)
+        secondButton.setImage(SecondImage, for: .normal)
+        thirdButton.setImage(thirstImage, for: .normal)
     }
     
     init() {

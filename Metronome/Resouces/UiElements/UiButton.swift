@@ -43,16 +43,16 @@ class MyButton: UIButton {
         timer = nil
     }
     
-    func setImageToButton(image: String){
-        self.setImage(UIImage(named: image), for: .normal)
+    func setImageToButton(image: UIImage){
+        self.setImage(image, for: .normal)
     }
     
     func setName(title: String) {
         setTitle(title, for: .normal)
     }
     
-    func imageInclude(image str: String) {
-        image.image = UIImage(named: "\(str)")
+    func imageInclude(images: UIImage) {
+        image.image = images
         image.contentMode = .center
     }
     
@@ -84,11 +84,11 @@ class MyButton: UIButton {
         play = !play
         if play{
             complessionStop()
-            imageInclude(image: "pause")
+            imageInclude(images: name.path(.pause)())
             changeBgrnd(frequency: Float(frequency))
         } else {
             complessionStart()
-            imageInclude(image: "play")
+            imageInclude(images: name.path(.play)())
             timer?.invalidate()
             timer = nil
         }
@@ -102,7 +102,7 @@ class MyButton: UIButton {
     }
     
     
-    func litleButtonConfigurate(imageStr: String) {
+    func litleButtonConfigurate(imageStr: UIImage) {
         let view = UIView()
         addSubview(view)
         view.backgroundColor = #colorLiteral(red: 0.2156666517, green: 0.2156973481, blue: 0.2156561911, alpha: 1)
@@ -123,7 +123,7 @@ class MyButton: UIButton {
             make.top.equalTo(self.snp.top).offset(7.5)
             translatesAutoresizingMaskIntoConstraints = false
         }
-        image.image = UIImage(named: imageStr)
+        image.image = imageStr
         view.layer.cornerRadius = 45
         backgroundColor = Constants.littleButtonBackground
         layer.cornerRadius = 54.5

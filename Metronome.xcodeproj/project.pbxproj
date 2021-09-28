@@ -11,6 +11,8 @@
 		CE0ED541270274510091F640 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ED540270274510091F640 /* CustomAlert.swift */; };
 		CE0ED545270275830091F640 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ED543270275830091F640 /* CollectionViewCell.swift */; };
 		CE0ED546270275830091F640 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE0ED544270275830091F640 /* CollectionViewCell.xib */; };
+		CE0ED548270391C60091F640 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ED547270391C60091F640 /* MyTextField.swift */; };
+		CE0ED54A270396A20091F640 /* UiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ED549270396A20091F640 /* UiTextField.swift */; };
 		CE23952126FCD011009983CD /* UiAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23952026FCD011009983CD /* UiAlertController.swift */; };
 		CE23953126FCFFF4009983CD /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE23952526FCFFF4009983CD /* Roboto-Light.ttf */; };
 		CE23953226FCFFF4009983CD /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE23952626FCFFF4009983CD /* Roboto-Black.ttf */; };
@@ -68,6 +70,9 @@
 		CE8073F32700F7AD0070018C /* UiViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8073EF2700F7AD0070018C /* UiViewExtension.swift */; };
 		CE8073F92700FA2B0070018C /* StackViewCel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8073F72700FA2B0070018C /* StackViewCel.swift */; };
 		CE8073FA2700FA2B0070018C /* StackViewCel.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8073F82700FA2B0070018C /* StackViewCel.xib */; };
+		CEAE048D27039AEE00D93EE9 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE048C27039AEE00D93EE9 /* UIViewController.swift */; };
+		CEAE048F27039B1F00D93EE9 /* UIResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE048E27039B1F00D93EE9 /* UIResponder.swift */; };
+		CEAE049127039F8B00D93EE9 /* ImageNameReturner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE049027039F8B00D93EE9 /* ImageNameReturner.swift */; };
 		CEE40E1826FC84A500102AA6 /* UiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E1726FC84A500102AA6 /* UiButton.swift */; };
 		CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +83,8 @@
 		CE0ED540270274510091F640 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		CE0ED543270275830091F640 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		CE0ED544270275830091F640 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		CE0ED547270391C60091F640 /* MyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
+		CE0ED549270396A20091F640 /* UiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiTextField.swift; sourceTree = "<group>"; };
 		CE23952026FCD011009983CD /* UiAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiAlertController.swift; sourceTree = "<group>"; };
 		CE23952526FCFFF4009983CD /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		CE23952626FCFFF4009983CD /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
@@ -137,6 +144,9 @@
 		CE8073EF2700F7AD0070018C /* UiViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UiViewExtension.swift; sourceTree = "<group>"; };
 		CE8073F72700FA2B0070018C /* StackViewCel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewCel.swift; sourceTree = "<group>"; };
 		CE8073F82700FA2B0070018C /* StackViewCel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StackViewCel.xib; sourceTree = "<group>"; };
+		CEAE048C27039AEE00D93EE9 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		CEAE048E27039B1F00D93EE9 /* UIResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResponder.swift; sourceTree = "<group>"; };
+		CEAE049027039F8B00D93EE9 /* ImageNameReturner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNameReturner.swift; sourceTree = "<group>"; };
 		CEE40E1726FC84A500102AA6 /* UiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiButton.swift; sourceTree = "<group>"; };
 		CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiSlider.swift; sourceTree = "<group>"; };
 		EEF382B7028422D11BC25F14 /* Pods-Metronome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.debug.xcconfig"; path = "Target Support Files/Pods-Metronome/Pods-Metronome.debug.xcconfig"; sourceTree = "<group>"; };
@@ -277,6 +287,7 @@
 				CE8073E62700E98C0070018C /* Visual */,
 				CEE40E1726FC84A500102AA6 /* UiButton.swift */,
 				CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */,
+				CE0ED547270391C60091F640 /* MyTextField.swift */,
 			);
 			path = UiElements;
 			sourceTree = "<group>";
@@ -335,6 +346,7 @@
 				CE23955026FD2FE6009983CD /* Constants.swift */,
 				CE78828026FB4E04007EBA95 /* AppDelegate.swift */,
 				CE78828226FB4E04007EBA95 /* SceneDelegate.swift */,
+				CEAE049027039F8B00D93EE9 /* ImageNameReturner.swift */,
 			);
 			path = Resouces;
 			sourceTree = "<group>";
@@ -382,6 +394,9 @@
 				CE23956526FF15E7009983CD /* UIView.swift */,
 				CE23952026FCD011009983CD /* UiAlertController.swift */,
 				CE23956326FE062C009983CD /* Double.swift */,
+				CE0ED549270396A20091F640 /* UiTextField.swift */,
+				CEAE048C27039AEE00D93EE9 /* UIViewController.swift */,
+				CEAE048E27039B1F00D93EE9 /* UIResponder.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -555,7 +570,9 @@
 			files = (
 				CE23956226FE03E9009983CD /* SoundPlayer.swift in Sources */,
 				CE78828B26FB4E04007EBA95 /* Metronome.xcdatamodeld in Sources */,
+				CEAE048D27039AEE00D93EE9 /* UIViewController.swift in Sources */,
 				CE0ED545270275830091F640 /* CollectionViewCell.swift in Sources */,
+				CEAE048F27039B1F00D93EE9 /* UIResponder.swift in Sources */,
 				CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */,
 				CE0ED541270274510091F640 /* CustomAlert.swift in Sources */,
 				CE8073F02700F7AD0070018C /* NSObject+Load.swift in Sources */,
@@ -564,13 +581,16 @@
 				CE8073F12700F7AD0070018C /* View.swift in Sources */,
 				CE8073EA2700EE3E0070018C /* Equalizer.swift in Sources */,
 				CE8073F32700F7AD0070018C /* UiViewExtension.swift in Sources */,
+				CEAE049127039F8B00D93EE9 /* ImageNameReturner.swift in Sources */,
 				CE23956926FFAD5D009983CD /* SoundModel.swift in Sources */,
 				CE23952126FCD011009983CD /* UiAlertController.swift in Sources */,
 				CE23956426FE062C009983CD /* Double.swift in Sources */,
 				CE23955126FD2FE6009983CD /* Constants.swift in Sources */,
+				CE0ED548270391C60091F640 /* MyTextField.swift in Sources */,
 				CE8073F92700FA2B0070018C /* StackViewCel.swift in Sources */,
 				CE78828326FB4E04007EBA95 /* SceneDelegate.swift in Sources */,
 				CE23955D26FD377D009983CD /* SettingViewModel.swift in Sources */,
+				CE0ED54A270396A20091F640 /* UiTextField.swift in Sources */,
 				CE23956626FF15E7009983CD /* UIView.swift in Sources */,
 				CE78829D26FB4EE0007EBA95 /* MainViewController.swift in Sources */,
 				CE8073F22700F7AD0070018C /* NibLoadableView.swift in Sources */,

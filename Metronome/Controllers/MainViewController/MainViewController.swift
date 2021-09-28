@@ -15,7 +15,6 @@ class MainViewController: UIViewController {
     
     var pageControl: UIPageControl!
     var speedSlider: MySlider!
-    var label: UILabel!
     var startButton: MyButton!
     var beatButton: MyButton!
     var pictureButton: MyButton!
@@ -28,6 +27,8 @@ class MainViewController: UIViewController {
     var equalizerView: Equalizer!
     var alertBeat: CustomAlert!
     var alertPict: CustomAlert!
+    var valueTextField: UITextField!
+
     
     //MARK:- Class Propeties
     
@@ -71,7 +72,7 @@ class MainViewController: UIViewController {
         pictureButton = MyButton()
         settingsButton = MyButton()
         changeSoundButton = MyButton()
-        label = UILabel()
+        valueTextField = UITextField()
         appLabel = UILabel()
         alertBeat = CustomAlert()
         alertPict = CustomAlert()
@@ -82,10 +83,10 @@ class MainViewController: UIViewController {
     
     private func elementSettings() {
         model.delegate = self
-        label.font = Constants.robotoFont
-        label.text = "\(Constants.standartVal)"
-        label.textColor = .white
-        label.textAlignment = .center
+        valueTextField.font = Constants.robotoFont
+        valueTextField.text = "\(Constants.standartVal)"
+        valueTextField.textColor = .white
+        valueTextField.textAlignment = .center
         layout()
         speedSlider.configure()
         startButton.backgroundColor = .red
@@ -97,20 +98,42 @@ class MainViewController: UIViewController {
         appLabel.text = Constants.appName
         appLabel.font = Constants.ubuntu
         appLabel.textColor = .white
-        startButton.imageInclude(image: "play")
-        downButton.setImageToButton(image: "down")
-        upButton.setImageToButton(image: "up")
-        changeSoundButton.setImageToButton(image: "buttonNota")
-        beatButton.litleButtonConfigurate(imageStr: "24")
-        settingsButton.setImageToButton(image: "Settings")
-        pictureButton.litleButtonConfigurate(imageStr: "Nota")
+        startButton.imageInclude(images: name.path(.play)())
+        
+        downButton.setImageToButton(image: name.path(.down)())
+        upButton.setImageToButton(image: name.path(.up)())
+        changeSoundButton.setImageToButton(image: name.path(.buttonNota)())
+        beatButton.litleButtonConfigurate(imageStr: name.path(.twoFour)())
+        settingsButton.setImageToButton(image: name.path(.setting)())
+        pictureButton.litleButtonConfigurate(imageStr: name.path(.nota)())
         settingsButton.addTarget(self, action: #selector(settingsButtonPress), for: .touchUpInside)
         speedSlider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
         downButton.addTarget(self, action: #selector(downButtonPreess), for: .touchUpInside)
         upButton.addTarget(self, action: #selector(upButtonPreess), for: .touchUpInside)
         changeSoundButton.addTarget(self, action: #selector(changeSoundButtonPress), for: .touchUpInside)
-        alertPict.setupImageToButton(firstImage: "OneNota", SecondImage: "twoNota", thirstImage: "nota3")
+        alertPict.setupImageToButton(firstImage: name.path(.OneNota)(),
+                                     SecondImage: name.path(.twoNota)(),
+                                     thirstImage: name.path(.nota3)())
+        valueTextField.addTarget(self, action: #selector(changeValyebyTab), for: .editingDidEndOnExit)
     }
+    
+    @objc func changeValyebyTab() {
+       let val = valueTextField.getInt()
+        guard val > 19, val < 241 else { valueTextField.text = "130"; return}
+        self.value = val
+        speedSlider.value = Float(val)
+        guard start else {return}
+        
+        value = Int(speedSlider.value)
+        let arrayndValue = Constants.maxVal - value
+        startButton.stopBackground()
+        startButton.changeBgrnd(frequency: Float(arrayndValue/10))
+
+        
+        stopStartTick()
+        startTick()
+    }
+    
     
     private func layout() {
         view.addSubview(appLabel)
@@ -167,8 +190,8 @@ class MainViewController: UIViewController {
             make.top.equalTo(beatButton.snp.bottom).offset(40)
         }
         
-        view.addSubview(label)
-        label.snp.makeConstraints { make in
+        view.addSubview(valueTextField)
+        valueTextField.snp.makeConstraints { make in
             make.top.lessThanOrEqualTo(startButton.snp.bottom).offset(20)
             make.height.equalTo(52)
             make.width.equalTo(110)
@@ -178,7 +201,7 @@ class MainViewController: UIViewController {
         view.addSubview(speedSlider)
         speedSlider.snp.makeConstraints { make in
             make.bottom.greaterThanOrEqualTo(view.snp.bottom).offset(-100)
-            make.top.greaterThanOrEqualTo(label.snp.bottom).offset(35)
+            make.top.greaterThanOrEqualTo(valueTextField.snp.bottom).offset(35)
             make.leading.greaterThanOrEqualTo(view.snp.leading).offset(+32)
             make.trailing.lessThanOrEqualTo(view.snp.trailing).offset(-32)
             make.height.equalTo(10)
@@ -231,7 +254,7 @@ class MainViewController: UIViewController {
         pageControl.currentPage -= 1
         guard value >= 21 else {return}
         value -= 1
-        label.text = "\(value)"
+        valueTextField.text = "\(value)"
         speedSlider.setValue( Float(value), animated: true)
         guard start else {return}
         stopStartTick()
@@ -243,7 +266,7 @@ class MainViewController: UIViewController {
         value += 1
         pageControl.currentPage += 1
         guard value > 0 else {return}
-        label.text = "\(value)"
+        valueTextField.text = "\(value)"
         speedSlider.setValue( Float(value), animated: true)
         guard start else {return}
         stopStartTick()
@@ -259,7 +282,7 @@ class MainViewController: UIViewController {
         let arrayndValue = Constants.maxVal - value
         startButton.stopBackground()
         startButton.changeBgrnd(frequency: Float(arrayndValue/10))
-        label.text = "\(value)"
+        valueTextField.text = "\(value)"
         guard start else {return}
         stopStartTick()
         startTick()
@@ -365,7 +388,6 @@ class MainViewController: UIViewController {
     
     
     
-    
     //MARK:-  View
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -373,6 +395,23 @@ class MainViewController: UIViewController {
         uIElementConfigure()
         alertConfigure()
         alertPictConfigure()
+        valueTextField.keyboardType = .phonePad
+    }
+    
+    //MARK:- KeyBoard Jump Settings
+    
+    override func viewWillAppear(_ animated: Bool) {
+         self.addKeyboardObserver()
+     }
+
+     override func viewWillDisappear(_ animated: Bool) {
+         self.removeKeyboardObserver()
+     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        alertBeat.isHidden = true
+        alertPict.isHidden = true
     }
     
 }
