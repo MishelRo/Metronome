@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     var startButton: MyButton!
     var beatButton: MyButton!
     var pictureButton: MyButton!
-    var appLabel: UILabel!
+    var appLabel: MyLabel!
     var settingsButton: MyButton!
     var upButton: MyButton!
     var downButton: MyButton!
@@ -27,8 +27,10 @@ class MainViewController: UIViewController {
     var equalizerView: Equalizer!
     var alertBeat: CustomAlert!
     var alertPict: CustomAlert!
-    var valueTextField: UITextField!
-
+    var valueTextField: MyTextField!
+    var pictureLabel: MyLabel!
+    var beatLabel: MyLabel!
+    
     
     //MARK:- Class Propeties
     
@@ -72,68 +74,65 @@ class MainViewController: UIViewController {
         pictureButton = MyButton()
         settingsButton = MyButton()
         changeSoundButton = MyButton()
-        valueTextField = UITextField()
-        appLabel = UILabel()
+        valueTextField = MyTextField()
+        appLabel = MyLabel(text: Constants.appName, font: .ubuntu)
         alertBeat = CustomAlert()
         alertPict = CustomAlert()
-        alertBeat.configure(labelText: "Размер")
-        alertPict.configurePict(labelText: "Рисунок")
+        pictureLabel = MyLabel(text: L10n.picture, font: .roboto)
+        beatLabel = MyLabel(text: L10n.size, font: .roboto)
+        alertBeat.configure(labelText: L10n.size)
+        alertPict.configurePict(labelText: L10n.picture)
         elementSettings()
     }
     
     private func elementSettings() {
-        model.delegate = self
-        valueTextField.font = Constants.robotoFont
-        valueTextField.text = "\(Constants.standartVal)"
-        valueTextField.textColor = .white
-        valueTextField.textAlignment = .center
         layout()
+        model.delegate = self
         speedSlider.configure()
-        startButton.backgroundColor = .red
         startButton.configureStartButton()
         startButtonStartConfigure()
         startButtonStopConfigure()
         beatButtonActionConfigure()
         pictureButtonActionConfigure()
-        appLabel.text = Constants.appName
-        appLabel.font = Constants.ubuntu
-        appLabel.textColor = .white
-        startButton.imageInclude(images: name.path(.play)())
         
+        startButton.imageInclude(images: name.path(.play)())
         downButton.setImageToButton(image: name.path(.down)())
         upButton.setImageToButton(image: name.path(.up)())
         changeSoundButton.setImageToButton(image: name.path(.buttonNota)())
         beatButton.litleButtonConfigurate(imageStr: name.path(.twoFour)())
         settingsButton.setImageToButton(image: name.path(.setting)())
         pictureButton.litleButtonConfigurate(imageStr: name.path(.nota)())
-        settingsButton.addTarget(self, action: #selector(settingsButtonPress), for: .touchUpInside)
-        speedSlider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
-        downButton.addTarget(self, action: #selector(downButtonPreess), for: .touchUpInside)
-        upButton.addTarget(self, action: #selector(upButtonPreess), for: .touchUpInside)
-        changeSoundButton.addTarget(self, action: #selector(changeSoundButtonPress), for: .touchUpInside)
+        settingsButton.addTarget(self, action: #selector(settingsButtonPress),
+                                 for: .touchUpInside)
+        speedSlider.addTarget(self, action: #selector(sliderValueDidChange),
+                              for: .valueChanged)
+        downButton.addTarget(self, action: #selector(downButtonPreess),
+                             for: .touchUpInside)
+        upButton.addTarget(self, action: #selector(upButtonPreess),
+                           for: .touchUpInside)
+        changeSoundButton.addTarget(self, action: #selector(changeSoundButtonPress),
+                                    for: .touchUpInside)
+        valueTextField.addTarget(self, action: #selector(changeValueByTab),
+                                 for: .editingDidEndOnExit)
         alertPict.setupImageToButton(firstImage: name.path(.OneNota)(),
                                      SecondImage: name.path(.twoNota)(),
                                      thirstImage: name.path(.nota3)())
-        valueTextField.addTarget(self, action: #selector(changeValyebyTab), for: .editingDidEndOnExit)
     }
     
-    @objc func changeValyebyTab() {
-       let val = valueTextField.getInt()
-        guard val > 19, val < 241 else { valueTextField.text = "130"; return}
+    @objc func changeValueByTab() {
+        let val = valueTextField.getInt()
+        guard val > Constants.minVal - 1, val < Constants.maxVal + 1 else {
+            valueTextField.text = "\(Constants.maxVal)"; return}
         self.value = val
         speedSlider.value = Float(val)
         guard start else {return}
-        
         value = Int(speedSlider.value)
         let arrayndValue = Constants.maxVal - value
         startButton.stopBackground()
         startButton.changeBgrnd(frequency: Float(arrayndValue/10))
-
-        
         stopStartTick()
         startTick()
     }
-    
     
     private func layout() {
         view.addSubview(appLabel)
@@ -236,6 +235,21 @@ class MainViewController: UIViewController {
             make.trailing.equalTo(settingsButton.snp.trailing).offset(-50)
         }
         
+        self.view.addSubview(beatLabel)
+        beatLabel.snp.makeConstraints { make in
+            make.width.equalTo(beatButton.snp.width)
+            make.height.greaterThanOrEqualTo(20)
+            make.bottom.lessThanOrEqualTo(beatButton.snp.top).offset(-2)
+            make.leading.equalTo(beatButton.snp.leading)
+        }
+        
+        self.view.addSubview(pictureLabel)
+        pictureLabel.snp.makeConstraints { make in
+            make.width.equalTo(pictureButton.snp.width)
+            make.height.greaterThanOrEqualTo(20)
+            make.bottom.lessThanOrEqualTo(pictureButton.snp.top).offset(-2)
+            make.leading.equalTo(pictureButton.snp.leading)
+        }
     }
     
     //MARK:- UIElements Actions
@@ -252,7 +266,7 @@ class MainViewController: UIViewController {
     
     @objc func downButtonPreess() {
         pageControl.currentPage -= 1
-        guard value >= 21 else {return}
+        guard value >= Constants.minVal + 1 else {return}
         value -= 1
         valueTextField.text = "\(value)"
         speedSlider.setValue( Float(value), animated: true)
@@ -260,7 +274,6 @@ class MainViewController: UIViewController {
         stopStartTick()
         startTick()
     }
-    
     @objc func upButtonPreess() {
         guard value < Constants.maxVal, value >= Constants.minVal else {return}
         value += 1
@@ -272,11 +285,9 @@ class MainViewController: UIViewController {
         stopStartTick()
         startTick()
     }
-    
     @objc func settingsButtonPress() {
         MainStart.present(view: self, controller: .settingController)
     }
-    
     @objc func sliderValueDidChange() {
         value = Int(speedSlider.value)
         let arrayndValue = Constants.maxVal - value
@@ -287,7 +298,6 @@ class MainViewController: UIViewController {
         stopStartTick()
         startTick()
     }
-    
     private func beatButtonActionConfigure() {
         countArray = [Int]()
         beatButton.executeBeatsButton {
@@ -300,7 +310,6 @@ class MainViewController: UIViewController {
             }
         }
     }
-    
     private func pictureButtonActionConfigure() {
         self.pictureButton.executeBeatsButton {
             self.view.addSubview(self.alertPict)
@@ -320,7 +329,6 @@ class MainViewController: UIViewController {
         alertPict.complessionThird = pictThree
         
     }
-    
     private func pictOne() {
         self.alertPict.isHidden = true
         guard self.start else {return}
@@ -329,7 +337,7 @@ class MainViewController: UIViewController {
         self.alertBeat.isHidden = true
         self.stopJumpTimer()
         self.stopJumpTimer()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
             self.model.animate(bpm: self.value)
             self.jumptimer = self.model.timerReturn(timeInterval: Constants.timeInterval,
                                                     bpm: Double(self.value))
@@ -362,28 +370,23 @@ class MainViewController: UIViewController {
                                                     bpm: Double(self.value))
         }
     }
-    
     private func alertConfigure() {
         alertBeat.complessionFirst = beatOne
         alertBeat.complessionSecond = beatTwo
         alertBeat.complessionThird = beatThree
         
     }
-    
     private func beatOne() {
         self.beatCount = 2
         self.changeBeat(count: self.beatCount)
-        self.alertBeat.isHidden = true
     }
     private func beatTwo() {
         self.beatCount = 3
         self.changeBeat(count: self.beatCount)
-        self.alertBeat.isHidden = true
     }
     private func beatThree() {
         self.beatCount = 4
         self.changeBeat(count: self.beatCount)
-        self.alertBeat.isHidden = true
     }
     
     
@@ -401,12 +404,12 @@ class MainViewController: UIViewController {
     //MARK:- KeyBoard Jump Settings
     
     override func viewWillAppear(_ animated: Bool) {
-         self.addKeyboardObserver()
-     }
-
-     override func viewWillDisappear(_ animated: Bool) {
-         self.removeKeyboardObserver()
-     }
+        self.addKeyboardObserver()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.removeKeyboardObserver()
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -462,6 +465,7 @@ extension MainViewController: TickDelegate {
     }
     
     private func changeBeat(count: Int) {
+        self.alertBeat.isHidden = true
         guard self.start else {return}
         stopStartTick()
         model.audioPlayer?.changeBeats(beats: count)

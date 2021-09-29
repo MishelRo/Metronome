@@ -1,0 +1,11 @@
+strings:
+  inputs: Metronome/Resouces/Base.lproj
+  outputs:
+    - templateName: structured-swift5
+      output: Metronome/SwiftGen/Strings.swift
+xcassets:
+  inputs:
+    - Metronome/Resouces/Assets.xcassets
+  outputs:
+    - templateName: swift5
+      output: Metronome/SwiftGen/Assets.swift

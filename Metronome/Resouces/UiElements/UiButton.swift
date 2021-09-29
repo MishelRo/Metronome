@@ -14,7 +14,7 @@ class MyButton: UIButton {
                                       UIColor(hexString: "009EFD"),
                                       UIColor(hexString: "21E2AF"),
                                       UIColor(hexString: "15CAC9"),
-                                      UIColor(hexString: "0AB3E4")
+                                      UIColor(hexString: "0AB3E4") // массив цветов для градиента кнопок
     ]
     let view = UIView()
     let image = UIImageView()
@@ -22,8 +22,9 @@ class MyButton: UIButton {
     var timer: Timer?
     var frequency = 11
     var beat = Float(15)
-    var complessionStart: (()->())!
-    var complessionStop: (()->())!
+    
+    var complessionStart: (()->())! // действие старт
+    var complessionStop: (()->())! // действие стоп
         
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,16 +39,16 @@ class MyButton: UIButton {
         setTitle(title, for: .normal)
     }
     
-    func stopBackground() {
+    func stopBackground() { // остановка плавающего градиента
         timer?.invalidate()
         timer = nil
     }
     
-    func setImageToButton(image: UIImage){
+    func setImageToButton(image: UIImage){ // установка изображения для кнопок
         self.setImage(image, for: .normal)
     }
     
-    func setName(title: String) {
+    func setName(title: String) { // установка названия кнопок
         setTitle(title, for: .normal)
     }
     
@@ -56,30 +57,29 @@ class MyButton: UIButton {
         image.contentMode = .center
     }
     
-    func configureStartButton() {
-        let view = UIView()
+    func configureStartButton() { // конфигуратор стартовой кнопки
         addSubview(view)
-        view.backgroundColor = Constants.MainBackgroundColor
         view.snp.makeConstraints { make in
             make.bottom.equalTo(self.snp.bottom).offset(-10)
             make.leading.equalTo(self.snp.leading).offset(10)
             make.trailing.equalTo(self.snp.trailing).offset(-10)
             make.top.equalTo(self.snp.top).offset(10)
         }
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tabOnImage))
-        view.addGestureRecognizer(recognizer)
         view.addSubview(image)
         image.snp.makeConstraints { make in
             make.centerY.equalTo(view.snp.centerY)
             make.centerX.equalTo(view.snp.centerX)
         }
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tabOnImage)) // распознование нажатия
+        view.backgroundColor = Constants.MainBackgroundColor
+        backgroundColor = Constants.littleButtonBackground
+        view.addGestureRecognizer(recognizer)
         view.layer.cornerRadius = 104
         layer.cornerRadius = 114
-        translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = Constants.littleButtonBackground
     }
     
-    @objc func tabOnImage() {
+    @objc func tabOnImage() { // нажатие на кнопку
         stopBackground()
         play = !play
         if play{
@@ -94,18 +94,17 @@ class MyButton: UIButton {
         }
     }
     
-    func startConfigure(action: @escaping (()->())) {
+    func startConfigure(action: @escaping (()->())) { // обнвление действия по нажатию старт
         complessionStart = action
     }
-    func stopConfigure(action: @escaping (()->())) {
+    func stopConfigure(action: @escaping (()->())) { // обнвление действия по нажатию стоп
         complessionStop = action
     }
     
     
-    func litleButtonConfigurate(imageStr: UIImage) {
-        let view = UIView()
+    func litleButtonConfigurate(imageStr: UIImage) { // конфигуратор кнопок бит и рисунок
         addSubview(view)
-        view.backgroundColor = #colorLiteral(red: 0.2156666517, green: 0.2156973481, blue: 0.2156561911, alpha: 1)
+        view.backgroundColor = Constants.MainBackgroundColor
         view.addSubview(image)
         image.snp.makeConstraints { make in
             make.width.lessThanOrEqualTo(55)
@@ -121,21 +120,20 @@ class MyButton: UIButton {
             make.leading.equalTo(self.snp.leading).offset(7.5)
             make.trailing.equalTo(self.snp.trailing).offset(-7.5)
             make.top.equalTo(self.snp.top).offset(7.5)
-            translatesAutoresizingMaskIntoConstraints = false
         }
         image.image = imageStr
         view.layer.cornerRadius = 45
         backgroundColor = Constants.littleButtonBackground
         layer.cornerRadius = 54.5
-        translatesAutoresizingMaskIntoConstraints = false
-        let tap = UITapGestureRecognizer(target: self, action: #selector(littleButtonHandleTap))
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(littleButtonHandleTap)) // распознование нажатия
         view.addGestureRecognizer(tap)
     }
     
-    func executeBeatsButton(action: @escaping (()->())) {
+    func executeBeatsButton(action: @escaping (()->())) {  // обнвление действия по нажатию конпок бит
         complessionStart = action
     }
-    func executePictureButton(action: @escaping (()->())) {
+    func executePictureButton(action: @escaping (()->())) {// обнвление действия по нажатию конпок рисунок
         complessionStart = action
     }
     
@@ -144,12 +142,14 @@ class MyButton: UIButton {
     }
 }
 
+//MARK:- gradient Imp
+
 extension MyButton {
-    func retrunrColor()-> UIColor{
+    func retrunrColor()-> UIColor{ // возвращает рандомный элемент цвета
         arrayOfColors.randomElement()!
     }
     
-    func changeBgrnd(frequency: Float) {
+    func changeBgrnd(frequency: Float) { // возвращает в фон кнопки градиент согласно заданной частоты
         self.frequency = Int(frequency)
         let interval = frequency / (beat * 1.6)
         if play{

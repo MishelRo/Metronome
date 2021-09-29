@@ -19,30 +19,33 @@ class CustomAlert: UIView {
     var pickViewContentView: UIView!
     var includeLabel: UILabel!
     
-    var complessionFirst: (()->())!
-    var complessionSecond: (()->())!
-    var complessionThird: (()->())!
+    var complessionFirst: (()->())!  // действие первого элемента
+    var complessionSecond: (()->())! // действие второго элемента
+    var complessionThird: (()->())!  // действие третьего элемента
     
-    var selectRow = 0
-    var selectedBit = 0
-    var numbers = ["1","2","3","4"]
+    var selectRow = 0 // выбранная ячейка picker view
+    var selectedBit = 0 // выбранная частота
+    var numbers = ["1","2","3","4"] // массив с элементами частоты
     
-    
+    //MARK:- Beat Allert Configuration
     func configure(labelText: String) {
         label = UILabel()
-        includeLabel = UILabel()
-        includeLabel.font = UIFont(name: "Ubuntu", size: 22)
-        pickViewContentView = UIView()
-        firstButton = UIButton()
-        secondButton = UIButton()
-        thirdButton = UIButton()
         lineView = UIView()
+        includeLabel = UILabel()
+        firstButton = UIButton()
+        thirdButton = UIButton()
+        secondButton = UIButton()
         pickerView = UIPickerView()
+        pickViewContentView = UIView()
         pickerView.delegate = self
-
+        includeLabel.font = UIFont(name: "Ubuntu", size: 22)
+        layout(text: labelText)
+    }
+    
+    func layout(text: String) {
         addSubview(label)
-        label.text = labelText
         label.textAlignment = .center
+        label.text = text
         label.textColor = .white
         includeLabel.font = UIFont(name: "Roboto", size: 24)
         label.snp.makeConstraints { make in
@@ -50,7 +53,6 @@ class CustomAlert: UIView {
             make.width.equalTo(snp.width)
             make.height.equalTo(58)
         }
-        
         addSubview(lineView)
         lineView.snp.makeConstraints { make in
             lineView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -82,6 +84,7 @@ class CustomAlert: UIView {
             make.trailing.equalTo(snp.centerX).offset(-10)
         }
     }
+    //MARK:- PictAllert Configuration
 
     func configurePict(labelText: String) {
         label = UILabel()
@@ -93,9 +96,11 @@ class CustomAlert: UIView {
         thirdButton = UIButton()
         lineView = UIView()
         pickerView = UIPickerView()
-        
+        layoutPict(text: labelText)
+    }
+        func layoutPict(text: String) {
         addSubview(label)
-        label.text = labelText
+        label.text = text
         label.textAlignment = .center
         label.textColor = .white
         includeLabel.font = UIFont(name: "Roboto", size: 24)
@@ -137,6 +142,8 @@ class CustomAlert: UIView {
         self.secondButton.addTarget(self, action: #selector(secondButtonTabConfigure), for: .touchUpInside)
         self.thirdButton.addTarget(self, action: #selector(thirdButtonTabConfigure), for: .touchUpInside)
     }
+
+    //MARK:- TabElement
  
     @objc func firstButtonTabConfigure() {
         complessionFirst()
@@ -150,11 +157,14 @@ class CustomAlert: UIView {
         complessionThird()
     }
     
-    func setupImageToButton(firstImage: UIImage, SecondImage: UIImage, thirstImage: UIImage) {
+    func setupImageToButton(firstImage: UIImage,
+                            SecondImage: UIImage,
+                            thirstImage: UIImage) {
         firstButton.setImage(firstImage, for: .normal)
         secondButton.setImage(SecondImage, for: .normal)
         thirdButton.setImage(thirstImage, for: .normal)
     }
+    //MARK:- init
     
     init() {
         super.init(frame: .zero)
@@ -165,6 +175,7 @@ class CustomAlert: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+//MARK:- PickerView Delegate Implementation
 
 extension CustomAlert: UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -172,11 +183,15 @@ extension CustomAlert: UIPickerViewDelegate, UIPickerViewDataSource {
         1
     }
 
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView,
+                    numberOfRowsInComponent component: Int) -> Int {
        return numbers.count
     }
 
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+    func pickerView(_ pickerView: UIPickerView,
+                    viewForRow row: Int,
+                    forComponent component: Int,
+                    reusing view: UIView?) -> UIView {
         var label = UILabel()
         if let v = view as? UILabel { label = v }
         label.font = UIFont(name: "Roboto", size: 24)
@@ -186,11 +201,15 @@ extension CustomAlert: UIPickerViewDelegate, UIPickerViewDataSource {
         label.textAlignment = .center
         return label
     }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView,
+                    titleForRow row: Int,
+                    forComponent component: Int) -> String? {
         return numbers[row]
     }
 
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView,
+                    didSelectRow row: Int,
+                    inComponent component: Int) {
         selectRow = row
         print(selectRow)
         switch selectRow {

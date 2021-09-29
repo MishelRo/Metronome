@@ -6,12 +6,12 @@
 //
 
 import Foundation
-struct SoundModel {
+struct SoundModel {  // модель звука низкого и высокого
     var lowSound: String
     var hightSound: String
 }
 
-struct UrlSoundModel {
+struct UrlSoundModel { // URL модель
     var lowSound: URL
     var hightSound: URL
 }

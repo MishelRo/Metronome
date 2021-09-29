@@ -31,7 +31,8 @@ class Equalizer: UIView {
                 case 1:
                     [ StackViewCel.make(selected: true) ].forEach { stackView.addArrangedSubview($0) }
                 case 2:
-                    [ StackViewCel.make(selected: true), StackViewCel.make(selected: false) ].forEach { stackView.addArrangedSubview($0) }
+                    [ StackViewCel.make(selected: true), StackViewCel.make(selected: false) ].forEach
+                    { stackView.addArrangedSubview($0) }
                 case 3:
                     [   StackViewCel.make(selected: true),
                         StackViewCel.make(selected: false),

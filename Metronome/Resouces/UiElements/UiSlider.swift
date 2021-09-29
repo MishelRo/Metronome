@@ -11,9 +11,9 @@ import UIKit
 class MySlider: UISlider {
     
     func configure() {
-        self.minimumValue = 20
-        self.maximumValue =  240
-        self.value = 130
+        self.minimumValue = Float(Constants.minVal)
+        self.maximumValue =  Float(Constants.maxVal)
+        self.value = Float(Constants.standartVal)
         thumbTintColor = .black
         minimumTrackTintColor = UIColor(hexString:"#747474")
         maximumTrackTintColor = UIColor(hexString: "#504F4F")

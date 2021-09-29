@@ -7,7 +7,7 @@
 
 import AVFoundation
 
-enum SoundScheme {
+enum SoundScheme { // энум с кейсами названий аудио схем
     case standart
     case light
     case custom
@@ -18,7 +18,7 @@ enum SoundScheme {
 }
 
 extension SoundScheme {
-    func path () -> UrlSoundModel {
+    func path () -> UrlSoundModel { // возвращает выбранную в энуме схему
         switch self {
         case .standart:
             let scheme = mp4aSounSchemeConfigure(hightSound: "Low", lowSound: "Hight")
@@ -43,7 +43,8 @@ extension SoundScheme {
             return scheme!
         }
     }
-    func wavSounSchemeConfigure(hightSound: String, lowSound: String) -> UrlSoundModel? {
+    
+    func wavSounSchemeConfigure(hightSound: String, lowSound: String) -> UrlSoundModel? { // реализация звуков WAV
         guard let tickUrl = Bundle.main.url(forResource: hightSound, withExtension: "wav"),
               let tockUrl = Bundle.main.url(forResource: lowSound, withExtension: "wav") else {
             print("Fail")
@@ -52,7 +53,7 @@ extension SoundScheme {
         return urlScheme
     }
     
-    func mp4aSounSchemeConfigure(hightSound: String, lowSound: String) -> UrlSoundModel? {
+    func mp4aSounSchemeConfigure(hightSound: String, lowSound: String) -> UrlSoundModel? { // реализация звуков M4A
         guard let tickUrl = Bundle.main.url(forResource: hightSound, withExtension: "m4a"),
               let tockUrl = Bundle.main.url(forResource: lowSound, withExtension: "m4a") else {
             print("Fail")
@@ -71,7 +72,7 @@ final class SoundPlayer {
     private var count = 1
     private var beat = 1
     
-    func changeBeats(beats: Int) {
+    func changeBeats(beats: Int) { // функция добавления частоты ударов
         self.beat = beats
         count = 1
     }
@@ -96,7 +97,7 @@ final class SoundPlayer {
         }
     }
     
-    init(model: SoundScheme) {
+    init(model: SoundScheme) { // инициализатор с переключателем схем
         switch model {
         case .standart:
             let tickUrl = model.path().hightSound

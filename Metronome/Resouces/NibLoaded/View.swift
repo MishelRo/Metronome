@@ -1,10 +1,10 @@
 //
-//  View.swift
-//  OlivenetCabinet
+//  UiViewExtension.swift
+//  stackViewTestApp
 //
-//  Created by Sergei Rosliakov on 27.11.2020.
-//  Copyright © 2020 Olivenet. All rights reserved.
+//  Created by User on 15.09.2021.
 //
+
 
 import UIKit
 

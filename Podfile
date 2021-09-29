@@ -6,6 +6,7 @@ target 'Metronome' do
   use_frameworks!
 pod 'SnapKit' 
 pod 'ChameleonFramework/Swift'
+pod 'SwiftGen'
 
   # Pods for Metronome
 
