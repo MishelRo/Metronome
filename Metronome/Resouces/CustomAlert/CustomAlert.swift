@@ -25,7 +25,7 @@ class CustomAlert: UIView {
     
     var selectRow = 0 // выбранная ячейка picker view
     var selectedBit = 0 // выбранная частота
-    var numbers = ["1","2","3","4"] // массив с элементами частоты
+    var numbers = ["2","3","4"] // массив с элементами частоты
     
     //MARK:- Beat Allert Configuration
     func configure(labelText: String) {
@@ -169,6 +169,7 @@ class CustomAlert: UIView {
     init() {
         super.init(frame: .zero)
         backgroundColor = Constants.allertColor
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {
@@ -216,10 +217,8 @@ extension CustomAlert: UIPickerViewDelegate, UIPickerViewDataSource {
         case 0:
             complessionFirst()
         case 1:
-            complessionFirst()
-        case 2:
             complessionSecond()
-        case 3:
+        case 2:
             complessionThird()
         default:
             break

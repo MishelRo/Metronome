@@ -15,12 +15,12 @@ class StackViewCel: NibLoadableView {
     
     func configure() {
         image.backgroundColor = Constants.MainBackgroundColor
-        image.snp.makeConstraints { make in
-            make.bottom.equalTo(self.snp.bottom)
-            make.top.equalTo(self.snp.top)
-            make.leading.equalTo(self.snp.leading)
-            make.trailing.equalTo(self.snp.trailing)
-        }
+//        image.snp.makeConstraints { make in
+//            make.bottom.equalTo(self.snp.bottom)
+//            make.top.equalTo(self.snp.top)
+//            make.leading.equalTo(self.snp.leading)
+//            make.trailing.equalTo(self.snp.trailing)
+//        }
         
     }
     static func make(selected: Bool) -> UIView {

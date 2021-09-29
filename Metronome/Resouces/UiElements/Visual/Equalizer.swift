@@ -19,14 +19,13 @@ class Equalizer: UIView {
                 stackView.snp.makeConstraints { make in
                     make.bottom.equalTo(self.snp.bottom)
                     make.top.equalTo(self.snp.top)
-                    make.leading.equalTo(self.snp.leading)
-                    make.trailing.equalTo(self.snp.trailing)
+                    make.center.equalTo(self.snp.center)
                 }
     }
     
     
     func addVisual(count: Int) {
-        backgroundColor = .red
+        backgroundColor = Constants.MainBackgroundColor
                 switch count {
                 case 1:
                     [ StackViewCel.make(selected: true) ].forEach { stackView.addArrangedSubview($0) }
@@ -46,7 +45,9 @@ class Equalizer: UIView {
                 }
     }
     
-    
+    func remove() {
+        stackView.removeSubviews()
+    }
     
     init(count: Int) {
         super.init(frame: .zero)

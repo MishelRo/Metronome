@@ -51,12 +51,9 @@ class MainViewController: UIViewController {
     
     private var beatCount = 1 {
         didSet {
-            equalizerView = nil
             pageControl.numberOfPages = beatCount
-            equalizerView = Equalizer(count: beatCount)
             guard beatCount == 0 else {return}
             numberOfPages = 1
-            equalizerView = Equalizer(count: 1)
         }
     }
     
@@ -94,6 +91,7 @@ class MainViewController: UIViewController {
         startButtonStopConfigure()
         beatButtonActionConfigure()
         pictureButtonActionConfigure()
+
         
         startButton.imageInclude(images: name.path(.play)())
         downButton.setImageToButton(image: name.path(.down)())
@@ -152,11 +150,10 @@ class MainViewController: UIViewController {
         
         self.view.addSubview(pageControl)
         pageControl.snp.makeConstraints { make in
-            make.top.equalTo(appLabel.snp.bottom).offset(120)
+            make.top.lessThanOrEqualTo(appLabel.snp.bottom).offset(20)
             make.width.equalTo(200)
             make.height.equalTo(40)
             make.centerX.equalTo(view.snp.centerX)
-            make.top.lessThanOrEqualTo(appLabel.snp.top).offset(20)
         }
         self.view.addSubview(equalizerView)
         equalizerView.snp.makeConstraints { make in
@@ -238,17 +235,19 @@ class MainViewController: UIViewController {
         self.view.addSubview(beatLabel)
         beatLabel.snp.makeConstraints { make in
             make.width.equalTo(beatButton.snp.width)
-            make.height.greaterThanOrEqualTo(20)
+            make.height.equalTo(25)
             make.bottom.lessThanOrEqualTo(beatButton.snp.top).offset(-2)
             make.leading.equalTo(beatButton.snp.leading)
+            make.top.equalTo(equalizerView.snp.bottom).offset(12)
         }
         
         self.view.addSubview(pictureLabel)
         pictureLabel.snp.makeConstraints { make in
             make.width.equalTo(pictureButton.snp.width)
-            make.height.greaterThanOrEqualTo(20)
+            make.height.equalTo(25)
             make.bottom.lessThanOrEqualTo(pictureButton.snp.top).offset(-2)
             make.leading.equalTo(pictureButton.snp.leading)
+            make.top.equalTo(equalizerView.snp.bottom).offset(12)
         }
     }
     
@@ -301,6 +300,7 @@ class MainViewController: UIViewController {
     private func beatButtonActionConfigure() {
         countArray = [Int]()
         beatButton.executeBeatsButton {
+            self.changeBeat(count: 0)
             self.view.addSubview(self.alertBeat)
             self.alertBeat.isHidden = false
             self.alertBeat.snp.makeConstraints { make in
@@ -377,14 +377,23 @@ class MainViewController: UIViewController {
         
     }
     private func beatOne() {
+        equalizerView.remove()
+        equalizerView.addVisual(count: 2)
+        self.alertPict.isHidden = true
         self.beatCount = 2
         self.changeBeat(count: self.beatCount)
     }
     private func beatTwo() {
+        equalizerView.remove()
+        equalizerView.addVisual(count: 3)
+        self.alertPict.isHidden = true
         self.beatCount = 3
         self.changeBeat(count: self.beatCount)
     }
     private func beatThree() {
+        equalizerView.remove()
+        equalizerView.addVisual(count: 4)
+        self.alertPict.isHidden = true
         self.beatCount = 4
         self.changeBeat(count: self.beatCount)
     }
