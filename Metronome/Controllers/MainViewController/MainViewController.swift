@@ -43,7 +43,7 @@ class MainViewController: UIViewController {
     
     private var value = Constants.standartVal {
         didSet {
-            let arrayndValue = 240 - oldValue
+            let arrayndValue = Constants.maxVal - oldValue
             startButton.stopBackground()
             startButton.changeBgrnd(frequency: Float(arrayndValue/10))
         }
