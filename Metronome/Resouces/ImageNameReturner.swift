@@ -7,7 +7,6 @@
 
 import UIKit
 enum name {
-    case twoFour
     case beatButton
     case buttonNota
     case currentCell
@@ -24,6 +23,9 @@ enum name {
     case unSelected
     case up
     case newTwoButton
+    case twoFour
+    case threefour
+    case fourFour
 }
 
 extension name {
@@ -60,9 +62,13 @@ extension name {
         case .up:
             return UIImage(named: "up")!
         case .twoFour:
-            return UIImage(named: "twoFour")!
+            return UIImage(named: "24")!
         case .newTwoButton:
             return UIImage(named: "newTwoButton")!
+        case .threefour:
+            return UIImage(named: "34")!
+        case .fourFour:
+            return UIImage(named: "44")!
         }
     }
 }

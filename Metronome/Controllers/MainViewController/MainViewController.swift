@@ -117,19 +117,44 @@ class MainViewController: UIViewController {
                                      thirstImage: name.path(.nota3)())
     }
     
-    @objc func changeValueByTab() {
+    @objc func changeValueByTab() { // изменение значений бит метронома по вводу в поле значений
         let val = valueTextField.getInt()
-        guard val > Constants.minVal - 1, val < Constants.maxVal + 1 else {
-            valueTextField.text = "\(Constants.maxVal)"; return}
-        self.value = val
-        speedSlider.value = Float(val)
-        guard start else {return}
-        value = Int(speedSlider.value)
-        let arrayndValue = Constants.maxVal - value
-        startButton.stopBackground()
-        startButton.changeBgrnd(frequency: Float(arrayndValue/10))
-        stopStartTick()
-        startTick()
+        if val < 240, val > 20 {
+                 self.value = val
+                 speedSlider.value = Float(val)
+                 guard start else {return}
+                 value = Int(speedSlider.value)
+                 let arrayndValue = Constants.maxVal - value
+                 startButton.stopBackground()
+                 startButton.changeBgrnd(frequency: Float(arrayndValue/10))
+                 stopStartTick()
+                 startTick()
+        } else {
+            if val < 20 {
+                valueTextField.text = "\(Constants.minVal)"
+                self.value = Constants.minVal
+                speedSlider.value = Float(val)
+                guard start else {return}
+                value = Int(speedSlider.value)
+                let arrayndValue = Constants.maxVal - value
+                startButton.stopBackground()
+                startButton.changeBgrnd(frequency: Float(arrayndValue/10))
+                stopStartTick()
+                startTick()
+            }
+            if val > 240{
+                valueTextField.text = "\(Constants.maxVal)"
+                self.value = Constants.maxVal
+                speedSlider.value = Float(val)
+                guard start else {return}
+                value = Int(speedSlider.value)
+                let arrayndValue = Constants.maxVal - value
+                startButton.stopBackground()
+                startButton.changeBgrnd(frequency: Float(arrayndValue/10))
+                stopStartTick()
+                startTick()
+            }
+        }
     }
     
     private func layout() {
@@ -377,6 +402,7 @@ class MainViewController: UIViewController {
         
     }
     private func beatOne() {
+        beatButton.litleButtonConfigurate(imageStr: name.path(.twoFour)())//////////////////////////////////////////////////////////////////////////////
         equalizerView.remove()
         equalizerView.addVisual(count: 2)
         self.alertPict.isHidden = true
@@ -384,6 +410,7 @@ class MainViewController: UIViewController {
         self.changeBeat(count: self.beatCount)
     }
     private func beatTwo() {
+        beatButton.litleButtonConfigurate(imageStr: name.path(.threefour)())//////////////////////////////////////////////////////////////////////////////
         equalizerView.remove()
         equalizerView.addVisual(count: 3)
         self.alertPict.isHidden = true
@@ -391,6 +418,7 @@ class MainViewController: UIViewController {
         self.changeBeat(count: self.beatCount)
     }
     private func beatThree() {
+        beatButton.litleButtonConfigurate(imageStr: name.path(.fourFour)())//////////////////////////////////////////////////////////////////////////////
         equalizerView.remove()
         equalizerView.addVisual(count: 4)
         self.alertPict.isHidden = true
