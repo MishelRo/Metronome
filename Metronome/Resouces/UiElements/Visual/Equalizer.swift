@@ -49,6 +49,11 @@ class Equalizer: UIView {
         stackView.removeSubviews()
     }
     
+    func currentfraction(fraction: Int) {
+        print(fraction)
+    }
+    
+    
     init(count: Int) {
         super.init(frame: .zero)
         configure()

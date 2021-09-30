@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5188FAE32251BE2731FC2AB1 /* Pods_Metronome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC87757CCB16255A87F646 /* Pods_Metronome.framework */; };
-		CE0ED541270274510091F640 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ED540270274510091F640 /* CustomAlert.swift */; };
-		CE0ED548270391C60091F640 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ED547270391C60091F640 /* MyTextField.swift */; };
+		CE0ED541270274510091F640 /* MetronomeAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ED540270274510091F640 /* MetronomeAlert.swift */; };
+		CE0ED548270391C60091F640 /* MetronomeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ED547270391C60091F640 /* MetronomeTextField.swift */; };
 		CE0ED54A270396A20091F640 /* UiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0ED549270396A20091F640 /* UiTextField.swift */; };
 		CE23952126FCD011009983CD /* UiAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23952026FCD011009983CD /* UiAlertController.swift */; };
 		CE23953126FCFFF4009983CD /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE23952526FCFFF4009983CD /* Roboto-Light.ttf */; };
@@ -83,8 +83,8 @@
 /* Begin PBXFileReference section */
 		00BC87757CCB16255A87F646 /* Pods_Metronome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metronome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DC1163AD90AA7BD2F6F060D /* Pods-Metronome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.release.xcconfig"; path = "Target Support Files/Pods-Metronome/Pods-Metronome.release.xcconfig"; sourceTree = "<group>"; };
-		CE0ED540270274510091F640 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
-		CE0ED547270391C60091F640 /* MyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
+		CE0ED540270274510091F640 /* MetronomeAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeAlert.swift; sourceTree = "<group>"; };
+		CE0ED547270391C60091F640 /* MetronomeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeTextField.swift; sourceTree = "<group>"; };
 		CE0ED549270396A20091F640 /* UiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiTextField.swift; sourceTree = "<group>"; };
 		CE23952026FCD011009983CD /* UiAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiAlertController.swift; sourceTree = "<group>"; };
 		CE23952526FCFFF4009983CD /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 		CE0ED53F270274150091F640 /* CustomAlert */ = {
 			isa = PBXGroup;
 			children = (
-				CE0ED540270274510091F640 /* CustomAlert.swift */,
+				CE0ED540270274510091F640 /* MetronomeAlert.swift */,
 			);
 			path = CustomAlert;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 				CE8073E62700E98C0070018C /* Visual */,
 				CEE40E1726FC84A500102AA6 /* UiButton.swift */,
 				CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */,
-				CE0ED547270391C60091F640 /* MyTextField.swift */,
+				CE0ED547270391C60091F640 /* MetronomeTextField.swift */,
 				CEAE049227045DC200D93EE9 /* UILabel.swift */,
 			);
 			path = UiElements;
@@ -585,7 +585,7 @@
 				CEAE048D27039AEE00D93EE9 /* UIViewController.swift in Sources */,
 				CEAE048F27039B1F00D93EE9 /* UIResponder.swift in Sources */,
 				CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */,
-				CE0ED541270274510091F640 /* CustomAlert.swift in Sources */,
+				CE0ED541270274510091F640 /* MetronomeAlert.swift in Sources */,
 				CE8073F02700F7AD0070018C /* NSObject+Load.swift in Sources */,
 				CE78829926FB4EBC007EBA95 /* MainStart.swift in Sources */,
 				CE78828126FB4E04007EBA95 /* AppDelegate.swift in Sources */,
@@ -599,7 +599,7 @@
 				CE23956426FE062C009983CD /* Double.swift in Sources */,
 				CEAE049A27046AA500D93EE9 /* Strings.swift in Sources */,
 				CE23955126FD2FE6009983CD /* Constants.swift in Sources */,
-				CE0ED548270391C60091F640 /* MyTextField.swift in Sources */,
+				CE0ED548270391C60091F640 /* MetronomeTextField.swift in Sources */,
 				CE8073F92700FA2B0070018C /* StackViewCel.swift in Sources */,
 				CE78828326FB4E04007EBA95 /* SceneDelegate.swift in Sources */,
 				CE23955D26FD377D009983CD /* SettingViewModel.swift in Sources */,

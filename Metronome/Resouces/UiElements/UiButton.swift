@@ -9,7 +9,7 @@ import SnapKit
 import ChameleonFramework
 @IBDesignable
 
-class MyButton: UIButton {
+class MetronomeButton: UIButton {
     let arrayOfColors : [UIColor] =  [UIColor(hexString: "2AF598"),
                                       UIColor(hexString: "009EFD"),
                                       UIColor(hexString: "21E2AF"),
@@ -144,7 +144,7 @@ class MyButton: UIButton {
 
 //MARK:- gradient Imp
 
-extension MyButton {
+extension MetronomeButton {
     func retrunrColor()-> UIColor{ // возвращает рандомный элемент цвета
         arrayOfColors.randomElement()!
     }

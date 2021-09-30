@@ -8,7 +8,7 @@
 import Foundation
 
 import UIKit
-class MySlider: UISlider {
+class MetronomeSlider: UISlider {
     
     func configure() {
         self.minimumValue = Float(Constants.minVal)

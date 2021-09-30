@@ -90,7 +90,6 @@ final class SoundPlayer {
             }
             if count < beat {
                 count += 1
-                print(count)
             } else {
                 count = 1
             }

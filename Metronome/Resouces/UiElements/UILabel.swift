@@ -26,7 +26,7 @@ extension texts {
 
 import UIKit
 
-class MyLabel: UILabel {
+class MetronomeLabel: UILabel {
     init(text: String, font: texts) {
         super.init(frame: .zero)
         self.text = text

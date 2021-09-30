@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CustomAlert: UIView {
+class MetronomeAlert: UIView {
 
     var label: UILabel!
     var firstButton: UIButton!
@@ -69,7 +69,8 @@ class CustomAlert: UIView {
             make.centerX.equalTo(snp.centerX)
         }
         pickViewContentView.addSubview(includeLabel)
-        includeLabel.text = "  /  4"
+        includeLabel.text = "/    4"
+        includeLabel.textColor = .white
         includeLabel.snp.makeConstraints { make in
             make.leading.equalTo(pickViewContentView.snp.centerX)
             make.top.equalTo(pickViewContentView.snp.top).offset(-2)
@@ -112,7 +113,7 @@ class CustomAlert: UIView {
         
         addSubview(lineView)
         lineView.snp.makeConstraints { make in
-            lineView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            lineView.backgroundColor = .white
             make.top.equalTo(label.snp.bottom).offset(1)
             make.height.equalTo(1)
             make.width.equalTo(label.snp.width)
@@ -178,7 +179,7 @@ class CustomAlert: UIView {
 }
 //MARK:- PickerView Delegate Implementation
 
-extension CustomAlert: UIPickerViewDelegate, UIPickerViewDataSource {
+extension MetronomeAlert: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
@@ -194,14 +195,25 @@ extension CustomAlert: UIPickerViewDelegate, UIPickerViewDataSource {
                     forComponent component: Int,
                     reusing view: UIView?) -> UIView {
         var label = UILabel()
-        if let v = view as? UILabel { label = v }
-        label.font = UIFont(name: "Roboto", size: 24)
-        label.textAlignment = .left
-        label.text =  numbers[row]
-        label.textColor = .black
-        label.textAlignment = .center
-        return label
+        if pickerView.selectedRow(inComponent: component) == row {
+                    if let v = view as? UILabel { label = v }
+                    label.font = UIFont(name: "Roboto", size: 24)
+                    label.textAlignment = .left
+                    label.text =  numbers[row]
+                    label.textColor = .white
+                    label.textAlignment = .center
+                    return label
+            } else {
+                if let v = view as? UILabel { label = v }
+                label.font = UIFont(name: "Roboto", size: 24)
+                label.textAlignment = .left
+                label.text =  numbers[row]
+                label.textColor = .black
+                label.textAlignment = .center
+                return label
+            }
     }
+    
     func pickerView(_ pickerView: UIPickerView,
                     titleForRow row: Int,
                     forComponent component: Int) -> String? {
@@ -212,7 +224,6 @@ extension CustomAlert: UIPickerViewDelegate, UIPickerViewDataSource {
                     didSelectRow row: Int,
                     inComponent component: Int) {
         selectRow = row
-        print(selectRow)
         switch selectRow {
         case 0:
             complessionFirst()
@@ -223,6 +234,8 @@ extension CustomAlert: UIPickerViewDelegate, UIPickerViewDataSource {
         default:
             break
         }
+        pickerView.reloadAllComponents()
+
     }
 
 }

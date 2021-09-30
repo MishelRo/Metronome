@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class MyTextField: UITextField {
+class MetronomeTextField: UITextField {
     
     init() {
         super.init(frame: .zero)

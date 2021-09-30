@@ -14,26 +14,25 @@ class MainViewController: UIViewController {
     //MARK:- UIElements propeties
     
     var pageControl: UIPageControl!
-    var speedSlider: MySlider!
-    var startButton: MyButton!
-    var beatButton: MyButton!
-    var pictureButton: MyButton!
-    var appLabel: MyLabel!
-    var settingsButton: MyButton!
-    var upButton: MyButton!
-    var downButton: MyButton!
-    var countArray = [Int]()
-    var changeSoundButton: MyButton!
+    var speedSlider: MetronomeSlider!
+    var startButton: MetronomeButton!
+    var beatButton: MetronomeButton!
+    var pictureButton: MetronomeButton!
+    var appLabel: MetronomeLabel!
+    var settingsButton: MetronomeButton!
+    var upButton: MetronomeButton!
+    var downButton: MetronomeButton!
+    var changeSoundButton: MetronomeButton!
     var equalizerView: Equalizer!
-    var alertBeat: CustomAlert!
-    var alertPict: CustomAlert!
-    var valueTextField: MyTextField!
-    var pictureLabel: MyLabel!
-    var beatLabel: MyLabel!
+    var alertBeat: MetronomeAlert!
+    var alertPict: MetronomeAlert!
+    var valueTextField: MetronomeTextField!
+    var pictureLabel: MetronomeLabel!
+    var beatLabel: MetronomeLabel!
     
     
     //MARK:- Class Propeties
-    
+    private var countArray = [Int]()
     private var start = false
     private var timer: Timer!
     private var jumptimer: Timer?
@@ -62,21 +61,21 @@ class MainViewController: UIViewController {
     private func uIElementConfigure() {
         model.audioPlayer = SoundPlayer(model: .standart)
         pageControl = UIPageControl()
-        equalizerView = Equalizer(count: 4)
-        upButton = MyButton()
-        downButton = MyButton()
-        speedSlider = MySlider()
-        startButton = MyButton()
-        beatButton = MyButton()
-        pictureButton = MyButton()
-        settingsButton = MyButton()
-        changeSoundButton = MyButton()
-        valueTextField = MyTextField()
-        appLabel = MyLabel(text: Constants.appName, font: .ubuntu)
-        alertBeat = CustomAlert()
-        alertPict = CustomAlert()
-        pictureLabel = MyLabel(text: L10n.picture, font: .roboto)
-        beatLabel = MyLabel(text: L10n.size, font: .roboto)
+        equalizerView = Equalizer(count: 1)
+        upButton = MetronomeButton()
+        downButton = MetronomeButton()
+        speedSlider = MetronomeSlider()
+        startButton = MetronomeButton()
+        beatButton = MetronomeButton()
+        pictureButton = MetronomeButton()
+        settingsButton = MetronomeButton()
+        changeSoundButton = MetronomeButton()
+        valueTextField = MetronomeTextField()
+        appLabel = MetronomeLabel(text: Constants.appName, font: .ubuntu)
+        alertBeat = MetronomeAlert()
+        alertPict = MetronomeAlert()
+        pictureLabel = MetronomeLabel(text: L10n.picture, font: .roboto)
+        beatLabel = MetronomeLabel(text: L10n.size, font: .roboto)
         alertBeat.configure(labelText: L10n.size)
         alertPict.configurePict(labelText: L10n.picture)
         elementSettings()
@@ -436,6 +435,7 @@ extension MainViewController: TickDelegate {
         guard self.countArray.count <= self.beatCount - 1 else {
             self.countArray = [Int](); return
                 self.pageControl.currentPage = 0 }
+        equalizerView.currentfraction(fraction: countArray.count)
         self.pageControl.currentPage = self.countArray.count
     }
     
