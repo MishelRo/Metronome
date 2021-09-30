@@ -106,8 +106,8 @@ class MetronomeButton: UIButton {
         view.backgroundColor = Constants.MainBackgroundColor
         view.addSubview(image)
         image.snp.makeConstraints { make in
-            make.width.lessThanOrEqualTo(55)
-            make.height.lessThanOrEqualTo(37)
+            make.width.lessThanOrEqualTo(39)
+            make.height.lessThanOrEqualTo(27)
             make.centerY.equalTo(snp.centerY)
             make.centerX.equalTo(snp.centerX)
             translatesAutoresizingMaskIntoConstraints = false

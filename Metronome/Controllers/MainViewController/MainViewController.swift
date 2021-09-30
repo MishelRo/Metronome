@@ -282,6 +282,7 @@ class MainViewController: UIViewController {
         UIAlertController.getAlert(type: .soundChange) { alert in
             self.present(alert, animated: true, completion: nil)
         } complessionOk: { [self] value in
+            beatButton.litleButtonConfigurate(imageStr: name.path(.twoFour)())
             beatCount = 1
             let sound = model.bit(value: value)
             model.audioPlayer = sound
