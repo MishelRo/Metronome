@@ -84,11 +84,11 @@ class MetronomeButton: UIButton {
         play = !play
         if play{
             complessionStop()
-            imageInclude(images: name.path(.pause)())
+            imageInclude(images: imager.path(.pause)())
             changeBgrnd(frequency: Float(frequency))
         } else {
             complessionStart()
-            imageInclude(images: name.path(.play)())
+            imageInclude(images: imager.path(.play)())
             timer?.invalidate()
             timer = nil
         }
@@ -105,6 +105,7 @@ class MetronomeButton: UIButton {
         addSubview(view)
         view.backgroundColor = Constants.MainBackgroundColor
         view.addSubview(image)
+        image.contentMode = .scaleAspectFill
         image.snp.makeConstraints { make in
             make.width.lessThanOrEqualTo(39)
             make.height.lessThanOrEqualTo(27)

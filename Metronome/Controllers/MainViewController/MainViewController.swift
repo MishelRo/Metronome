@@ -93,13 +93,13 @@ class MainViewController: UIViewController {
         pictureButtonActionConfigure()
 
         
-        startButton.imageInclude(images: name.path(.play)())
-        downButton.setImageToButton(image: name.path(.down)())
-        upButton.setImageToButton(image: name.path(.up)())
-        changeSoundButton.setImageToButton(image: name.path(.buttonNota)())
-        beatButton.litleButtonConfigurate(imageStr: name.path(.twoFour)())
-        settingsButton.setImageToButton(image: name.path(.setting)())
-        pictureButton.litleButtonConfigurate(imageStr: name.path(.nota)())
+        startButton.imageInclude(images: imager.path(.play)())
+        downButton.setImageToButton(image: imager.path(.down)())
+        upButton.setImageToButton(image: imager.path(.up)())
+        changeSoundButton.setImageToButton(image: imager.path(.buttonNota)())
+        beatButton.litleButtonConfigurate(imageStr: imager.path(.twoFour)())
+        settingsButton.setImageToButton(image: imager.path(.setting)())
+        pictureButton.litleButtonConfigurate(imageStr: imager.path(.nota)())
         settingsButton.addTarget(self, action: #selector(settingsButtonPress),
                                  for: .touchUpInside)
         speedSlider.addTarget(self, action: #selector(sliderValueDidChange),
@@ -112,14 +112,14 @@ class MainViewController: UIViewController {
                                     for: .touchUpInside)
         valueTextField.addTarget(self, action: #selector(changeValueByTab),
                                  for: .editingDidEndOnExit)
-        alertPict.setupImageToButton(firstImage: name.path(.OneNota)(),
-                                     SecondImage: name.path(.twoNota)(),
-                                     thirstImage: name.path(.nota3)())
+        alertPict.setupImageToButton(firstImage: imager.path(.OneNota)(),
+                                     SecondImage: imager.path(.twoNota)(),
+                                     thirstImage: imager.path(.nota3)())
     }
     
     @objc func changeValueByTab() { // изменение значений бит метронома по вводу в поле значений
         let val = valueTextField.getInt()
-        if val < 240, val > 20 {
+        if val < Constants.maxVal, val > Constants.minVal {
                  self.value = val
                  speedSlider.value = Float(val)
                  guard start else {return}
@@ -130,7 +130,7 @@ class MainViewController: UIViewController {
                  stopStartTick()
                  startTick()
         } else {
-            if val < 20 {
+            if val < Constants.minVal {
                 valueTextField.text = "\(Constants.minVal)"
                 self.value = Constants.minVal
                 speedSlider.value = Float(val)
@@ -142,7 +142,7 @@ class MainViewController: UIViewController {
                 stopStartTick()
                 startTick()
             }
-            if val > 240{
+            if val > Constants.maxVal {
                 valueTextField.text = "\(Constants.maxVal)"
                 self.value = Constants.maxVal
                 speedSlider.value = Float(val)
@@ -282,7 +282,7 @@ class MainViewController: UIViewController {
         UIAlertController.getAlert(type: .soundChange) { alert in
             self.present(alert, animated: true, completion: nil)
         } complessionOk: { [self] value in
-            beatButton.litleButtonConfigurate(imageStr: name.path(.twoFour)())
+            beatButton.litleButtonConfigurate(imageStr: imager.path(.twoFour)())
             beatCount = 1
             let sound = model.bit(value: value)
             model.audioPlayer = sound
@@ -403,7 +403,7 @@ class MainViewController: UIViewController {
         
     }
     private func beatOne() {
-        beatButton.litleButtonConfigurate(imageStr: name.path(.twoFour)())//////////////////////////////////////////////////////////////////////////////
+        beatButton.litleButtonConfigurate(imageStr: imager.path(.twoFour)())
         equalizerView.remove()
         equalizerView.addVisual(count: 2)
         self.alertPict.isHidden = true
@@ -411,7 +411,7 @@ class MainViewController: UIViewController {
         self.changeBeat(count: self.beatCount)
     }
     private func beatTwo() {
-        beatButton.litleButtonConfigurate(imageStr: name.path(.threefour)())//////////////////////////////////////////////////////////////////////////////
+        beatButton.litleButtonConfigurate(imageStr: imager.path(.threefour)())
         equalizerView.remove()
         equalizerView.addVisual(count: 3)
         self.alertPict.isHidden = true
@@ -419,7 +419,7 @@ class MainViewController: UIViewController {
         self.changeBeat(count: self.beatCount)
     }
     private func beatThree() {
-        beatButton.litleButtonConfigurate(imageStr: name.path(.fourFour)())//////////////////////////////////////////////////////////////////////////////
+        beatButton.litleButtonConfigurate(imageStr: imager.path(.fourFour)())
         equalizerView.remove()
         equalizerView.addVisual(count: 4)
         self.alertPict.isHidden = true

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-enum name {
+enum imager {
     case beatButton
     case buttonNota
     case currentCell
@@ -28,7 +28,7 @@ enum name {
     case fourFour
 }
 
-extension name {
+extension imager {
     func path() -> UIImage {
         switch self {
         case .beatButton:

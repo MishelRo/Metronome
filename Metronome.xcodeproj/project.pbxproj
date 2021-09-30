@@ -75,7 +75,6 @@
 		CEAE0495270469A200D93EE9 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = CEAE0494270469A200D93EE9 /* swiftgen.yml */; };
 		CEAE049927046AA500D93EE9 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE049727046AA500D93EE9 /* Assets.swift */; };
 		CEAE049A27046AA500D93EE9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE049827046AA500D93EE9 /* Strings.swift */; };
-		CEAE049D27046B3300D93EE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEAE049B27046B3300D93EE9 /* Localizable.strings */; };
 		CEE40E1826FC84A500102AA6 /* UiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E1726FC84A500102AA6 /* UiButton.swift */; };
 		CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */; };
 /* End PBXBuildFile section */
@@ -152,8 +151,6 @@
 		CEAE0494270469A200D93EE9 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		CEAE049727046AA500D93EE9 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		CEAE049827046AA500D93EE9 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		CEAE049C27046B3300D93EE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Metronome/Resouces/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		CEAE049E27046C2C00D93EE9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Metronome/Resouces/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CEE40E1726FC84A500102AA6 /* UiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiButton.swift; sourceTree = "<group>"; };
 		CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiSlider.swift; sourceTree = "<group>"; };
 		EEF382B7028422D11BC25F14 /* Pods-Metronome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.debug.xcconfig"; path = "Target Support Files/Pods-Metronome/Pods-Metronome.debug.xcconfig"; sourceTree = "<group>"; };
@@ -332,7 +329,6 @@
 		CE78829726FB4EAF007EBA95 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
-				CEAE049B27046B3300D93EE9 /* Localizable.strings */,
 				CE0ED53F270274150091F640 /* CustomAlert */,
 				CE8073EB2700F7AD0070018C /* NibLoaded */,
 				CE23956726FFAD4F009983CD /* Model */,
@@ -493,7 +489,6 @@
 				CE23953326FCFFF4009983CD /* Roboto-BoldItalic.ttf in Resources */,
 				CE23957A26FFB0E7009983CD /* cowbellaccent.wav in Resources */,
 				CE78829026FB4E07007EBA95 /* LaunchScreen.storyboard in Resources */,
-				CEAE049D27046B3300D93EE9 /* Localizable.strings in Resources */,
 				CE23957726FFB0E7009983CD /* Triplet.wav in Resources */,
 				CE8073FA2700FA2B0070018C /* StackViewCel.xib in Resources */,
 				CE23957926FFB0E7009983CD /* digital-Division.wav in Resources */,
@@ -623,15 +618,6 @@
 				CE78828F26FB4E07007EBA95 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		CEAE049B27046B3300D93EE9 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CEAE049C27046B3300D93EE9 /* Base */,
-				CEAE049E27046C2C00D93EE9 /* ru */,
-			);
-			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

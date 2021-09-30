@@ -21,13 +21,19 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
+  internal static let _24 = ImageAsset(name: "24")
+  internal static let _34 = ImageAsset(name: "34")
+  internal static let _44 = ImageAsset(name: "44")
   internal static let accentColor = ColorAsset(name: "AccentColor")
   internal static let nota = ImageAsset(name: "Nota")
+  internal static let nota1 = ImageAsset(name: "Nota1")
+  internal static let notas = ImageAsset(name: "Notas")
   internal static let oneNota = ImageAsset(name: "OneNota")
   internal static let settings = ImageAsset(name: "Settings")
   internal static let buttonNota = ImageAsset(name: "buttonNota")
   internal static let currentCell = ImageAsset(name: "currentCell")
   internal static let down = ImageAsset(name: "down")
+  internal static let newTwoButton = ImageAsset(name: "newTwoButton")
   internal static let nota3 = ImageAsset(name: "nota3")
   internal static let pause = ImageAsset(name: "pause")
   internal static let play = ImageAsset(name: "play")
