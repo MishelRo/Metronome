@@ -70,7 +70,8 @@ class MetronomeAlert: UIView {
         }
         pickViewContentView.addSubview(includeLabel)
         includeLabel.text = "/    4"
-        includeLabel.textColor = .white
+        includeLabel.font = UIFont(name: "Roboto", size: 24)
+        includeLabel.textColor = #colorLiteral(red: 0.8078379035, green: 0.8077895045, blue: 0.8120592237, alpha: 1)
         includeLabel.snp.makeConstraints { make in
             make.leading.equalTo(pickViewContentView.snp.centerX)
             make.top.equalTo(pickViewContentView.snp.top).offset(-2)

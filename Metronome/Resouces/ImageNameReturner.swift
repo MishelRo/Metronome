@@ -23,6 +23,7 @@ enum name {
     case twoNota
     case unSelected
     case up
+    case newTwoButton
 }
 
 extension name {
@@ -60,6 +61,8 @@ extension name {
             return UIImage(named: "up")!
         case .twoFour:
             return UIImage(named: "twoFour")!
+        case .newTwoButton:
+            return UIImage(named: "newTwoButton")!
         }
     }
 }

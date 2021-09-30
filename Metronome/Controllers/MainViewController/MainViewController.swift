@@ -53,6 +53,7 @@ class MainViewController: UIViewController {
             pageControl.numberOfPages = beatCount
             guard beatCount == 0 else {return}
             numberOfPages = 1
+            equalizerView.addVisual(count: 1)
         }
     }
     
