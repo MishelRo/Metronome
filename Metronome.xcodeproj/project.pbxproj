@@ -38,7 +38,7 @@
 		CE23955626FD352B009983CD /* Hight.m4a in Resources */ = {isa = PBXBuildFile; fileRef = CE23955426FD352B009983CD /* Hight.m4a */; };
 		CE23955926FD370E009983CD /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23955826FD370E009983CD /* MainViewModel.swift */; };
 		CE23955D26FD377D009983CD /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23955C26FD377D009983CD /* SettingViewModel.swift */; };
-		CE23956226FE03E9009983CD /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23956126FE03E9009983CD /* SoundPlayer.swift */; };
+		CE23956226FE03E9009983CD /* SoundSchemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23956126FE03E9009983CD /* SoundSchemes.swift */; };
 		CE23956426FE062C009983CD /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23956326FE062C009983CD /* Double.swift */; };
 		CE23956626FF15E7009983CD /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23956526FF15E7009983CD /* UIView.swift */; };
 		CE23956926FFAD5D009983CD /* SoundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23956826FFAD5D009983CD /* SoundModel.swift */; };
@@ -75,6 +75,17 @@
 		CEAE0495270469A200D93EE9 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = CEAE0494270469A200D93EE9 /* swiftgen.yml */; };
 		CEAE049927046AA500D93EE9 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE049727046AA500D93EE9 /* Assets.swift */; };
 		CEAE049A27046AA500D93EE9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE049827046AA500D93EE9 /* Strings.swift */; };
+		CEC8BB0D27070AF600841EB9 /* Metronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8BB0C27070AF600841EB9 /* Metronome.swift */; };
+		CEC8BB1D27070B6A00841EB9 /* Sonar_accent.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1327070B6A00841EB9 /* Sonar_accent.wav */; };
+		CEC8BB1E27070B6A00841EB9 /* Cubase_accent.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1427070B6A00841EB9 /* Cubase_accent.wav */; };
+		CEC8BB1F27070B6A00841EB9 /* Sonar_main.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1527070B6A00841EB9 /* Sonar_main.wav */; };
+		CEC8BB2027070B6A00841EB9 /* Classic_accent.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1627070B6A00841EB9 /* Classic_accent.wav */; };
+		CEC8BB2127070B6A00841EB9 /* Ableton_accent.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1727070B6A00841EB9 /* Ableton_accent.wav */; };
+		CEC8BB2227070B6A00841EB9 /* Cubase_main.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1827070B6A00841EB9 /* Cubase_main.wav */; };
+		CEC8BB2327070B6A00841EB9 /* Logic_main.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1927070B6A00841EB9 /* Logic_main.wav */; };
+		CEC8BB2427070B6A00841EB9 /* Ableton_main.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1A27070B6A00841EB9 /* Ableton_main.wav */; };
+		CEC8BB2527070B6A00841EB9 /* Logic_accent.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1B27070B6A00841EB9 /* Logic_accent.wav */; };
+		CEC8BB2627070B6A00841EB9 /* Classic_main.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1C27070B6A00841EB9 /* Classic_main.wav */; };
 		CEE40E1826FC84A500102AA6 /* UiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E1726FC84A500102AA6 /* UiButton.swift */; };
 		CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */; };
 /* End PBXBuildFile section */
@@ -112,7 +123,7 @@
 		CE23955426FD352B009983CD /* Hight.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hight.m4a; sourceTree = "<group>"; };
 		CE23955826FD370E009983CD /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		CE23955C26FD377D009983CD /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
-		CE23956126FE03E9009983CD /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		CE23956126FE03E9009983CD /* SoundSchemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSchemes.swift; sourceTree = "<group>"; };
 		CE23956326FE062C009983CD /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		CE23956526FF15E7009983CD /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		CE23956826FFAD5D009983CD /* SoundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundModel.swift; sourceTree = "<group>"; };
@@ -151,6 +162,17 @@
 		CEAE0494270469A200D93EE9 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		CEAE049727046AA500D93EE9 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		CEAE049827046AA500D93EE9 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		CEC8BB0C27070AF600841EB9 /* Metronome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metronome.swift; sourceTree = "<group>"; };
+		CEC8BB1327070B6A00841EB9 /* Sonar_accent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Sonar_accent.wav; sourceTree = "<group>"; };
+		CEC8BB1427070B6A00841EB9 /* Cubase_accent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Cubase_accent.wav; sourceTree = "<group>"; };
+		CEC8BB1527070B6A00841EB9 /* Sonar_main.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Sonar_main.wav; sourceTree = "<group>"; };
+		CEC8BB1627070B6A00841EB9 /* Classic_accent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Classic_accent.wav; sourceTree = "<group>"; };
+		CEC8BB1727070B6A00841EB9 /* Ableton_accent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ableton_accent.wav; sourceTree = "<group>"; };
+		CEC8BB1827070B6A00841EB9 /* Cubase_main.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Cubase_main.wav; sourceTree = "<group>"; };
+		CEC8BB1927070B6A00841EB9 /* Logic_main.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Logic_main.wav; sourceTree = "<group>"; };
+		CEC8BB1A27070B6A00841EB9 /* Ableton_main.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ableton_main.wav; sourceTree = "<group>"; };
+		CEC8BB1B27070B6A00841EB9 /* Logic_accent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Logic_accent.wav; sourceTree = "<group>"; };
+		CEC8BB1C27070B6A00841EB9 /* Classic_main.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Classic_main.wav; sourceTree = "<group>"; };
 		CEE40E1726FC84A500102AA6 /* UiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiButton.swift; sourceTree = "<group>"; };
 		CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiSlider.swift; sourceTree = "<group>"; };
 		EEF382B7028422D11BC25F14 /* Pods-Metronome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.debug.xcconfig"; path = "Target Support Files/Pods-Metronome/Pods-Metronome.debug.xcconfig"; sourceTree = "<group>"; };
@@ -230,6 +252,16 @@
 		CE23955226FD352B009983CD /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				CEC8BB1327070B6A00841EB9 /* Sonar_accent.wav */,
+				CEC8BB1427070B6A00841EB9 /* Cubase_accent.wav */,
+				CEC8BB1627070B6A00841EB9 /* Classic_accent.wav */,
+				CEC8BB1727070B6A00841EB9 /* Ableton_accent.wav */,
+				CEC8BB1B27070B6A00841EB9 /* Logic_accent.wav */,
+				CEC8BB1827070B6A00841EB9 /* Cubase_main.wav */,
+				CEC8BB1927070B6A00841EB9 /* Logic_main.wav */,
+				CEC8BB1A27070B6A00841EB9 /* Ableton_main.wav */,
+				CEC8BB1C27070B6A00841EB9 /* Classic_main.wav */,
+				CEC8BB1527070B6A00841EB9 /* Sonar_main.wav */,
 				CE23955426FD352B009983CD /* Hight.m4a */,
 				CE23955326FD352B009983CD /* Low.m4a */,
 				CE23956C26FFB0E7009983CD /* Accent.wav */,
@@ -252,7 +284,8 @@
 		CE23955726FD360A009983CD /* AudioModulle */ = {
 			isa = PBXGroup;
 			children = (
-				CE23956126FE03E9009983CD /* SoundPlayer.swift */,
+				CE23956126FE03E9009983CD /* SoundSchemes.swift */,
+				CEC8BB0C27070AF600841EB9 /* Metronome.swift */,
 			);
 			path = AudioModulle;
 			sourceTree = "<group>";
@@ -488,6 +521,7 @@
 				CE23954D26FD000B009983CD /* Ubuntu-M.ttf in Resources */,
 				CE23953326FCFFF4009983CD /* Roboto-BoldItalic.ttf in Resources */,
 				CE23957A26FFB0E7009983CD /* cowbellaccent.wav in Resources */,
+				CEC8BB2427070B6A00841EB9 /* Ableton_main.wav in Resources */,
 				CE78829026FB4E07007EBA95 /* LaunchScreen.storyboard in Resources */,
 				CE23957726FFB0E7009983CD /* Triplet.wav in Resources */,
 				CE8073FA2700FA2B0070018C /* StackViewCel.xib in Resources */,
@@ -495,25 +529,33 @@
 				CE23953926FCFFF4009983CD /* Roboto-LightItalic.ttf in Resources */,
 				CE23954B26FD000B009983CD /* Ubuntu-B.ttf in Resources */,
 				CE23955526FD352B009983CD /* Low.m4a in Resources */,
+				CEC8BB2227070B6A00841EB9 /* Cubase_main.wav in Resources */,
 				CE23953426FCFFF4009983CD /* Roboto-Medium.ttf in Resources */,
 				CE23953826FCFFF4009983CD /* Roboto-Bold.ttf in Resources */,
 				CE23954826FD000B009983CD /* Ubuntu-R.ttf in Resources */,
 				CE23953226FCFFF4009983CD /* Roboto-Black.ttf in Resources */,
 				CE23957D26FFB0E7009983CD /* digital-Subdivision.wav in Resources */,
 				CE23954926FD000B009983CD /* Ubuntu-MI.ttf in Resources */,
+				CEC8BB2627070B6A00841EB9 /* Classic_main.wav in Resources */,
 				CE23953126FCFFF4009983CD /* Roboto-Light.ttf in Resources */,
+				CEC8BB1F27070B6A00841EB9 /* Sonar_main.wav in Resources */,
 				CE78828D26FB4E07007EBA95 /* Assets.xcassets in Resources */,
 				CE23957B26FFB0E7009983CD /* Beat.wav in Resources */,
+				CEC8BB2127070B6A00841EB9 /* Ableton_accent.wav in Resources */,
 				CE23954726FD000B009983CD /* Ubuntu-L.ttf in Resources */,
 				CE23953626FCFFF4009983CD /* Roboto-MediumItalic.ttf in Resources */,
 				CE23957E26FFB0E7009983CD /* cowbell.wav in Resources */,
+				CEC8BB2027070B6A00841EB9 /* Classic_accent.wav in Resources */,
 				CE23953726FCFFF4009983CD /* Roboto-Thin.ttf in Resources */,
 				CE23957F26FFB0E7009983CD /* digital-Triplet.wav in Resources */,
 				CE23953B26FCFFF4009983CD /* Roboto-Italic.ttf in Resources */,
 				CEAE0495270469A200D93EE9 /* swiftgen.yml in Resources */,
+				CEC8BB2327070B6A00841EB9 /* Logic_main.wav in Resources */,
 				CE23953C26FCFFF4009983CD /* Roboto-Regular.ttf in Resources */,
+				CEC8BB2527070B6A00841EB9 /* Logic_accent.wav in Resources */,
 				CE23954A26FD000B009983CD /* Ubuntu-BI.ttf in Resources */,
 				CE23957826FFB0E7009983CD /* Accent.wav in Resources */,
+				CEC8BB1E27070B6A00841EB9 /* Cubase_accent.wav in Resources */,
 				CE23958026FFB0E7009983CD /* digital-Beat.wav in Resources */,
 				CE23955626FD352B009983CD /* Hight.m4a in Resources */,
 				CE23953526FCFFF4009983CD /* Roboto-BlackItalic.ttf in Resources */,
@@ -521,6 +563,7 @@
 				CE23954626FD000B009983CD /* Ubuntu-LI.ttf in Resources */,
 				CE23954C26FD000B009983CD /* Ubuntu-RI.ttf in Resources */,
 				CE23953A26FCFFF4009983CD /* Roboto-ThinItalic.ttf in Resources */,
+				CEC8BB1D27070B6A00841EB9 /* Sonar_accent.wav in Resources */,
 				CE23958126FFB0E7009983CD /* Subdivision.wav in Resources */,
 				CE23957626FFB0E7009983CD /* Division.wav in Resources */,
 			);
@@ -575,7 +618,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE23956226FE03E9009983CD /* SoundPlayer.swift in Sources */,
+				CEC8BB0D27070AF600841EB9 /* Metronome.swift in Sources */,
+				CE23956226FE03E9009983CD /* SoundSchemes.swift in Sources */,
 				CE78828B26FB4E04007EBA95 /* Metronome.xcdatamodeld in Sources */,
 				CEAE048D27039AEE00D93EE9 /* UIViewController.swift in Sources */,
 				CEAE048F27039B1F00D93EE9 /* UIResponder.swift in Sources */,

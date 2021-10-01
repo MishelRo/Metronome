@@ -23,7 +23,6 @@ class Equalizer: UIView {
                 }
     }
     
-    
     func addVisual(count: Int) {
         backgroundColor = Constants.MainBackgroundColor
                 switch count {

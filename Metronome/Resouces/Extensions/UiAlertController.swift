@@ -22,21 +22,33 @@ extension UIAlertController {
                     innerView.backgroundColor = Constants.allertColor
                 }
             }
-            let standart = UIAlertAction(title: "standart", style: .default) { _ in  complessionOk("standart")}
-            let light = UIAlertAction(title: "light", style: .default) { _ in complessionOk("light")}
-            let custom = UIAlertAction(title: "custom", style: .default) { _ in  complessionOk("custom")}
-            let other = UIAlertAction(title: "other", style: .default) { _ in  complessionOk("other")}
-            let digital = UIAlertAction(title: "digital", style: .default) { _ in  complessionOk("digital")}
-            let triplet = UIAlertAction(title: "triplet", style: .default) { _ in  complessionOk("triplet")}
-            let subDevision = UIAlertAction(title: "subDevision", style: .default) { _ in  complessionOk("subDevision")};
+            let standart = UIAlertAction(title: "standart", style: .default) { _ in  complessionOk("classic")};
+            let triplett = UIAlertAction(title: "triplett", style: .default) { _ in  complessionOk("triplett")};
+            let cowbell = UIAlertAction(title: "cowbell", style: .default) { _ in  complessionOk("cowbell")};
+            let digital = UIAlertAction(title: "digital", style: .default) { _ in  complessionOk("digital")};
+            let digitalDivision = UIAlertAction(title: "digital-Division", style: .default) { _ in  complessionOk("digital-Division")};
+            let digitalTriplet = UIAlertAction(title: "digital-Triplet", style: .default) { _ in  complessionOk("digital-Triplet")};
+            let subdivision = UIAlertAction(title: "Subdivision", style: .default) { _ in  complessionOk("Subdivision")};
+            let sonarMain = UIAlertAction(title: "sonarMain", style: .default) { _ in  complessionOk("sonarMain")};
+            let abletonMain = UIAlertAction(title: "abletonMain", style: .default) { _ in  complessionOk("abletonMain")};
+            let logicMain = UIAlertAction(title: "logicMain", style: .default) { _ in  complessionOk("logicMain")};
+            let cubaseMain = UIAlertAction(title: "cubaseMain", style: .default) { _ in  complessionOk("cubaseMain")};
+            
             
             alert.addAction(standart)
-            alert.addAction(light)
-            alert.addAction(custom)
-            alert.addAction(other)
+            alert.addAction(triplett)
+            alert.addAction(cowbell)
             alert.addAction(digital)
-            alert.addAction(triplet)
-            alert.addAction(subDevision)
+            alert.addAction(digitalDivision)
+            alert.addAction(digitalTriplet)
+            alert.addAction(subdivision)
+            alert.addAction(sonarMain)
+            alert.addAction(abletonMain)
+            alert.addAction(logicMain)
+            alert.addAction(cubaseMain)
+            
+            
+            
             
             complession(alert)
         }

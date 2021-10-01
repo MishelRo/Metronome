@@ -30,37 +30,25 @@ class MainViewController: UIViewController {
     var pictureLabel: MetronomeLabel!
     var beatLabel: MetronomeLabel!
     
-    
     //MARK:- Class Propeties
-    private var countArray = [Int]()
-    private var start = false
-    private var timer: Timer!
-    private var jumptimer: Timer?
+    
     private var currentPage = 0
     private var numberOfPages = 5
     private var model = MainViewModel()
     
-    private var value = Constants.standartVal {
+    var metronome: Metronome!
+    var countBeat: Int32 = 0 // количество бпм
+    var timeSignature: Int32 = 1 // количество нот
+    var tempo: Int32 = 130 { // темп
         didSet {
-            let arrayndValue = Constants.maxVal - oldValue
-            startButton.stopBackground()
-            startButton.changeBgrnd(frequency: Float(arrayndValue/10))
+            valueTextField.text = String(tempo)
         }
     }
-    
-    private var beatCount = 1 {
-        didSet {
-            pageControl.numberOfPages = beatCount
-            guard beatCount == 0 else {return}
-            numberOfPages = 1
-            equalizerView.addVisual(count: 1)
-        }
-    }
-    
+    var scheme: UrlSoundModel!
+
     //MARK:- UIElements configure
     
     private func uIElementConfigure() {
-        model.audioPlayer = SoundPlayer(model: .standart)
         pageControl = UIPageControl()
         equalizerView = Equalizer(count: 1)
         upButton = MetronomeButton()
@@ -84,14 +72,12 @@ class MainViewController: UIViewController {
     
     private func elementSettings() {
         layout()
-        model.delegate = self
         speedSlider.configure()
         startButton.configureStartButton()
         startButtonStartConfigure()
         startButtonStopConfigure()
         beatButtonActionConfigure()
         pictureButtonActionConfigure()
-
         
         startButton.imageInclude(images: imager.path(.play)())
         downButton.setImageToButton(image: imager.path(.down)())
@@ -119,45 +105,25 @@ class MainViewController: UIViewController {
     
     @objc func changeValueByTab() { // изменение значений бит метронома по вводу в поле значений
         let val = valueTextField.getInt()
-        if val < Constants.maxVal, val > Constants.minVal {
-                 self.value = val
-                 speedSlider.value = Float(val)
-                 guard start else {return}
-                 value = Int(speedSlider.value)
-                 let arrayndValue = Constants.maxVal - value
-                 startButton.stopBackground()
-                 startButton.changeBgrnd(frequency: Float(arrayndValue/10))
-                 stopStartTick()
-                 startTick()
+        if val < Constants.minVal {
+            speedSlider.value = 20
+            valueTextField.text = "20"
+            tempo = 20
+            ifPlayMertonome()
+        } else if val > Constants.maxVal {
+            speedSlider.value = Float(Constants.maxVal)
+            valueTextField.text = "\(Constants.maxVal)"
+            tempo = Int32(Constants.maxVal)
+            ifPlayMertonome()
         } else {
-            if val < Constants.minVal {
-                valueTextField.text = "\(Constants.minVal)"
-                self.value = Constants.minVal
-                speedSlider.value = Float(val)
-                guard start else {return}
-                value = Int(speedSlider.value)
-                let arrayndValue = Constants.maxVal - value
-                startButton.stopBackground()
-                startButton.changeBgrnd(frequency: Float(arrayndValue/10))
-                stopStartTick()
-                startTick()
-            }
-            if val > Constants.maxVal {
-                valueTextField.text = "\(Constants.maxVal)"
-                self.value = Constants.maxVal
-                speedSlider.value = Float(val)
-                guard start else {return}
-                value = Int(speedSlider.value)
-                let arrayndValue = Constants.maxVal - value
-                startButton.stopBackground()
-                startButton.changeBgrnd(frequency: Float(arrayndValue/10))
-                stopStartTick()
-                startTick()
-            }
+            speedSlider.value = Float(val)
+            valueTextField.text = "\(val)"
+            tempo = Int32(val)
+            ifPlayMertonome()
         }
     }
     
-    private func layout() {
+    private func layout() { // расположение элементов на вьюхе
         view.addSubview(appLabel)
         appLabel.snp.makeConstraints { make in
             make.width.greaterThanOrEqualTo(125)
@@ -246,7 +212,7 @@ class MainViewController: UIViewController {
             make.trailing.equalTo(speedSlider.snp.leading).offset(-10)
         }
         
-        pageControl.numberOfPages = beatCount
+        pageControl.numberOfPages = Int(timeSignature)
         pageControl.currentPage = currentPage
         
         self.view.addSubview(changeSoundButton)
@@ -278,55 +244,83 @@ class MainViewController: UIViewController {
     
     //MARK:- UIElements Actions
     
-    @objc func changeSoundButtonPress() {
+    @objc func changeSoundButtonPress() {// изменение звука метронома
         UIAlertController.getAlert(type: .soundChange) { alert in
             self.present(alert, animated: true, completion: nil)
         } complessionOk: { [self] value in
-            beatButton.litleButtonConfigurate(imageStr: imager.path(.twoFour)())
-            beatCount = 1
-            let sound = model.bit(value: value)
-            model.audioPlayer = sound
+            switch value {
+            case "classic":
+                scheme = SoundScheme.path(.classic)()
+                changeMelody(scheme: scheme)
+            case "triplett":
+                scheme = SoundScheme.path(.triplet)()
+                changeMelody(scheme: scheme)
+            case "cowbell":
+                scheme = SoundScheme.path(.other)()
+                changeMelody(scheme: scheme)
+            case "digital":
+                scheme = SoundScheme.path(.digital)()
+                changeMelody(scheme: scheme)
+            case "digital-Division":
+                scheme = SoundScheme.path(.subDevision)()
+                changeMelody(scheme: scheme)
+            case "digital-Triplet":
+                scheme = SoundScheme.path(.triplet)()
+                changeMelody(scheme: scheme)
+            case "Subdivision":
+                scheme = SoundScheme.path(.subDevision)()
+                changeMelody(scheme: scheme)
+            case "sonarMain":
+                scheme = SoundScheme.path(.sonar)()
+                changeMelody(scheme: scheme)
+            case "abletonMain":
+                scheme = SoundScheme.path(.ableton)()
+                changeMelody(scheme: scheme)
+            case "logicMain":
+                scheme = SoundScheme.path(.logic)()
+                changeMelody(scheme: scheme)
+            case "cubaseMain":
+                scheme = SoundScheme.path(.cubase)()
+                changeMelody(scheme: scheme)
+            default:
+                break
+            }
         }
     }
     
-    @objc func downButtonPreess() {
-        pageControl.currentPage -= 1
-        guard value >= Constants.minVal + 1 else {return}
-        value -= 1
-        valueTextField.text = "\(value)"
-        speedSlider.setValue( Float(value), animated: true)
-        guard start else {return}
-        stopStartTick()
-        startTick()
+    private func changeMelody(scheme: UrlSoundModel) {// функция измененния звука метронома по заданной схеме
+        metronome = Metronome(urlSoundModel: scheme)
+        self.metronome.playMetronome(bpm: self.tempo,
+                                     countBeat: self.countBeat,
+                                     timeSignature: self.timeSignature)
     }
-    @objc func upButtonPreess() {
-        guard value < Constants.maxVal, value >= Constants.minVal else {return}
-        value += 1
-        pageControl.currentPage += 1
-        guard value > 0 else {return}
-        valueTextField.text = "\(value)"
-        speedSlider.setValue( Float(value), animated: true)
-        guard start else {return}
-        stopStartTick()
-        startTick()
+    
+    @objc func downButtonPreess() { // нажатие вниз
+        guard tempo > Constants.minVal, tempo < Constants.maxVal - 1 else {return}
+        tempo -= 1
+        ifPlayMertonome()
+        speedSlider.value = Float(tempo)
     }
-    @objc func settingsButtonPress() {
+    
+    @objc func upButtonPreess() { // нажатие вверх
+        guard tempo > Constants.minVal - 1, tempo < Constants.maxVal  else {return}
+        tempo += 1
+        ifPlayMertonome()
+        speedSlider.value = Float(tempo)
+    }
+    
+    @objc func settingsButtonPress() { // настройки
         MainStart.present(view: self, controller: .settingController)
     }
-    @objc func sliderValueDidChange() {
-        value = Int(speedSlider.value)
-        let arrayndValue = Constants.maxVal - value
-        startButton.stopBackground()
-        startButton.changeBgrnd(frequency: Float(arrayndValue/10))
-        valueTextField.text = "\(value)"
-        guard start else {return}
-        stopStartTick()
-        startTick()
+    
+    @objc func sliderValueDidChange() { // изменение положения  слайдера
+        tempo = Int32(Int(speedSlider.value))
+        print(tempo)
+        ifPlayMertonome()
     }
-    private func beatButtonActionConfigure() {
-        countArray = [Int]()
+    
+    private func beatButtonActionConfigure() { // подьем алерта битов
         beatButton.executeBeatsButton {
-            self.changeBeat(count: 0)
             self.view.addSubview(self.alertBeat)
             self.alertBeat.isHidden = false
             self.alertBeat.snp.makeConstraints { make in
@@ -336,7 +330,8 @@ class MainViewController: UIViewController {
             }
         }
     }
-    private func pictureButtonActionConfigure() {
+    
+    private func pictureButtonActionConfigure() { // подьем алерта картинки
         self.pictureButton.executeBeatsButton {
             self.view.addSubview(self.alertPict)
             self.alertPict.isHidden = false
@@ -349,89 +344,72 @@ class MainViewController: UIViewController {
     }
     //MARK:- AllertConfigure
     
-    private func alertPictConfigure() {
+    private func alertPictConfigure() { // передача комплишнов в кнопку рисунок
         alertPict.complessionFirst = pictOne
         alertPict.complessionSecond = pictTwo
         alertPict.complessionThird = pictThree
-        
     }
-    private func pictOne() {
+    
+    private func pictOne() {// рисунок один
         self.alertPict.isHidden = true
-        guard self.start else {return}
-        self.beatCount = 2
-        self.changeBeat(count: self.beatCount)
-        self.alertBeat.isHidden = true
-        self.stopJumpTimer()
-        self.stopJumpTimer()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
-            self.model.animate(bpm: self.value)
-            self.jumptimer = self.model.timerReturn(timeInterval: Constants.timeInterval,
-                                                    bpm: Double(self.value))
-        }
+        timeSignature = 1
+        ifPlayMertonome()
     }
-    private func pictTwo() {
+    
+    private func pictTwo() { //  рисунок два
         self.alertPict.isHidden = true
-        guard self.start else {return}
-        self.beatCount = 3
-        self.changeBeat(count: self.beatCount)
-        self.alertBeat.isHidden = true
-        self.stopJumpTimer()
-        self.stopJumpTimer()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
-            self.model.animate(bpm: self.value)
-            self.jumptimer = self.model.timerReturn(timeInterval: Constants.timeInterval,
-                                                    bpm: Double(self.value))
-        }
+        timeSignature = 2
+        ifPlayMertonome()
     }
-    private func pictThree() {
+    
+    private func pictThree() { // рисунок три
         self.alertPict.isHidden = true
-        guard self.start else {return}
-        self.beatCount = 4
-        self.changeBeat(count: self.beatCount)
-        self.alertBeat.isHidden = true
-        self.stopJumpTimer()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.7){
-            self.model.animate(bpm: self.value)
-            self.jumptimer = self.model.timerReturn(timeInterval: Constants.timeInterval,
-                                                    bpm: Double(self.value))
-        }
+        timeSignature = 4
+        ifPlayMertonome()
     }
-    private func alertConfigure() {
+    
+    private func alertConfigure() { // передача комплишнов в кнопку битов
         alertBeat.complessionFirst = beatOne
         alertBeat.complessionSecond = beatTwo
         alertBeat.complessionThird = beatThree
         
     }
-    private func beatOne() {
+    
+    private func beatOne() { // бит один
         beatButton.litleButtonConfigurate(imageStr: imager.path(.twoFour)())
         equalizerView.remove()
-        equalizerView.addVisual(count: 2)
+        pageControl.numberOfPages = Int(2)// pages to pageView
+        equalizerView.addVisual(count: 2) // обработка эквалайзера
+        countBeat = 2
         self.alertPict.isHidden = true
-        self.beatCount = 2
-        self.changeBeat(count: self.beatCount)
+        ifPlayMertonome()
     }
-    private func beatTwo() {
+    
+    private func beatTwo() {// бит два
         beatButton.litleButtonConfigurate(imageStr: imager.path(.threefour)())
         equalizerView.remove()
-        equalizerView.addVisual(count: 3)
+        pageControl.numberOfPages = Int(3)// pages to pageView
+        equalizerView.addVisual(count: 3)// обработка эквалайзера
+        countBeat = 3
         self.alertPict.isHidden = true
-        self.beatCount = 3
-        self.changeBeat(count: self.beatCount)
+        ifPlayMertonome()
     }
-    private func beatThree() {
+    
+    private func beatThree() { // бит три
         beatButton.litleButtonConfigurate(imageStr: imager.path(.fourFour)())
         equalizerView.remove()
-        equalizerView.addVisual(count: 4)
+        pageControl.numberOfPages = Int(4)// pages to pageView
+        equalizerView.addVisual(count: 4)// обработка эквалайзера
+        countBeat = 4
         self.alertPict.isHidden = true
-        self.beatCount = 4
-        self.changeBeat(count: self.beatCount)
+        ifPlayMertonome()
     }
-    
-    
     
     //MARK:-  View
     override func viewDidLoad() {
         super.viewDidLoad()
+        scheme = SoundScheme.path(.classic)()
+        metronome = Metronome(urlSoundModel: scheme)
         view.backgroundColor = Constants.MainBackgroundColor
         uIElementConfigure()
         alertConfigure()
@@ -455,60 +433,30 @@ class MainViewController: UIViewController {
         alertPict.isHidden = true
     }
     
-}
-//MARK:- Timer
-
-extension MainViewController: TickDelegate {
-    
-    func tick(count: Int) {
-        self.countArray.append(count)
-        guard self.countArray.count <= self.beatCount - 1 else {
-            self.countArray = [Int](); return
-                self.pageControl.currentPage = 0 }
-        equalizerView.currentfraction(fraction: countArray.count)
-        self.pageControl.currentPage = self.countArray.count
-    }
-    
-    private func stopJumpTimer() {
-        jumptimer?.invalidate()
-        jumptimer = nil
-    }
+    //MARK:- Start-Stop Timer Configure
     
     private func startButtonStartConfigure() {
         startButton.startConfigure {
-            self.stopStartTick()
+            self.metronome.stopMetranome()
         }
     }
     
     private func startButtonStopConfigure() {
         startButton.stopConfigure {
-            self.startTick()
+            self.metronome.playMetronome(bpm: self.tempo,
+                                         countBeat: self.countBeat,
+                                         timeSignature: self.timeSignature)
         }
     }
     
-    private func stopStartTick() {
-        UIApplication.shared.isIdleTimerDisabled = false
-        guard start != false else {return}
-        start = false
-        timer.invalidate()
-        jumptimer?.invalidate()
-        timer = nil
-        model.animate(bpm: value)
+    func ifPlayMertonome() {
+        if metronome.isPlay {
+            metronome.stopMetranome()
+            metronome.playMetronome(bpm: tempo,
+                                    countBeat: countBeat,
+                                    timeSignature: timeSignature)
+        }
     }
     
-    private func startTick() {
-        UIApplication.shared.isIdleTimerDisabled = true
-        start = true
-        model.animate(bpm: value)
-        timer = model.timerReturn(timeInterval: 60.0, bpm: Double(value))
-    }
     
-    private func changeBeat(count: Int) {
-        self.alertBeat.isHidden = true
-        guard self.start else {return}
-        stopStartTick()
-        model.audioPlayer?.changeBeats(beats: count)
-        startTick()
-    }
 }
-
