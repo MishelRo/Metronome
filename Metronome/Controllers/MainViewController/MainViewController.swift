@@ -30,6 +30,7 @@ class MainViewController: UIViewController {
     var pictureLabel: MetronomeLabel!
     var beatLabel: MetronomeLabel!
     
+    
     //MARK:- Class Propeties
     
     private var currentPage = 0
@@ -37,6 +38,10 @@ class MainViewController: UIViewController {
     private var model = MainViewModel()
     
     var metronome: Metronome!
+    var scheme: UrlSoundModel!
+    
+    var stringScheme: String! // используемая звуковая схема // используется для верификации и подмены низких частот
+    
     var countBeat: Int32 = 0 // количество бпм
     var timeSignature: Int32 = 1 // количество нот
     var tempo: Int32 = 130 { // темп
@@ -44,7 +49,6 @@ class MainViewController: UIViewController {
             valueTextField.text = String(tempo)
         }
     }
-    var scheme: UrlSoundModel!
 
     //MARK:- UIElements configure
     
@@ -149,7 +153,7 @@ class MainViewController: UIViewController {
         self.view.addSubview(equalizerView)
         equalizerView.snp.makeConstraints { make in
             make.width.greaterThanOrEqualTo(240)
-            make.height.equalTo(50)
+            make.height.equalTo(64)
             make.centerX.equalTo(view.snp.centerX)
             make.top.equalTo(pageControl.snp.bottom).offset(10)
         }
@@ -248,6 +252,7 @@ class MainViewController: UIViewController {
         UIAlertController.getAlert(type: .soundChange) { alert in
             self.present(alert, animated: true, completion: nil)
         } complessionOk: { [self] value in
+            stringScheme = value
             switch value {
             case "classic":
                 scheme = SoundScheme.path(.classic)()
@@ -459,4 +464,30 @@ class MainViewController: UIViewController {
     }
     
     
+}
+// MARK:- EQ Delegate Realizasion
+extension MainViewController : stackCellDelegate { 
+    func oneTab() {
+        print("oneTab")
+//        DispatchQueue.main.async { [unowned self] in
+//        scheme = SoundSchemeCreator().createScheme(currentScheme: .classic, note: .Height)
+//        ifPlayMertonome()
+//        }
+    }
+    
+    func clean() {
+        print("Clean")
+//        DispatchQueue.main.async { [unowned self] in
+//        scheme = SoundSchemeCreator().createScheme(currentScheme: .classic, note: .Low)
+//        ifPlayMertonome()
+//        }
+    }
+    
+    func doubleTab() {
+        print("doubleTab")
+//        DispatchQueue.main.async { [unowned self] in
+//        scheme = SoundSchemeCreator().createScheme(currentScheme: .classic, note: .HightLow)
+//        ifPlayMertonome()
+//        }
+    }
 }

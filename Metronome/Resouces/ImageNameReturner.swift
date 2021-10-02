@@ -26,6 +26,8 @@ enum imager {
     case twoFour
     case threefour
     case fourFour
+    case selected
+    case unselected
 }
 
 extension imager {
@@ -69,6 +71,10 @@ extension imager {
             return UIImage(named: "34")!
         case .fourFour:
             return UIImage(named: "44")!
+        case .selected:
+            return UIImage(named: "selectedCell")!
+        case .unselected:
+            return UIImage(named: "unSelected")!
         }
     }
 }

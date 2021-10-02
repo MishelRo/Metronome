@@ -86,6 +86,7 @@
 		CEC8BB2427070B6A00841EB9 /* Ableton_main.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1A27070B6A00841EB9 /* Ableton_main.wav */; };
 		CEC8BB2527070B6A00841EB9 /* Logic_accent.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1B27070B6A00841EB9 /* Logic_accent.wav */; };
 		CEC8BB2627070B6A00841EB9 /* Classic_main.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1C27070B6A00841EB9 /* Classic_main.wav */; };
+		CEC8BB282708B2B200841EB9 /* SoundSchemeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8BB272708B2B200841EB9 /* SoundSchemeCreator.swift */; };
 		CEE40E1826FC84A500102AA6 /* UiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E1726FC84A500102AA6 /* UiButton.swift */; };
 		CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */; };
 /* End PBXBuildFile section */
@@ -173,6 +174,7 @@
 		CEC8BB1A27070B6A00841EB9 /* Ableton_main.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ableton_main.wav; sourceTree = "<group>"; };
 		CEC8BB1B27070B6A00841EB9 /* Logic_accent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Logic_accent.wav; sourceTree = "<group>"; };
 		CEC8BB1C27070B6A00841EB9 /* Classic_main.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Classic_main.wav; sourceTree = "<group>"; };
+		CEC8BB272708B2B200841EB9 /* SoundSchemeCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSchemeCreator.swift; sourceTree = "<group>"; };
 		CEE40E1726FC84A500102AA6 /* UiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiButton.swift; sourceTree = "<group>"; };
 		CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiSlider.swift; sourceTree = "<group>"; };
 		EEF382B7028422D11BC25F14 /* Pods-Metronome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.debug.xcconfig"; path = "Target Support Files/Pods-Metronome/Pods-Metronome.debug.xcconfig"; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 			children = (
 				CE23956126FE03E9009983CD /* SoundSchemes.swift */,
 				CEC8BB0C27070AF600841EB9 /* Metronome.swift */,
+				CEC8BB272708B2B200841EB9 /* SoundSchemeCreator.swift */,
 			);
 			path = AudioModulle;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */,
 				CE0ED541270274510091F640 /* MetronomeAlert.swift in Sources */,
 				CE8073F02700F7AD0070018C /* NSObject+Load.swift in Sources */,
+				CEC8BB282708B2B200841EB9 /* SoundSchemeCreator.swift in Sources */,
 				CE78829926FB4EBC007EBA95 /* MainStart.swift in Sources */,
 				CE78828126FB4E04007EBA95 /* AppDelegate.swift in Sources */,
 				CEAE049327045DC200D93EE9 /* UILabel.swift in Sources */,
