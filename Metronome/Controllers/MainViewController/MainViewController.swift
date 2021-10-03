@@ -132,20 +132,20 @@ class MainViewController: UIViewController {
         appLabel.snp.makeConstraints { make in
             make.width.greaterThanOrEqualTo(125)
             make.height.greaterThanOrEqualTo(26)
-            make.top.equalTo(view.snp.top).offset(100)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.leading.equalTo(view.snp.leading).offset(20)
         }
         view.addSubview(settingsButton)
         settingsButton.snp.makeConstraints { make in
             make.width.equalTo(30)
             make.height.equalTo(30)
-            make.top.equalTo(view.snp.top).offset(100)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.trailing.equalTo(view.snp.trailing).offset(-20)
         }
         
         self.view.addSubview(pageControl)
         pageControl.snp.makeConstraints { make in
-            make.top.lessThanOrEqualTo(appLabel.snp.bottom).offset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
             make.width.equalTo(200)
             make.height.equalTo(40)
             make.centerX.equalTo(view.snp.centerX)
@@ -153,7 +153,7 @@ class MainViewController: UIViewController {
         self.view.addSubview(equalizerView)
         equalizerView.snp.makeConstraints { make in
             make.width.greaterThanOrEqualTo(240)
-            make.height.equalTo(64)
+            make.height.lessThanOrEqualTo(60)
             make.centerX.equalTo(view.snp.centerX)
             make.top.equalTo(pageControl.snp.bottom).offset(10)
         }
@@ -183,7 +183,7 @@ class MainViewController: UIViewController {
         
         view.addSubview(valueTextField)
         valueTextField.snp.makeConstraints { make in
-            make.top.lessThanOrEqualTo(startButton.snp.bottom).offset(20)
+            make.top.greaterThanOrEqualTo(startButton.snp.bottom).offset(20)
             make.height.equalTo(52)
             make.width.equalTo(110)
             make.centerX.equalTo(view.snp.centerX)
@@ -191,7 +191,7 @@ class MainViewController: UIViewController {
         
         view.addSubview(speedSlider)
         speedSlider.snp.makeConstraints { make in
-            make.bottom.greaterThanOrEqualTo(view.snp.bottom).offset(-100)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-50)
             make.top.greaterThanOrEqualTo(valueTextField.snp.bottom).offset(35)
             make.leading.greaterThanOrEqualTo(view.snp.leading).offset(+32)
             make.trailing.lessThanOrEqualTo(view.snp.trailing).offset(-32)
@@ -223,7 +223,7 @@ class MainViewController: UIViewController {
         changeSoundButton.snp.makeConstraints { make in
             make.width.equalTo(30)
             make.height.equalTo(30)
-            make.top.equalTo(view.snp.top).offset(100)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.trailing.equalTo(settingsButton.snp.trailing).offset(-50)
         }
         
@@ -357,6 +357,7 @@ class MainViewController: UIViewController {
     
     private func pictOne() {// рисунок один
         self.alertPict.isHidden = true
+        pictureButton.litleButtonConfigurate(imageStr: imager.path(.down)())
         timeSignature = 1
         ifPlayMertonome()
     }
@@ -372,7 +373,7 @@ class MainViewController: UIViewController {
         timeSignature = 4
         ifPlayMertonome()
     }
-    
+
     private func alertConfigure() { // передача комплишнов в кнопку битов
         alertBeat.complessionFirst = beatOne
         alertBeat.complessionSecond = beatTwo
