@@ -28,6 +28,9 @@ enum imager {
     case fourFour
     case selected
     case unselected
+    case back
+    case newOne
+    case newTwo
 }
 
 extension imager {
@@ -75,6 +78,12 @@ extension imager {
             return UIImage(named: "selectedCell")!
         case .unselected:
             return UIImage(named: "unSelected")!
+        case .back:
+            return UIImage(named: "back")!
+        case .newOne:
+            return UIImage(named: "newnewOne")!
+        case .newTwo:
+            return UIImage(named: "newTwo")!
         }
     }
 }

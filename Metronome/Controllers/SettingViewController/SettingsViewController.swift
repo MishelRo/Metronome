@@ -17,6 +17,7 @@ class SettingsViewController: UIViewController {
     }
     var replicatorLayer : CAReplicatorLayer!
     var sourceLayer : CALayer!
+    var backButton: UIButton!
     
 
     override func viewDidLoad() {
@@ -28,8 +29,30 @@ class SettingsViewController: UIViewController {
         replicatorLayer.addSublayer(sourceLayer)
         start()
         stop()
+        uIConfigure()
+        layout()
     }
     
+    
+    func uIConfigure() {
+        backButton = UIButton()
+    }
+    
+    func layout() {
+        view.addSubview(backButton)
+        backButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.leading.equalTo(view.snp.leading).offset(10)
+            make.width.equalTo(50)
+            make.height.equalTo(40)
+        }
+        backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
+        backButton.setImage(imager.path(.back)(), for: .normal)
+    }
+    
+    @objc func back() {
+        navigationController?.pushViewController(MainStart.getController(controller: .mainViewController), animated: false)
+    }
     
     func start() {
         startAnimation(delay: 0.04, replication: 100)

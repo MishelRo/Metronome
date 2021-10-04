@@ -27,19 +27,19 @@ class Equalizer: UIView {
         backgroundColor = Constants.MainBackgroundColor
                 switch count {
                 case 1:
-                    [ StackViewCel.make(selected: true) ].forEach { stackView.addArrangedSubview($0) }
+                    [ StackViewCel.make() ].forEach { stackView.addArrangedSubview($0) }
                 case 2:
-                    [ StackViewCel.make(selected: true), StackViewCel.make(selected: false) ].forEach
+                    [ StackViewCel.make(), StackViewCel.make() ].forEach
                     { stackView.addArrangedSubview($0) }
                 case 3:
-                    [   StackViewCel.make(selected: true),
-                        StackViewCel.make(selected: false),
-                        StackViewCel.make(selected: false), ].forEach { stackView.addArrangedSubview($0) }
+                    [   StackViewCel.make(),
+                        StackViewCel.make(),
+                        StackViewCel.make(), ].forEach { stackView.addArrangedSubview($0) }
                 case 4:
-                    [   StackViewCel.make(selected: true),
-                        StackViewCel.make(selected: false),
-                        StackViewCel.make(selected: false),
-                        StackViewCel.make(selected: false) ].forEach { stackView.addArrangedSubview($0) }
+                    [   StackViewCel.make(),
+                        StackViewCel.make(),
+                        StackViewCel.make(),
+                        StackViewCel.make() ].forEach { stackView.addArrangedSubview($0) }
                 default : break
                 }
     }

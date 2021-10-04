@@ -75,8 +75,8 @@ class MetronomeButton: UIButton {
         view.backgroundColor = Constants.MainBackgroundColor
         backgroundColor = Constants.littleButtonBackground
         view.addGestureRecognizer(recognizer)
-        view.layer.cornerRadius = 104
-        layer.cornerRadius = 114
+        view.layer.cornerRadius = 104/////////////////////////////////////////
+//        layer.cornerRadius = 114//////////////////////////////////////////////////
     }
     
     @objc func tabOnImage() { // нажатие на кнопку

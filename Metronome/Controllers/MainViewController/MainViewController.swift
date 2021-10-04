@@ -44,9 +44,13 @@ class MainViewController: UIViewController {
     
     var countBeat: Int32 = 0 // количество бпм
     var timeSignature: Int32 = 1 // количество нот
+    var frequensu = 0.2
     var tempo: Int32 = 130 { // темп
         didSet {
             valueTextField.text = String(tempo)
+            let arrayndValue = Constants.maxVal - Int(oldValue)
+            startButton.stopBackground()
+            startButton.changeBgrnd(frequency: Float(arrayndValue/50))
         }
     }
 
@@ -142,20 +146,13 @@ class MainViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.trailing.equalTo(view.snp.trailing).offset(-20)
         }
-        
-        self.view.addSubview(pageControl)
-        pageControl.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
-            make.width.equalTo(200)
-            make.height.equalTo(40)
-            make.centerX.equalTo(view.snp.centerX)
-        }
+
         self.view.addSubview(equalizerView)
         equalizerView.snp.makeConstraints { make in
             make.width.greaterThanOrEqualTo(240)
-            make.height.lessThanOrEqualTo(60)
+            make.height.equalTo(70)
             make.centerX.equalTo(view.snp.centerX)
-            make.top.equalTo(pageControl.snp.bottom).offset(10)
+            make.top.equalTo(appLabel.snp.bottom).offset(30)
         }
         view.addSubview(beatButton)
         beatButton.snp.makeConstraints { make in
@@ -175,12 +172,13 @@ class MainViewController: UIViewController {
         view.addSubview(startButton)
         startButton.snp.makeConstraints { make in
             make.height.equalTo(228)
-            make.width.equalTo(228)
+            make.width.equalTo(startButton.snp.height)
             make.centerX.equalTo(view.snp.centerX)
-            make.top.equalTo(pictureButton.snp.bottom).offset(40)
-            make.top.equalTo(beatButton.snp.bottom).offset(40)
+            make.top.equalTo(pictureButton.snp.bottom).offset(35)
+            make.top.equalTo(beatButton.snp.bottom).offset(35)
+            make.leading.greaterThanOrEqualTo(view.snp.leading).offset(60)
         }
-        
+        startButton.layer.cornerRadius = 114
         view.addSubview(valueTextField)
         valueTextField.snp.makeConstraints { make in
             make.top.greaterThanOrEqualTo(startButton.snp.bottom).offset(20)
@@ -357,19 +355,21 @@ class MainViewController: UIViewController {
     
     private func pictOne() {// рисунок один
         self.alertPict.isHidden = true
-        pictureButton.litleButtonConfigurate(imageStr: imager.path(.down)())
+        pictureButton.litleButtonConfigurate(imageStr: imager.path(.nota)())
         timeSignature = 1
         ifPlayMertonome()
     }
     
     private func pictTwo() { //  рисунок два
         self.alertPict.isHidden = true
+        pictureButton.litleButtonConfigurate(imageStr: imager.path(.nota)())
         timeSignature = 2
         ifPlayMertonome()
     }
     
     private func pictThree() { // рисунок три
         self.alertPict.isHidden = true
+        pictureButton.litleButtonConfigurate(imageStr: imager.path(.newTwo)())
         timeSignature = 4
         ifPlayMertonome()
     }
@@ -414,6 +414,7 @@ class MainViewController: UIViewController {
     //MARK:-  View
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         scheme = SoundScheme.path(.classic)()
         metronome = Metronome(urlSoundModel: scheme)
         view.backgroundColor = Constants.MainBackgroundColor

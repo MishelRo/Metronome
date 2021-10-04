@@ -9,6 +9,7 @@ protocol SettingViewModelProtocol {
 }
 
 import UIKit
+
 class SettingViewModel: SettingViewModelProtocol {
     
    
