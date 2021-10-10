@@ -57,6 +57,14 @@ class MetronomeButton: UIButton {
     }
     
     func configureStartButton() { // конфигуратор стартовой кнопки
+        var cornerStart = 104
+           var layerCorner = 114
+        
+        if UIScreen.isPhone7(){
+            cornerStart = 73
+            layerCorner = 83
+        }
+        
         addSubview(view)
         view.snp.makeConstraints { make in
             make.bottom.equalTo(self.snp.bottom).offset(-10)
@@ -74,8 +82,9 @@ class MetronomeButton: UIButton {
         view.backgroundColor = Constants.MainBackgroundColor
         backgroundColor = Constants.littleButtonBackground
         view.addGestureRecognizer(recognizer)
-        view.layer.cornerRadius = 104/////////////////////////////////////////
-//        layer.cornerRadius = 114//////////////////////////////////////////////////
+        print(cornerStart)
+        view.layer.cornerRadius = CGFloat(cornerStart)/////////////////////////////////////////
+        layer.cornerRadius = CGFloat(layerCorner)//////////////////////////////////////////////////
     }
     
     @objc func tabOnImage() { // нажатие на кнопку
@@ -101,6 +110,12 @@ class MetronomeButton: UIButton {
     }
     
     func litleButtonConfigurate(imageStr: UIImage) { // конфигуратор кнопок бит и рисунок
+        var cornerStart = 45
+        var layerCorner = 54.5
+        if UIScreen.isPhone7(){
+            cornerStart = 35
+            layerCorner = 42
+        }
         addSubview(view)
         view.backgroundColor = Constants.MainBackgroundColor
         view.addSubview(image)
@@ -121,9 +136,9 @@ class MetronomeButton: UIButton {
             make.top.equalTo(self.snp.top).offset(7.5)
         }
         image.image = imageStr
-        view.layer.cornerRadius = 45
+        view.layer.cornerRadius = CGFloat(cornerStart)
         backgroundColor = Constants.littleButtonBackground
-        layer.cornerRadius = 54.5
+        layer.cornerRadius = CGFloat(layerCorner)
         let tap = UITapGestureRecognizer(target: self,
                                          action: #selector(littleButtonHandleTap)) // распознование нажатия
         view.addGestureRecognizer(tap)

@@ -130,14 +130,14 @@ class MetronomeAlert: UIView {
         secondButton.snp.makeConstraints { make in
             make.top.equalTo(firstButton.snp.bottom).offset(15)
             make.height.equalTo(firstButton.snp.height)
-            make.width.equalTo(firstButton.snp.width)
+            make.width.equalTo(firstButton.snp.width).offset(-35)
             make.centerX.equalTo(snp.centerX)
         }
         addSubview(thirdButton)
         thirdButton.snp.makeConstraints { make in
             make.top.equalTo(secondButton.snp.bottom).offset(15)
             make.height.equalTo(secondButton.snp.height)
-            make.width.equalTo(secondButton.snp.width)
+            make.width.equalTo(firstButton.snp.width)
             make.centerX.equalTo(snp.centerX)
         }
         self.firstButton.addTarget(self, action: #selector(firstButtonTabConfigure), for: .touchUpInside)

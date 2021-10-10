@@ -107,7 +107,7 @@ class MainViewController: UIViewController {
         valueTextField.addTarget(self, action: #selector(changeValueByTab),
                                  for: .editingDidEndOnExit)
         alertPict.setupImageToButton(firstImage: imager.path(.OneNota)(),
-                                     SecondImage: imager.path(.twoNota)(),
+                                     SecondImage: imager.path(.newTwoButton)(),
                                      thirstImage: imager.path(.nota3)())
     }
     
@@ -132,10 +132,11 @@ class MainViewController: UIViewController {
     }
     
     private func layout() { // расположение элементов на вьюхе
+        
         view.addSubview(appLabel)
         appLabel.snp.makeConstraints { make in
             make.width.greaterThanOrEqualTo(125)
-            make.height.greaterThanOrEqualTo(26)
+            make.height.equalTo(26)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.leading.equalTo(view.snp.leading).offset(20)
         }
@@ -146,29 +147,67 @@ class MainViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.trailing.equalTo(view.snp.trailing).offset(-20)
         }
-
+        if UIScreen.isPhone7(){
         self.view.addSubview(equalizerView)
         equalizerView.snp.makeConstraints { make in
             make.width.greaterThanOrEqualTo(240)
-            make.height.equalTo(70)
+            make.height.equalTo(40)
             make.centerX.equalTo(view.snp.centerX)
-            make.top.equalTo(appLabel.snp.bottom).offset(30)
+            make.top.equalTo(appLabel.snp.bottom).offset(10)
         }
+        } else {
+            self.view.addSubview(equalizerView)
+            equalizerView.snp.makeConstraints { make in
+                make.width.greaterThanOrEqualTo(240)
+                make.height.equalTo(70)
+                make.centerX.equalTo(view.snp.centerX)
+                make.top.equalTo(appLabel.snp.bottom).offset(30)
+        }
+        }
+        if UIScreen.isPhone7() {
         view.addSubview(beatButton)
         beatButton.snp.makeConstraints { make in
-            make.height.equalTo(109)
-            make.width.equalTo(109)
+            make.height.equalTo(85)
+            make.width.equalTo(beatButton.snp.height)
             make.trailing.greaterThanOrEqualTo(view.snp.centerX).offset(-10)
             make.top.greaterThanOrEqualTo(equalizerView.snp.bottom).offset(20)
         }
         view.addSubview(pictureButton)
         pictureButton.snp.makeConstraints { make in
-            make.height.equalTo(109)
-            make.width.equalTo(109)
+            make.height.equalTo(85)
+            make.width.equalTo(beatButton.snp.height)
             make.leading.greaterThanOrEqualTo(view.snp.centerX).offset(15)
             make.top.greaterThanOrEqualTo(equalizerView.snp.bottom).offset(20)
         }
-        
+        } else {
+            view.addSubview(beatButton)
+            beatButton.snp.makeConstraints { make in
+                make.height.equalTo(109)
+                make.width.equalTo(109)
+                make.trailing.greaterThanOrEqualTo(view.snp.centerX).offset(-10)
+                make.top.greaterThanOrEqualTo(equalizerView.snp.bottom).offset(20)
+            }
+            view.addSubview(pictureButton)
+            pictureButton.snp.makeConstraints { make in
+                make.height.equalTo(109)
+                make.width.equalTo(109)
+                make.leading.greaterThanOrEqualTo(view.snp.centerX).offset(15)
+                make.top.greaterThanOrEqualTo(equalizerView.snp.bottom).offset(20)
+            }
+        }
+            
+            
+        if UIScreen.isPhone7(){
+            view.addSubview(startButton)
+            startButton.snp.makeConstraints { make in
+                make.height.equalTo(165)
+                make.width.equalTo(startButton.snp.height)
+                make.centerX.equalTo(view.snp.centerX)
+                make.top.equalTo(pictureButton.snp.bottom).offset(5)
+                make.top.equalTo(beatButton.snp.bottom).offset(5)
+                make.leading.greaterThanOrEqualTo(view.snp.leading).offset(60)
+            }
+        } else {
         view.addSubview(startButton)
         startButton.snp.makeConstraints { make in
             make.height.equalTo(228)
@@ -177,6 +216,7 @@ class MainViewController: UIViewController {
             make.top.equalTo(pictureButton.snp.bottom).offset(35)
             make.top.equalTo(beatButton.snp.bottom).offset(35)
             make.leading.greaterThanOrEqualTo(view.snp.leading).offset(60)
+        }
         }
         startButton.layer.cornerRadius = 114
         view.addSubview(valueTextField)
@@ -242,6 +282,7 @@ class MainViewController: UIViewController {
             make.leading.equalTo(pictureButton.snp.leading)
             make.top.equalTo(equalizerView.snp.bottom).offset(12)
         }
+
     }
     
     //MARK:- UIElements Actions

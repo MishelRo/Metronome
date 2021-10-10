@@ -21,6 +21,9 @@ class MetronomeSlider: UISlider {
         setThumbImage(UIImage(named: "seek"), for: UIControl.State.normal)
     }
     
+   
+    
+    
     init() {
         super.init(frame: .zero)
     }
@@ -28,4 +31,5 @@ class MetronomeSlider: UISlider {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }

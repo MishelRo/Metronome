@@ -61,6 +61,7 @@
 		CE78829026FB4E07007EBA95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE78828E26FB4E07007EBA95 /* LaunchScreen.storyboard */; };
 		CE78829926FB4EBC007EBA95 /* MainStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78829826FB4EBC007EBA95 /* MainStart.swift */; };
 		CE78829D26FB4EE0007EBA95 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78829B26FB4EE0007EBA95 /* MainViewController.swift */; };
+		CE7CACF727135CC40081DD16 /* UiScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7CACF627135CC40081DD16 /* UiScreen.swift */; };
 		CE8073EA2700EE3E0070018C /* Equalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8073E92700EE3E0070018C /* Equalizer.swift */; };
 		CE8073F02700F7AD0070018C /* NSObject+Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8073EC2700F7AD0070018C /* NSObject+Load.swift */; };
 		CE8073F12700F7AD0070018C /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8073ED2700F7AD0070018C /* View.swift */; };
@@ -149,6 +150,7 @@
 		CE78829126FB4E07007EBA95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE78829826FB4EBC007EBA95 /* MainStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStart.swift; sourceTree = "<group>"; };
 		CE78829B26FB4EE0007EBA95 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CE7CACF627135CC40081DD16 /* UiScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiScreen.swift; sourceTree = "<group>"; };
 		CE8073E92700EE3E0070018C /* Equalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equalizer.swift; sourceTree = "<group>"; };
 		CE8073EC2700F7AD0070018C /* NSObject+Load.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Load.swift"; sourceTree = "<group>"; };
 		CE8073ED2700F7AD0070018C /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -353,9 +355,20 @@
 		CE78827F26FB4E04007EBA95 /* Metronome */ = {
 			isa = PBXGroup;
 			children = (
+				CE0ED53F270274150091F640 /* CustomAlert */,
+				CE8073EB2700F7AD0070018C /* NibLoaded */,
+				CE23956726FFAD4F009983CD /* Model */,
+				CE23956026FDE851009983CD /* UiElements */,
+				CE23955726FD360A009983CD /* AudioModulle */,
 				CE78829A26FB4EC9007EBA95 /* Controllers */,
-				CE78829726FB4EAF007EBA95 /* Resouces */,
+				CEE40E1626FC849600102AA6 /* Extensions */,
 				CEAE0496270469D200D93EE9 /* SwiftGen */,
+				CE78829726FB4EAF007EBA95 /* Resouces */,
+				CE23955026FD2FE6009983CD /* Constants.swift */,
+				CE78828026FB4E04007EBA95 /* AppDelegate.swift */,
+				CE78828226FB4E04007EBA95 /* SceneDelegate.swift */,
+				CEAE049027039F8B00D93EE9 /* ImageNameReturner.swift */,
+				CE78829826FB4EBC007EBA95 /* MainStart.swift */,
 				CE78829126FB4E07007EBA95 /* Info.plist */,
 				CE78828926FB4E04007EBA95 /* Metronome.xcdatamodeld */,
 			);
@@ -365,21 +378,10 @@
 		CE78829726FB4EAF007EBA95 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
-				CE0ED53F270274150091F640 /* CustomAlert */,
-				CE8073EB2700F7AD0070018C /* NibLoaded */,
-				CE23956726FFAD4F009983CD /* Model */,
-				CE23956026FDE851009983CD /* UiElements */,
-				CE23955726FD360A009983CD /* AudioModulle */,
 				CE23955226FD352B009983CD /* Sounds */,
 				CEE40E1926FC9A4400102AA6 /* Fonts */,
-				CEE40E1626FC849600102AA6 /* Extensions */,
-				CE78829826FB4EBC007EBA95 /* MainStart.swift */,
 				CE78828C26FB4E07007EBA95 /* Assets.xcassets */,
 				CE78828E26FB4E07007EBA95 /* LaunchScreen.storyboard */,
-				CE23955026FD2FE6009983CD /* Constants.swift */,
-				CE78828026FB4E04007EBA95 /* AppDelegate.swift */,
-				CE78828226FB4E04007EBA95 /* SceneDelegate.swift */,
-				CEAE049027039F8B00D93EE9 /* ImageNameReturner.swift */,
 			);
 			path = Resouces;
 			sourceTree = "<group>";
@@ -439,6 +441,7 @@
 				CE0ED549270396A20091F640 /* UiTextField.swift */,
 				CEAE048C27039AEE00D93EE9 /* UIViewController.swift */,
 				CEAE048E27039B1F00D93EE9 /* UIResponder.swift */,
+				CE7CACF627135CC40081DD16 /* UiScreen.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				CE23956426FE062C009983CD /* Double.swift in Sources */,
 				CEAE049A27046AA500D93EE9 /* Strings.swift in Sources */,
 				CE23955126FD2FE6009983CD /* Constants.swift in Sources */,
+				CE7CACF727135CC40081DD16 /* UiScreen.swift in Sources */,
 				CE0ED548270391C60091F640 /* MetronomeTextField.swift in Sources */,
 				CE8073F92700FA2B0070018C /* StackViewCel.swift in Sources */,
 				CE78828326FB4E04007EBA95 /* SceneDelegate.swift in Sources */,
