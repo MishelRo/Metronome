@@ -6,21 +6,29 @@ PODS:
   - SwiftGen (6.4.0)
 
 DEPENDENCIES:
-  - ChameleonFramework/Swift
+  - ChameleonFramework/Swift (from `https://github.com/MishelRo/chameleon`)
   - SnapKit
   - SwiftGen
 
 SPEC REPOS:
   trunk:
-    - ChameleonFramework
     - SnapKit
     - SwiftGen
+
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/MishelRo/chameleon
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: 967edee25625371f9c55bc770b3ede457713c1f2
+    :git: https://github.com/MishelRo/chameleon
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
 
-PODFILE CHECKSUM: 7ab9879189fa5b5901ff46156ef0a0f2f47e4790
+PODFILE CHECKSUM: de08dccfe572ff8de00852153adab5ffd0f49d7c
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.11.2

@@ -81,13 +81,13 @@ class StackViewCel: NibLoadableView {
             image.image = imager.path(.selected)()
             upImage.image = imager.path(.unSelected)()
             delegate.oneTab()
-            getFlash()
+//            getFlash()
         } else {
             stackView.backgroundColor = Constants.MainBackgroundColor
             image.image = imager.path(.selected)()
             upImage.image = imager.path(.selected)()
             delegate.clean()
-            getFlash()
+//            getFlash()
         }
     }
     

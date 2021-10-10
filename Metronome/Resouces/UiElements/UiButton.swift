@@ -4,17 +4,16 @@
 //  Created by User on 23.09.2021.
 
 import UIKit
-import UIKit
 import SnapKit
 import ChameleonFramework
 @IBDesignable
 
 class MetronomeButton: UIButton {
-    let arrayOfColors : [UIColor] =  [UIColor(hexString: "2AF598"),
-                                      UIColor(hexString: "009EFD"),
-                                      UIColor(hexString: "21E2AF"),
-                                      UIColor(hexString: "15CAC9"),
-                                      UIColor(hexString: "0AB3E4") // массив цветов для градиента кнопок
+    let arrayOfColors : [UIColor] =  [ UIColor(hexString: "2AF598")!,
+                                      UIColor(hexString: "009EFD")!,
+                                      UIColor(hexString: "21E2AF")!,
+                                      UIColor(hexString: "15CAC9")!,
+                                      UIColor(hexString: "0AB3E4")! // массив цветов для градиента кнопок
     ]
     let view = UIView()
     let image = UIImageView()
@@ -155,7 +154,7 @@ extension MetronomeButton {
         if play{
         timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval), repeats: true) { [weak self] _ in
             guard let self = self else {return}
-            let backgroundColor = GradientColor(gradientStyle: .topToBottom,
+            let backgroundColor = GradientColor(.topToBottom,
                                                     frame: UIScreen.main.bounds.integral,
                                                     colors: [self.retrunrColor(),
                                                              self.retrunrColor(),

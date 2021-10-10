@@ -27,7 +27,8 @@ class Equalizer: UIView {
         backgroundColor = Constants.MainBackgroundColor
                 switch count {
                 case 1:
-                    [ StackViewCel.make() ].forEach { stackView.addArrangedSubview($0) }
+                    [ StackViewCel.make() ].forEach { stackView.addArrangedSubview($0)
+                    }
                 case 2:
                     [ StackViewCel.make(), StackViewCel.make() ].forEach
                     { stackView.addArrangedSubview($0) }

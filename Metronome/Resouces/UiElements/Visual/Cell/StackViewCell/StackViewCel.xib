@@ -23,26 +23,25 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9zc-hZ-LjU">
                     <rect key="frame" x="0.0" y="0.0" width="62" height="144"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0QC-97-0hI">
-                            <rect key="frame" x="0.0" y="0.0" width="62" height="68"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6vl-SN-HQR">
+                            <rect key="frame" x="0.0" y="0.0" width="62" height="144"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0QC-97-0hI">
+                                    <rect key="frame" x="0.0" y="0.0" width="62" height="68"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="dw3-Ob-a22"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="krk-Dn-boY">
+                                    <rect key="frame" x="0.0" y="76" width="62" height="68"/>
+                                </imageView>
+                            </subviews>
                             <constraints>
-                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="dw3-Ob-a22"/>
+                                <constraint firstItem="krk-Dn-boY" firstAttribute="height" secondItem="0QC-97-0hI" secondAttribute="height" id="GVY-HC-aut"/>
+                                <constraint firstItem="krk-Dn-boY" firstAttribute="width" secondItem="0QC-97-0hI" secondAttribute="width" id="RPT-sf-18Q"/>
                             </constraints>
-                        </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="krk-Dn-boY">
-                            <rect key="frame" x="0.0" y="76" width="62" height="68"/>
-                        </imageView>
+                        </stackView>
                     </subviews>
-                    <constraints>
-                        <constraint firstItem="krk-Dn-boY" firstAttribute="leading" secondItem="9zc-hZ-LjU" secondAttribute="leading" id="8td-O3-hQ5"/>
-                        <constraint firstAttribute="trailing" secondItem="0QC-97-0hI" secondAttribute="trailing" id="UeI-gJ-aIj"/>
-                        <constraint firstAttribute="bottom" secondItem="krk-Dn-boY" secondAttribute="bottom" id="Xla-5Z-28N"/>
-                        <constraint firstItem="krk-Dn-boY" firstAttribute="width" secondItem="0QC-97-0hI" secondAttribute="width" id="geD-gr-slg"/>
-                        <constraint firstItem="0QC-97-0hI" firstAttribute="leading" secondItem="9zc-hZ-LjU" secondAttribute="leading" id="haN-Xz-q6B"/>
-                        <constraint firstItem="0QC-97-0hI" firstAttribute="top" secondItem="9zc-hZ-LjU" secondAttribute="top" id="n1g-UP-AwP"/>
-                        <constraint firstItem="krk-Dn-boY" firstAttribute="height" secondItem="0QC-97-0hI" secondAttribute="height" id="uD7-aG-1Nv"/>
-                        <constraint firstAttribute="trailing" secondItem="krk-Dn-boY" secondAttribute="trailing" id="ulb-pr-Ld1"/>
-                    </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="cM7-cA-UiL"/>

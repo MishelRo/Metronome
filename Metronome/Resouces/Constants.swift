@@ -18,7 +18,7 @@ class Constants {
     static var maxVal = 240
     static var minVal = 20
     static var timeInterval = 60.0
-    static var littleButtonBackground = GradientColor(gradientStyle: .topToBottom,
+    static var littleButtonBackground = GradientColor(.topToBottom,
                                                       frame: UIScreen.main.bounds.integral,
                                                       colors: [ #colorLiteral(red: 0, green: 0.746678412, blue: 0.4497615099, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1)])
 }

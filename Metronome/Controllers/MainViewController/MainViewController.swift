@@ -422,6 +422,7 @@ class MainViewController: UIViewController {
         alertConfigure()
         alertPictConfigure()
         valueTextField.keyboardType = .phonePad
+        
     }
     
     //MARK:- KeyBoard Jump Settings
