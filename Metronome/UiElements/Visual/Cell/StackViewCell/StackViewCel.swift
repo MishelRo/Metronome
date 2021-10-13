@@ -23,35 +23,16 @@ class StackViewCel: NibLoadableView {
     var buttonFlashing = false
     
     
-    
-    func getFlash() {
-        buttonFlashing = true
-        upImage.alpha = 1
-        
-        UIView.animate(withDuration: 0.5 , delay: 0.0, options: [ .repeat], animations: {
-            self.upImage.alpha = 0.2
-        }, completion: {Bool in
-        })
-    }
+    var doubleTabComplessionSelected: (()->())!
+    var doubleTabComplessionUnSelected: (()->())!
+
+    var oneTabComplession: (()->())!
+    var unselected: (()->())!
     
     
-    func stopFlashing() {
-        buttonFlashing = false
-        
-        UIView.animate(withDuration: 0.0, delay: 0.0, options: [.curveEaseInOut,
-                                                                .curveEaseIn,
-                                                                .autoreverse,
-                                                                .allowUserInteraction], animations: {
-                                                                    self.upImage.alpha = 1
-                                                                }, completion: {Bool in
-                                                                })
-    }
     
     func configure() {
         delegate = MainViewController()
-        image.backgroundColor = Constants.MainBackgroundColor
-        upImage.backgroundColor = Constants.MainBackgroundColor
-        stackView.backgroundColor = Constants.MainBackgroundColor
         let tapImage = UITapGestureRecognizer(target: self, action: #selector(tabImage))
         addGestureRecognizer(tapImage)
         
@@ -64,35 +45,43 @@ class StackViewCel: NibLoadableView {
     @objc func doubleTabImage() {
         selected = !selected
         if selected {
-            stackView.backgroundColor = Constants.MainBackgroundColor
             image.image = imager.path(.unSelected)()
             upImage.image = imager.path(.unSelected)()
             delegate.doubleTab()
+            doubleTabComplessionSelected()
         }else {
-            stackView.backgroundColor = Constants.MainBackgroundColor
             image.image = imager.path(.unSelected)()
             upImage.image = imager.path(.selected)()
+            doubleTabComplessionUnSelected()
         }
     }
     
     @objc func tabImage() {
         selected = !selected
         if selected {
+            oneTabComplession()
             image.image = imager.path(.selected)()
             upImage.image = imager.path(.unSelected)()
             delegate.oneTab()
-//            getFlash()
         } else {
-            stackView.backgroundColor = Constants.MainBackgroundColor
+            unselected()
             image.image = imager.path(.selected)()
             upImage.image = imager.path(.selected)()
             delegate.clean()
-//            getFlash()
         }
     }
     
-    static func make() -> UIView {
+    static func make(oneTabComplession: @escaping (()->()),
+                     unselected: @escaping (()->()),
+                     doubleTabComplessionSelected: @escaping (()->()),
+                     doubleTabComplessionUnSelected: @escaping (()->())  ) -> UIView {
         let views = StackViewCel()
+        
+        views.oneTabComplession = oneTabComplession
+        views.unselected = unselected
+        views.doubleTabComplessionSelected = doubleTabComplessionSelected
+        views.doubleTabComplessionUnSelected = doubleTabComplessionUnSelected
+        
         views.backgroundColor = Constants.MainBackgroundColor
         views.configure()
         views.image.image = imager.path(.selected)()
@@ -105,3 +94,5 @@ class StackViewCel: NibLoadableView {
     }
     
 }
+
+

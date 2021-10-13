@@ -65,6 +65,13 @@ class MetronomeButton: UIButton {
             layerCorner = 83
         }
         
+        if UIScreen.isPhone8() {
+            cornerStart = 73
+            layerCorner = 83
+        }
+        
+        
+        
         addSubview(view)
         view.snp.makeConstraints { make in
             make.bottom.equalTo(self.snp.bottom).offset(-10)
@@ -93,7 +100,6 @@ class MetronomeButton: UIButton {
         if play{
             complessionStop()
             imageInclude(images: imager.path(.pause)())
-            changeBgrnd(frequency: Float(frequency))
         } else {
             complessionStart()
             imageInclude(images: imager.path(.play)())
@@ -163,25 +169,15 @@ extension MetronomeButton {
         arrayOfColors.randomElement()!
     }
     
-    func changeBgrnd(frequency: Float) { // возвращает в фон кнопки градиент согласно заданной частоты
-        self.frequency = Int(frequency)
-        let interval = frequency / (beat * 1.6)
-        if play{
-        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval), repeats: true) { [weak self] _ in
-            guard let self = self else {return}
-            let backgroundColor = GradientColor(.topToBottom,
-                                                    frame: UIScreen.main.bounds.integral,
-                                                    colors: [self.retrunrColor(),
-                                                             self.retrunrColor(),
-                                                             self.retrunrColor(),
-                                                             self.retrunrColor(),
-                                                             self.retrunrColor(),
-                                                             self.retrunrColor(),
-                                                             self.retrunrColor(),
-                                                             self.retrunrColor(),
-                                                             self.retrunrColor() ])
-                self.backgroundColor = backgroundColor
-        }
-    }
+    func  changeBuBpmBack() {
+        self.backgroundColor = GradientColor(.diagonal, frame: UIScreen.main.bounds.integral, colors: [self.retrunrColor(),
+                                                                                                       self.retrunrColor(),
+                                                                                                       self.retrunrColor(),
+                                                                                                       self.retrunrColor(),
+                                                                                                       self.retrunrColor(),
+                                                                                                       self.retrunrColor(),
+                                                                                                       self.retrunrColor(),
+                                                                                                       self.retrunrColor(),
+                                                                                                       self.retrunrColor() ])
     }
 }

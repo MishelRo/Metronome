@@ -31,6 +31,16 @@ class MainViewController: UIViewController {
     var beatLabel: MetronomeLabel!
     
     
+    
+    var currentNoteInt = 1 {
+        didSet {
+            if metronome.isPlay{
+            startButton.changeBuBpmBack()
+                equalizerView.flashAnimate(countOfElement: currentNoteInt, pictureCount: Int(timeSignature))
+            }
+        }
+    }
+    
     //MARK:- Class Propeties
     
     private var currentPage = 0
@@ -38,7 +48,11 @@ class MainViewController: UIViewController {
     private var model = MainViewModel()
     
     var metronome: Metronome!
-    var scheme: UrlSoundModel!
+    
+    var scheme: UrlSoundModel! {
+        didSet {
+        }
+    }
     
     var stringScheme: String! // используемая звуковая схема // используется для верификации и подмены низких частот
     
@@ -48,9 +62,7 @@ class MainViewController: UIViewController {
     var tempo: Int32 = 130 { // темп
         didSet {
             valueTextField.text = String(tempo)
-            let arrayndValue = Constants.maxVal - Int(oldValue)
             startButton.stopBackground()
-            startButton.changeBgrnd(frequency: Float(arrayndValue/50))
         }
     }
 
@@ -76,7 +88,21 @@ class MainViewController: UIViewController {
         alertBeat.configure(labelText: L10n.size)
         alertPict.configurePict(labelText: L10n.picture)
         elementSettings()
+        themeColorControll()
     }
+    
+    
+    func themeColorControll() {
+        if UIApplication.shared.windows.filter({$0.isKeyWindow}).first?.overrideUserInterfaceStyle == .dark {
+            pictureLabel.textColor = .black
+            beatLabel.textColor = .black
+            valueTextField.textColor = .black
+            appLabel.textColor = .black
+            speedSlider.minimumTrackTintColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+            speedSlider.maximumTrackTintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        }
+    }
+    
     
     private func elementSettings() {
         layout()
@@ -110,6 +136,38 @@ class MainViewController: UIViewController {
                                      SecondImage: imager.path(.newTwoButton)(),
                                      thirstImage: imager.path(.nota3)())
     }
+    func tabOnEq () {
+        equalizerView.configureoneTabNoteFirstBlockComplession {
+            self.metronome.stopMetranome()
+            self.scheme = SoundSchemeCreator().createScheme(currentScheme: .ableton, note: .Low)
+            self.metronome = Metronome(urlSoundModel: self.scheme)
+            self.metronome.playMetronome(bpm: self.tempo,
+                                         countBeat: self.countBeat,
+                                         timeSignature: self.timeSignature) { currentNote in
+                
+            }
+        }
+        equalizerView.configureTwoTabNoteFirstBlockComplession {
+            self.metronome.stopMetranome()
+            self.scheme = SoundSchemeCreator().createScheme(currentScheme: .ableton, note: .Height)
+            self.metronome = Metronome(urlSoundModel: self.scheme)
+            self.metronome.playMetronome(bpm: self.tempo,
+                                         countBeat: self.countBeat,
+                                         timeSignature: self.timeSignature) { currentNote in
+                
+            }
+        }
+        equalizerView.configureDoubleTabNoteFirstBlockComplession {
+            self.metronome.stopMetranome()
+            self.scheme = SoundSchemeCreator().createScheme(currentScheme: .ableton, note: .HightLow)
+            self.metronome = Metronome(urlSoundModel: self.scheme)
+            self.metronome.playMetronome(bpm: self.tempo,
+                                         countBeat: self.countBeat,
+                                         timeSignature: self.timeSignature) { currentNote in
+                
+            }
+        }
+    }
     
     @objc func changeValueByTab() { // изменение значений бит метронома по вводу в поле значений
         let val = valueTextField.getInt()
@@ -132,7 +190,7 @@ class MainViewController: UIViewController {
     }
     
     private func layout() { // расположение элементов на вьюхе
-        
+        tabOnEq ()
         view.addSubview(appLabel)
         appLabel.snp.makeConstraints { make in
             make.width.greaterThanOrEqualTo(125)
@@ -150,10 +208,10 @@ class MainViewController: UIViewController {
         if UIScreen.isPhone7(){
         self.view.addSubview(equalizerView)
         equalizerView.snp.makeConstraints { make in
-            make.width.greaterThanOrEqualTo(240)
+            make.width.lessThanOrEqualTo(220)
             make.height.equalTo(40)
             make.centerX.equalTo(view.snp.centerX)
-            make.top.equalTo(appLabel.snp.bottom).offset(10)
+            make.top.equalTo(appLabel.snp.bottom).offset(15)
         }
         } else {
             self.view.addSubview(equalizerView)
@@ -292,6 +350,7 @@ class MainViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         } complessionOk: { [self] value in
             stringScheme = value
+            
             switch value {
             case "classic":
                 scheme = SoundScheme.path(.classic)()
@@ -336,7 +395,9 @@ class MainViewController: UIViewController {
         metronome = Metronome(urlSoundModel: scheme)
         self.metronome.playMetronome(bpm: self.tempo,
                                      countBeat: self.countBeat,
-                                     timeSignature: self.timeSignature)
+                                     timeSignature: self.timeSignature) { currentNote in
+            self.currentNoteInt = currentNote
+        }
     }
     
     @objc func downButtonPreess() { // нажатие вниз
@@ -354,12 +415,12 @@ class MainViewController: UIViewController {
     }
     
     @objc func settingsButtonPress() { // настройки
+        metronome.stopMetranome()
         MainStart.present(view: self, controller: .settingController)
     }
     
     @objc func sliderValueDidChange() { // изменение положения  слайдера
         tempo = Int32(Int(speedSlider.value))
-        print(tempo)
         ifPlayMertonome()
     }
     
@@ -494,7 +555,9 @@ class MainViewController: UIViewController {
         startButton.stopConfigure {
             self.metronome.playMetronome(bpm: self.tempo,
                                          countBeat: self.countBeat,
-                                         timeSignature: self.timeSignature)
+                                         timeSignature: self.timeSignature) { currentNote in
+                self.currentNoteInt = currentNote
+            }
         }
     }
     
@@ -503,7 +566,9 @@ class MainViewController: UIViewController {
             metronome.stopMetranome()
             metronome.playMetronome(bpm: tempo,
                                     countBeat: countBeat,
-                                    timeSignature: timeSignature)
+                                    timeSignature: timeSignature) { currentNote in
+                self.currentNoteInt = currentNote
+            }
         }
     }
     
@@ -512,26 +577,26 @@ class MainViewController: UIViewController {
 // MARK:- EQ Delegate Realizasion
 extension MainViewController : stackCellDelegate { 
     func oneTab() {
-        print("oneTab")
+//        print("oneTab")
 //        DispatchQueue.main.async { [unowned self] in
 //        scheme = SoundSchemeCreator().createScheme(currentScheme: .classic, note: .Height)
-//        ifPlayMertonome()
+////        ifPlayMertonome()
 //        }
     }
     
     func clean() {
-        print("Clean")
+//        print("Clean")
 //        DispatchQueue.main.async { [unowned self] in
 //        scheme = SoundSchemeCreator().createScheme(currentScheme: .classic, note: .Low)
-//        ifPlayMertonome()
+////        ifPlayMertonome()
 //        }
     }
     
     func doubleTab() {
-        print("doubleTab")
+//        print("doubleTab")
 //        DispatchQueue.main.async { [unowned self] in
-//        scheme = SoundSchemeCreator().createScheme(currentScheme: .classic, note: .HightLow)
-//        ifPlayMertonome()
+        scheme = SoundSchemeCreator().createScheme(currentScheme: .classic, note: .HightLow)
+////        ifPlayMertonome()
 //        }
     }
 }

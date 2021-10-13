@@ -14,12 +14,17 @@ class Metronome {
     var MetronomePlayer: AVAudioPlayerNode!
     var tickAudioFile: AVAudioFile!
     var tockClickAudioFile: AVAudioFile!
+    private var player: AVAudioPlayerNode!
+    private var bufferOftick: AVAudioPCMBuffer! = nil
+    private var bufferOfTock: AVAudioPCMBuffer! = nil
+
     
     init(urlSoundModel: UrlSoundModel) {
         tickAudioFile = try! AVAudioFile(forReading: urlSoundModel.lowSound)
         tockClickAudioFile = try! AVAudioFile(forReading: urlSoundModel.hightSound)
         audioEngine = AVAudioEngine()
         MetronomePlayer = AVAudioPlayerNode()
+        player = AVAudioPlayerNode()
         audioEngine.attach(MetronomePlayer)
         audioEngine.connect(MetronomePlayer, to: audioEngine.mainMixerNode,
                             format: tickAudioFile.processingFormat)
@@ -35,7 +40,7 @@ class Metronome {
         tickAudioFile.framePosition = 0
         tockClickAudioFile.framePosition = 0
         let lengthOfClick = AVAudioFrameCount(tickAudioFile.processingFormat.sampleRate * 60 / bpm)
-        let bufferOftick = AVAudioPCMBuffer(pcmFormat: tickAudioFile.processingFormat,
+        bufferOftick = AVAudioPCMBuffer(pcmFormat: tickAudioFile.processingFormat,
                                                  frameCapacity: lengthOfClick)!
         do {
             try tickAudioFile.read(into: bufferOftick)
@@ -43,7 +48,7 @@ class Metronome {
             print("Fuck!\(error)")
         }
         bufferOftick.frameLength = lengthOfClick / timeSignature
-        let bufferOfTock = AVAudioPCMBuffer(pcmFormat: tockClickAudioFile.processingFormat,
+        bufferOfTock = AVAudioPCMBuffer(pcmFormat: tockClickAudioFile.processingFormat,
                                                    frameCapacity: lengthOfClick)!
         do {
             try tockClickAudioFile.read(into: bufferOfTock)
@@ -75,37 +80,51 @@ class Metronome {
             return bufferOftick
         }
     }
-    
-    var isPlay: Bool {
+        var isPlay: Bool {
         return MetronomePlayer.isPlaying
     }
     
-    func playMetronome(bpm: Int32, countBeat: Int32, timeSignature: Int32) {
+    func playMetronome(bpm: Int32, countBeat: Int32, timeSignature: Int32, currentNote: @escaping(Int)->()) {
+        
+        var periodLengthInSamples: Double { 60.0 / Double(bpm) * sampleRate}
+        let sampleRate: Double = 44100
+        var timerEventCounter: Int = 1
+        var currentBeat: Int = 1
+        let timerIntervallInSamples = 0.5 * periodLengthInSamples / sampleRate
+        timer = Timer.scheduledTimer(withTimeInterval: timerIntervallInSamples, repeats: true) { timer in
+            if timerEventCounter % 2 == 0 {
+                DispatchQueue.main.async {
+                    currentNote(currentBeat)
+                }
+                currentBeat += 1; if currentBeat > countBeat {currentBeat = 1}
+            }
+            timerEventCounter += 1; if timerEventCounter > 8 {timerEventCounter = 1}
+        }
         
         let metranomeBuffer = createBuffer(with: Double(bpm),
                                              with: UInt32(countBeat),
                                              with: UInt32(timeSignature))
-        
-        
-        
+
         if MetronomePlayer.isPlaying {
             MetronomePlayer.scheduleBuffer(metranomeBuffer,
                                            at: nil,
-                                           options: .interruptsAtLoop) {
-                print("hello")
-            }
+                                           options: .interruptsAtLoop) {}
         } else {
             MetronomePlayer.play()
         }
         MetronomePlayer.scheduleBuffer(metranomeBuffer,
                                        at: nil,
                                        options: .loops){
-            print("hello2")
         }
     }
+
     
     func stopMetranome() {
         MetronomePlayer.stop()
+        player.stop()
+        if timer != nil {
+        timer.invalidate()
+        }
     }
-    
+    private var timer: Timer! = nil
 }

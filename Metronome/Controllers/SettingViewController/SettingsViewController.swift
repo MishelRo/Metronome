@@ -18,11 +18,19 @@ class SettingsViewController: UIViewController {
     var replicatorLayer : CAReplicatorLayer!
     var sourceLayer : CALayer!
     var backButton: UIButton!
-    
+    var switchButton: UISwitch!
+    var label: UILabel!
+    var image: UIImageView! {
+        didSet {
+            image.layer.cornerRadius = 40
+            image.clipsToBounds = true
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Constants.MainBackgroundColor
+        image = UIImageView()
         replicatorLayer = CAReplicatorLayer()
         sourceLayer = CALayer()
         self.view.layer.addSublayer(replicatorLayer)
@@ -31,11 +39,66 @@ class SettingsViewController: UIViewController {
         stop()
         uIConfigure()
         layout()
+        switchButton.addTarget(self, action: #selector(switchValueDidChange), for: .valueChanged)
+        sliderDefault()
     }
+  
+
+    func sliderDefault() {
+        if UIApplication.shared.windows.filter({$0.isKeyWindow}).first?.overrideUserInterfaceStyle == .dark {
+            switchButton.setOn(UIApplication.shared.windows.filter({$0.isKeyWindow}).first?.overrideUserInterfaceStyle == .dark, animated: true)
+            self.replicatorLayer.removeFromSuperlayer()
+            view.addSubview(image)
+            image.snp.makeConstraints { make in
+                make.center.equalTo(view.center)
+                make.height.equalTo(view.frame.height / 4)
+                make.width.equalTo(view.snp.width).offset( -20)
+            }
+            image.backgroundColor = .red
+            image.image = UIImage(named: "blackTheme")
+        }
+    }
+    
+    
+    
+    
+    @objc func switchValueDidChange() {
+        if switchButton.isOn {
+            UIApplication.shared.windows.filter({$0.isKeyWindow}).first?.overrideUserInterfaceStyle = .dark
+            self.replicatorLayer.removeFromSuperlayer()
+            view.addSubview(image)
+            image.snp.makeConstraints { make in
+                make.center.equalTo(view.center)
+                make.height.equalTo(view.frame.height / 4)
+                make.width.equalTo(view.snp.width).offset( -20)
+            }
+            self.image.alpha = 0
+            self.image.layer.cornerRadius = 500
+            image.isHidden = false
+            image.backgroundColor = .red
+            image.image = UIImage(named: "blackTheme")
+            UIView.animate(withDuration: 3 , delay: 0, animations: {
+                self.image.alpha = 1
+                self.image.layer.cornerRadius = 20
+
+            })
+        } else {
+            UIApplication.shared.windows.filter({$0.isKeyWindow}).first?.overrideUserInterfaceStyle = .light
+            UIView.animate(withDuration: 3 , delay: 0, animations: {
+                self.image.alpha = 0.2
+                self.image.layer.cornerRadius = 500
+            })
+        }
+    }
+    
+    
+    
     
     
     func uIConfigure() {
         backButton = UIButton()
+        switchButton = UISwitch()
+        label = UILabel()
     }
     
     func layout() {
@@ -48,6 +111,20 @@ class SettingsViewController: UIViewController {
         }
         backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         backButton.setImage(imager.path(.back)(), for: .normal)
+        view.addSubview(switchButton)
+        switchButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(80)
+            make.trailing.equalTo(view.snp.trailing).offset(-40)
+        }
+        view.addSubview(label)
+        label.text = "Темная тема"
+        label.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(80)
+            make.leading.equalTo(view.snp.leading).offset(40)
+            make.width.greaterThanOrEqualTo(80)
+            make.height.equalTo(40)
+        }
+        
     }
     
     @objc func back() {
