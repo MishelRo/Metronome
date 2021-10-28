@@ -61,6 +61,9 @@
 		CE78829026FB4E07007EBA95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE78828E26FB4E07007EBA95 /* LaunchScreen.storyboard */; };
 		CE78829926FB4EBC007EBA95 /* MainStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78829826FB4EBC007EBA95 /* MainStart.swift */; };
 		CE78829D26FB4EE0007EBA95 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78829B26FB4EE0007EBA95 /* MainViewController.swift */; };
+		CE78B8C3271C411400D70E25 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78B8C2271C411400D70E25 /* Camera.swift */; };
+		CE78B8C6271DBB8500D70E25 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78B8C5271DBB8500D70E25 /* CoreDataManager.swift */; };
+		CE78B8CF271F1B6100D70E25 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78B8CE271F1B6100D70E25 /* NetworkManager.swift */; };
 		CE7CACF727135CC40081DD16 /* UiScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7CACF627135CC40081DD16 /* UiScreen.swift */; };
 		CE8073EA2700EE3E0070018C /* Equalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8073E92700EE3E0070018C /* Equalizer.swift */; };
 		CE8073F02700F7AD0070018C /* NSObject+Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8073EC2700F7AD0070018C /* NSObject+Load.swift */; };
@@ -88,6 +91,8 @@
 		CEC8BB2527070B6A00841EB9 /* Logic_accent.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1B27070B6A00841EB9 /* Logic_accent.wav */; };
 		CEC8BB2627070B6A00841EB9 /* Classic_main.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEC8BB1C27070B6A00841EB9 /* Classic_main.wav */; };
 		CEC8BB282708B2B200841EB9 /* SoundSchemeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8BB272708B2B200841EB9 /* SoundSchemeCreator.swift */; };
+		CECAEFA5271B35F800562BB7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAEFA4271B35F800562BB7 /* RegisterViewController.swift */; };
+		CECAEFAA271B567A00562BB7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CECAEFA9271B567A00562BB7 /* GoogleService-Info.plist */; };
 		CEE40E1826FC84A500102AA6 /* UiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E1726FC84A500102AA6 /* UiButton.swift */; };
 		CEE40E3326FCB4ED00102AA6 /* UiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */; };
 /* End PBXBuildFile section */
@@ -150,6 +155,9 @@
 		CE78829126FB4E07007EBA95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE78829826FB4EBC007EBA95 /* MainStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStart.swift; sourceTree = "<group>"; };
 		CE78829B26FB4EE0007EBA95 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CE78B8C2271C411400D70E25 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		CE78B8C5271DBB8500D70E25 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CE78B8CE271F1B6100D70E25 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CE7CACF627135CC40081DD16 /* UiScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiScreen.swift; sourceTree = "<group>"; };
 		CE8073E92700EE3E0070018C /* Equalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equalizer.swift; sourceTree = "<group>"; };
 		CE8073EC2700F7AD0070018C /* NSObject+Load.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Load.swift"; sourceTree = "<group>"; };
@@ -177,6 +185,8 @@
 		CEC8BB1B27070B6A00841EB9 /* Logic_accent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Logic_accent.wav; sourceTree = "<group>"; };
 		CEC8BB1C27070B6A00841EB9 /* Classic_main.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Classic_main.wav; sourceTree = "<group>"; };
 		CEC8BB272708B2B200841EB9 /* SoundSchemeCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSchemeCreator.swift; sourceTree = "<group>"; };
+		CECAEFA4271B35F800562BB7 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		CECAEFA9271B567A00562BB7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Metronome/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CEE40E1726FC84A500102AA6 /* UiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiButton.swift; sourceTree = "<group>"; };
 		CEE40E3226FCB4ED00102AA6 /* UiSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiSlider.swift; sourceTree = "<group>"; };
 		EEF382B7028422D11BC25F14 /* Pods-Metronome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.debug.xcconfig"; path = "Target Support Files/Pods-Metronome/Pods-Metronome.debug.xcconfig"; sourceTree = "<group>"; };
@@ -337,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				CEAE0494270469A200D93EE9 /* swiftgen.yml */,
+				CECAEFA9271B567A00562BB7 /* GoogleService-Info.plist */,
 				CE78827F26FB4E04007EBA95 /* Metronome */,
 				CE78827E26FB4E04007EBA95 /* Products */,
 				DCD406CAFE2D20362EA26674 /* Pods */,
@@ -355,6 +366,8 @@
 		CE78827F26FB4E04007EBA95 /* Metronome */ = {
 			isa = PBXGroup;
 			children = (
+				CE78B8CD271F1B4C00D70E25 /* Network */,
+				CE78B8C4271DB92800D70E25 /* CoreData */,
 				CE0ED53F270274150091F640 /* CustomAlert */,
 				CE8073EB2700F7AD0070018C /* NibLoaded */,
 				CE23956726FFAD4F009983CD /* Model */,
@@ -370,7 +383,7 @@
 				CEAE049027039F8B00D93EE9 /* ImageNameReturner.swift */,
 				CE78829826FB4EBC007EBA95 /* MainStart.swift */,
 				CE78829126FB4E07007EBA95 /* Info.plist */,
-				CE78828926FB4E04007EBA95 /* Metronome.xcdatamodeld */,
+				CE78B8C2271C411400D70E25 /* Camera.swift */,
 			);
 			path = Metronome;
 			sourceTree = "<group>";
@@ -389,10 +402,28 @@
 		CE78829A26FB4EC9007EBA95 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CECAEFA3271B35CE00562BB7 /* RegisterViewController */,
 				CE23955A26FD3744009983CD /* MainViewController */,
 				CE23955B26FD3753009983CD /* SettingViewController */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CE78B8C4271DB92800D70E25 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CE78828926FB4E04007EBA95 /* Metronome.xcdatamodeld */,
+				CE78B8C5271DBB8500D70E25 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		CE78B8CD271F1B4C00D70E25 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CE78B8CE271F1B6100D70E25 /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		CE8073E62700E98C0070018C /* Visual */ = {
@@ -430,6 +461,14 @@
 				CEAE049827046AA500D93EE9 /* Strings.swift */,
 			);
 			path = SwiftGen;
+			sourceTree = "<group>";
+		};
+		CECAEFA3271B35CE00562BB7 /* RegisterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CECAEFA4271B35F800562BB7 /* RegisterViewController.swift */,
+			);
+			path = RegisterViewController;
 			sourceTree = "<group>";
 		};
 		CEE40E1626FC849600102AA6 /* Extensions */ = {
@@ -572,6 +611,7 @@
 				CEC8BB1D27070B6A00841EB9 /* Sonar_accent.wav in Resources */,
 				CE23958126FFB0E7009983CD /* Subdivision.wav in Resources */,
 				CE23957626FFB0E7009983CD /* Division.wav in Resources */,
+				CECAEFAA271B567A00562BB7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +664,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE78B8CF271F1B6100D70E25 /* NetworkManager.swift in Sources */,
 				CEC8BB0D27070AF600841EB9 /* Metronome.swift in Sources */,
 				CE23956226FE03E9009983CD /* SoundSchemes.swift in Sources */,
 				CE78828B26FB4E04007EBA95 /* Metronome.xcdatamodeld in Sources */,
@@ -638,17 +679,20 @@
 				CEAE049327045DC200D93EE9 /* UILabel.swift in Sources */,
 				CE8073F12700F7AD0070018C /* View.swift in Sources */,
 				CE8073EA2700EE3E0070018C /* Equalizer.swift in Sources */,
+				CE78B8C3271C411400D70E25 /* Camera.swift in Sources */,
 				CE8073F32700F7AD0070018C /* UiViewExtension.swift in Sources */,
 				CEAE049127039F8B00D93EE9 /* ImageNameReturner.swift in Sources */,
 				CE23956926FFAD5D009983CD /* SoundModel.swift in Sources */,
 				CE23952126FCD011009983CD /* UiAlertController.swift in Sources */,
 				CE23956426FE062C009983CD /* Double.swift in Sources */,
 				CEAE049A27046AA500D93EE9 /* Strings.swift in Sources */,
+				CE78B8C6271DBB8500D70E25 /* CoreDataManager.swift in Sources */,
 				CE23955126FD2FE6009983CD /* Constants.swift in Sources */,
 				CE7CACF727135CC40081DD16 /* UiScreen.swift in Sources */,
 				CE0ED548270391C60091F640 /* MetronomeTextField.swift in Sources */,
 				CE8073F92700FA2B0070018C /* StackViewCel.swift in Sources */,
 				CE78828326FB4E04007EBA95 /* SceneDelegate.swift in Sources */,
+				CECAEFA5271B35F800562BB7 /* RegisterViewController.swift in Sources */,
 				CE23955D26FD377D009983CD /* SettingViewModel.swift in Sources */,
 				CE0ED54A270396A20091F640 /* UiTextField.swift in Sources */,
 				CE23956626FF15E7009983CD /* UIView.swift in Sources */,
@@ -801,12 +845,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 97MWDWS79F;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				GCC_WARN_PEDANTIC = YES;
 				INFOPLIST_FILE = Metronome/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.mickael.Metronome;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.FlyCode.Metronome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -821,12 +869,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 97MWDWS79F;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				GCC_WARN_PEDANTIC = YES;
 				INFOPLIST_FILE = Metronome/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.mickael.Metronome;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.FlyCode.Metronome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

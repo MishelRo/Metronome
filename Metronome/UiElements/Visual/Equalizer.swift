@@ -43,6 +43,11 @@ class Equalizer: UIView {
     
     
     func flashAnimate(countOfElement: Int, pictureCount: Int) {
+        firstView.layer.cornerRadius = 5
+        secondView.layer.cornerRadius = 5
+        thirdView.layer.cornerRadius = 5
+        fourView.layer.cornerRadius = 5
+
         switch pictureCount {
         case 1:
             switch countOfElement { // 1 elements

@@ -23,3 +23,4 @@ class Constants {
                                                       colors: [ #colorLiteral(red: 0, green: 0.746678412, blue: 0.4497615099, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1), #colorLiteral(red: 0, green: 0.4287576377, blue: 0.6745757461, alpha: 1)])
 }
 
+

@@ -392,12 +392,16 @@ class MainViewController: UIViewController {
     }
     
     private func changeMelody(scheme: UrlSoundModel) {// функция измененния звука метронома по заданной схеме
+        self.metronome.stopMetranome()
         metronome = Metronome(urlSoundModel: scheme)
         self.metronome.playMetronome(bpm: self.tempo,
                                      countBeat: self.countBeat,
                                      timeSignature: self.timeSignature) { currentNote in
             self.currentNoteInt = currentNote
         }
+        self.metronome.stopMetranome()
+        startButton.imageInclude(images: imager.path(.play)())
+
     }
     
     @objc func downButtonPreess() { // нажатие вниз
@@ -524,7 +528,7 @@ class MainViewController: UIViewController {
         alertConfigure()
         alertPictConfigure()
         valueTextField.keyboardType = .phonePad
-        
+        NetworkManager().registerOfStart()
     }
     
     //MARK:- KeyBoard Jump Settings

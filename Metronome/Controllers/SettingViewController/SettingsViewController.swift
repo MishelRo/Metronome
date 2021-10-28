@@ -7,10 +7,9 @@
 
 import UIKit
 import SnapKit
-
+import KeychainSwift
 
 class SettingsViewController: UIViewController {
-    
     
     var model: SettingViewModelProtocol {
         return SettingViewModel()
@@ -20,6 +19,34 @@ class SettingsViewController: UIViewController {
     var backButton: UIButton!
     var switchButton: UISwitch!
     var label: UILabel!
+    var nameLabel: UILabel!
+    var emailLabel: UILabel!
+    var register: UIImageView!
+    var lineView: UIView!
+    var secondlineView: UIView!
+    var textLabel: UILabel!
+    var keyChain: KeychainSwift!
+    var buttonUnlog: UIButton!
+    var authLabel: UILabel!
+    
+    var avatarUserImage: UIImageView! {
+        didSet {
+            avatarUserImage.layer.cornerRadius = 60
+            avatarUserImage.clipsToBounds = true
+            avatarUserImage.image = UIImage(named: "woman")
+            CoreDataManager().getData { dataImage in
+                guard  let _ = self.keyChain.get("name") else {return}
+                guard let image = UIImage(data: dataImage) else {
+                    self.avatarUserImage.image = UIImage(named: "woman"); return
+                }
+                self.avatarUserImage.image = image
+            } errorData: {
+                self.avatarUserImage.image = UIImage(named: "woman")
+            }
+
+        }
+    }
+    
     var image: UIImageView! {
         didSet {
             image.layer.cornerRadius = 40
@@ -29,28 +56,71 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        keyChain = KeychainSwift()
         view.backgroundColor = Constants.MainBackgroundColor
+        authLabel = UILabel()
+        lineView = UIView()
+        buttonUnlog = UIButton()
+        secondlineView = UIView()
         image = UIImageView()
-        replicatorLayer = CAReplicatorLayer()
-        sourceLayer = CALayer()
-        self.view.layer.addSublayer(replicatorLayer)
-        replicatorLayer.addSublayer(sourceLayer)
-        start()
-        stop()
+        register = UIImageView()
+        avatarUserImage = UIImageView()
         uIConfigure()
         layout()
         switchButton.addTarget(self, action: #selector(switchValueDidChange), for: .valueChanged)
         sliderDefault()
-    }
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        register.addGestureRecognizer(tap)
+        register.isUserInteractionEnabled = true
+        getData()
+        let tapByAvatar = UITapGestureRecognizer(target: self, action: #selector(self.setImage(_:)))
+        avatarUserImage.addGestureRecognizer(tapByAvatar)
+        avatarUserImage.isUserInteractionEnabled = true
+        avatarUserImage.contentMode = .scaleAspectFill
+        guard  let _ = self.keyChain.get("name") else {return}
+        self.authLabel.isHidden = true
+        guard let email = keyChain.get("email")  else {return}
+        }
   
+    
+   
+  
+   @objc  func setImage(_ sender: UITapGestureRecognizer) {
+       guard  let _ = self.keyChain.get("name") else {return}
+        let provider = CameraProvider(delegate: self)
+
+        do {
+            let picker = try provider.getImagePicker(source: .photoLibrary)
+            present(picker, animated: true)
+        } catch {
+            NSLog("Error: \(error.localizedDescription)")
+        }
+    }
+    
+    
+    
+    func getData() {
+        buttonUnlog.isHidden = true
+        if keyChain.getBool("Auth") ?? false {
+            guard  let name = keyChain.get("name") else {return}
+            guard let secondName = keyChain.get("secondName")  else {return}
+            guard let email = keyChain.get("email")  else {return}
+            nameLabel.text =  name + " " + secondName
+            emailLabel.text = email
+            register.isHidden = true
+            buttonUnlog.isHidden = false
+
+        }
+
+    }
 
     func sliderDefault() {
         if UIApplication.shared.windows.filter({$0.isKeyWindow}).first?.overrideUserInterfaceStyle == .dark {
             switchButton.setOn(UIApplication.shared.windows.filter({$0.isKeyWindow}).first?.overrideUserInterfaceStyle == .dark, animated: true)
-            self.replicatorLayer.removeFromSuperlayer()
             view.addSubview(image)
             image.snp.makeConstraints { make in
-                make.center.equalTo(view.center)
+                make.centerX.equalTo(view.snp.centerX)
+                make.centerY.equalTo(view.snp.centerY).offset(100)
                 make.height.equalTo(view.frame.height / 4)
                 make.width.equalTo(view.snp.width).offset( -20)
             }
@@ -59,16 +129,18 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    
-    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        MainStart.present(view: self, controller: .registerViewController)
+    }
     
     @objc func switchValueDidChange() {
         if switchButton.isOn {
             UIApplication.shared.windows.filter({$0.isKeyWindow}).first?.overrideUserInterfaceStyle = .dark
-            self.replicatorLayer.removeFromSuperlayer()
+            self.label.text = "Темная тема"
             view.addSubview(image)
             image.snp.makeConstraints { make in
-                make.center.equalTo(view.center)
+                make.centerX.equalTo(view.snp.centerX)
+                make.centerY.equalTo(view.snp.centerY).offset(100)
                 make.height.equalTo(view.frame.height / 4)
                 make.width.equalTo(view.snp.width).offset( -20)
             }
@@ -83,22 +155,31 @@ class SettingsViewController: UIViewController {
 
             })
         } else {
+            self.label.text = "Светлая тема"
             UIApplication.shared.windows.filter({$0.isKeyWindow}).first?.overrideUserInterfaceStyle = .light
             UIView.animate(withDuration: 3 , delay: 0, animations: {
                 self.image.alpha = 0.2
-                self.image.layer.cornerRadius = 500
+                self.image.layer.cornerRadius = 0
+                self.image.alpha = 0
+                self.image.isHidden = false
+                self.image.backgroundColor = .red
+                self.image.image = UIImage(named: "whiteTheme")
+                UIView.animate(withDuration: 3 , delay: 0, animations: {
+                    self.image.alpha = 1
+                    self.image.layer.cornerRadius = 20
+
+                })
             })
         }
     }
     
-    
-    
-    
-    
     func uIConfigure() {
+        textLabel = UILabel()
         backButton = UIButton()
         switchButton = UISwitch()
         label = UILabel()
+        nameLabel = UILabel()
+        emailLabel = UILabel()
     }
     
     func layout() {
@@ -113,57 +194,141 @@ class SettingsViewController: UIViewController {
         backButton.setImage(imager.path(.back)(), for: .normal)
         view.addSubview(switchButton)
         switchButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(80)
-            make.trailing.equalTo(view.snp.trailing).offset(-40)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(233)
+            make.trailing.equalTo(view.snp.trailing).offset(-20)
         }
         view.addSubview(label)
         label.text = "Темная тема"
         label.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(80)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(230)
             make.leading.equalTo(view.snp.leading).offset(40)
             make.width.greaterThanOrEqualTo(80)
             make.height.equalTo(40)
         }
+        view.addSubview(avatarUserImage)
+        avatarUserImage.snp.makeConstraints { make in
+            make.width.equalTo(120)
+            make.height.equalTo(120)
+            make.top.equalTo(backButton.snp.bottom).offset(10)
+            make.leading.equalTo(view.snp.leading).offset(40)
+        }
+        
+        view.addSubview(nameLabel)
+        nameLabel.text = "Имя и Фамилия"
+        nameLabel.textColor = .white
+        nameLabel.snp.makeConstraints { make in
+            make.width.equalTo(140)
+            make.height.equalTo(20)
+            make.top.equalTo(backButton.snp.bottom).offset(10)
+            make.leading.equalTo(avatarUserImage.snp.trailing).offset(20)
+            
+        }
+        view.addSubview(emailLabel)
+        emailLabel.text = "Почта"
+        emailLabel.textColor = .white
+        emailLabel.snp.makeConstraints { make in
+            make.width.equalTo(140)
+            make.height.equalTo(20)
+            make.top.equalTo(nameLabel.snp.bottom).offset(10)
+            make.leading.equalTo(avatarUserImage.snp.trailing).offset(20)
+        }
+        
+        view.addSubview(buttonUnlog)
+        buttonUnlog.setTitle("Выйти", for: .normal)
+        buttonUnlog.addTarget(self, action: #selector(unlog), for: .touchUpInside)
+        buttonUnlog.snp.makeConstraints { make in
+            make.height.equalTo(30)
+            make.leading.equalTo(avatarUserImage.snp.trailing).offset(20)
+            make.bottom.equalTo(avatarUserImage.snp.bottom)
+        }
+        
+        view.addSubview(register)
+        register.image = UIImage(named: "regButton")
+        register.snp.makeConstraints { make in
+            make.width.equalTo( 19.5)
+            make.height.equalTo( 36.4)
+            make.top.equalTo(nameLabel.snp.bottom)
+            make.leading.equalTo(nameLabel.snp.trailing).offset(30)
+        }
+        view.addSubview(lineView)
+        lineView.backgroundColor = .lightGray
+        lineView.snp.makeConstraints { make in
+            make.width.equalTo(view.width)
+            make.height.equalTo(1)
+            make.top.equalTo(avatarUserImage.snp.bottom).offset(10)
+            
+        }
+        
+        view.addSubview(secondlineView)
+        secondlineView.backgroundColor = .lightGray
+        secondlineView.snp.makeConstraints { make in
+            make.width.equalTo(view.width)
+            make.height.equalTo(1)
+            make.top.equalTo(switchButton.snp.bottom).offset(20)
+        }
+        view.addSubview(textLabel)
+        textLabel.text = "Тема"
+        textLabel.snp.makeConstraints { make in
+            make.top.equalTo(lineView).offset(10)
+            make.leading.equalTo(view.snp.leading).offset(40)
+            make.height.equalTo(30)
+            make.width.equalTo(60)
+        }
+        view.addSubview(authLabel)
+        authLabel.backgroundColor = .red
+        authLabel.text = "Авторизируйтесь"
+        authLabel.textColor = .white
+        authLabel.snp.makeConstraints { make in
+            make.width.equalTo(140)
+            make.height.equalTo(20)
+            make.top.equalTo(emailLabel.snp.bottom).offset(15)
+            make.leading.equalTo(avatarUserImage.snp.trailing).offset(20)
+        }
+        
         
     }
+    
+    @objc func unlog() {
+        keyChain.delete("name")
+        keyChain.delete("secondName")
+        keyChain.delete("email")
+        keyChain.delete("token")
+        nameLabel.text = "Имя и Фамилия"
+        emailLabel.text = "E-Mail"
+        register.isHidden = false
+        buttonUnlog.isHidden = true
+        cleanAvatar()
+    }
+    
+    
+    func cleanAvatar() {
+        CoreDataManager().deleteAllData()
+        avatarUserImage.image = UIImage(named: "woman")
+        self.authLabel.isHidden = false
+    }
+    
+    
     
     @objc func back() {
         navigationController?.pushViewController(MainStart.getController(controller: .mainViewController), animated: false)
     }
-    
-    func start() {
-        startAnimation(delay: 0.04, replication: 100)
     }
-    
-    func stop() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.7, qos: .default, flags: .barrier) {
-            self.replicatorLayer.removeFromSuperlayer()
-        }
+
+
+
+extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = (
+            info[UIImagePickerController.InfoKey.editedImage] as? UIImage ??
+            info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        )
+        avatarUserImage.image = image
+        guard let imageData = avatarUserImage.image!.pngData() else {return}
+        CoreDataManager().saveData(photo: imageData)
+        picker.dismiss(animated: true, completion: nil)
     }
-    
-    
-    override func viewWillLayoutSubviews() {
-        replicatorLayer.frame = self.view.bounds
-        replicatorLayer.position = self.view.center
-        sourceLayer.frame = CGRect(x: 0, y: 0, width: 1, height: 259)
-        sourceLayer.backgroundColor = UIColor.white.cgColor
-        sourceLayer.position = self.view.center
-        sourceLayer.anchorPoint = CGPoint(x: 2, y: 0.5)
-    }
-    
-    func startAnimation(delay: TimeInterval, replication: Int){
-        replicatorLayer.instanceCount = replication
-        let angle = CGFloat(2.0 * .pi) / CGFloat(replication)
-        replicatorLayer.instanceTransform = CATransform3DMakeRotation(angle, 0, 5, 3)
-        replicatorLayer.instanceDelay = delay
-        sourceLayer.opacity = 0
-        let opacityAnimasion = CABasicAnimation(keyPath: "opacity")
-        opacityAnimasion.fromValue = 1
-        opacityAnimasion.toValue = 0
-        opacityAnimasion.duration = Double(replication) * delay
-        opacityAnimasion.repeatCount = Float.infinity
-        sourceLayer.add(opacityAnimasion, forKey: nil)
-    }
-    
-    
-    }
+}
+
+
+

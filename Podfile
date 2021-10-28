@@ -7,6 +7,12 @@ target 'Metronome' do
 pod 'SnapKit' 
 pod 'ChameleonFramework/Swift', :git => "https://github.com/MishelRo/chameleon"
 pod 'SwiftGen'
+pod 'Firebase/Analytics'
+pod 'Firebase/Auth'
+pod 'Firebase/Core'
+pod 'Firebase/Database'
+pod 'KeychainSwift', '~> 19.0'
+
 
   # Pods for Metronome
 

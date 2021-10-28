@@ -9,6 +9,7 @@ import UIKit
 enum returnVC {
     case mainViewController
     case settingController
+    case registerViewController
   
 }
 
@@ -19,6 +20,8 @@ extension returnVC {
             return MainViewController()
         case .settingController:
             return SettingsViewController()
+        case .registerViewController:
+            return RegisterViewController()
         }
     }
 }

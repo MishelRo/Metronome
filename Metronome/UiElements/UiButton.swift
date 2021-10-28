@@ -70,8 +70,6 @@ class MetronomeButton: UIButton {
             layerCorner = 83
         }
         
-        
-        
         addSubview(view)
         view.snp.makeConstraints { make in
             make.bottom.equalTo(self.snp.bottom).offset(-10)
@@ -89,7 +87,6 @@ class MetronomeButton: UIButton {
         view.backgroundColor = Constants.MainBackgroundColor
         backgroundColor = Constants.littleButtonBackground
         view.addGestureRecognizer(recognizer)
-        print(cornerStart)
         view.layer.cornerRadius = CGFloat(cornerStart)/////////////////////////////////////////
         layer.cornerRadius = CGFloat(layerCorner)//////////////////////////////////////////////////
     }
